@@ -45,7 +45,6 @@ select, input, #temp-right {
 
 .container {
     display: block;
-    /*max-width: 30%;*/
     padding: 20px;
     margin: 10px 0 0 0;
     border: 2px solid #1ac0c6;
@@ -53,6 +52,7 @@ select, input, #temp-right {
 }
 
 .press, .temp {
+    min-height: 20%;
     border: 2px solid #e3e3e3;
     border-radius: 10px;
     padding: 0 0 10px 0;
@@ -113,12 +113,44 @@ option {
 
 
 
+@media (max-device-width: 992px) {
+    .container {
+        /*min-height: 99vh;*/
+    }
 
+    .press-selector {
+        /*border: 1px solid #ccc;*/
+        /*min-height: 50%;*/
+    }
+
+    .press, .temp {
+        display: flex;
+        flex-flow: column;
+    }
+
+    input, select, button {
+        font-size: calc(1.375rem + 1.5vw)!important;
+    }
+
+    #temp-right {
+        font-size: calc(1.375rem + 1.0vw)!important;
+    }
+
+    .buttons {
+        margin-top: 20px;
+    }
+}
+
+@media (min-device-width: 992px) {
+    .press, .temp {
+        min-height: 0;
+    }
+}
 
 
 /*@media (min-device-width: 1301px) and (max-device-width: 1400px) {
 	.container {
-		width: 45%;
+		min-height: 99vh;
 	}
 
 	h1 {

@@ -11,7 +11,8 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Marmelad&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="src/css/bootstrap.min.css"/>
+<!--    <link rel="stylesheet" href="src/css/bootstrap.min.css"/>-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="src/css/home.css"/>
 
     <script async src="https://kit.fontawesome.com/6a3db4aac8.js" crossorigin="anonymous"></script>
@@ -30,7 +31,7 @@
         <div class="name-block"><h3 class="name">Pressure</h3></div>
         <div class="press-selector">
             <!-- Выбор единиц давления слева -->
-            <div class="press-left col-sm-5 col-md-4 col-lg-6 col-xl-6">
+            <div class="press-left col-sm-5 col-md-4 col-lg-5 col-xl-5">
                 <select class="form-control" name="units-left" id="press-units-left">
                     <option value=10>MPA</option>
                     <option value=1450>PSI</option>
@@ -52,7 +53,7 @@
             </div>
 
             <!-- Выбор единиц давления справа -->
-            <div class="press-right col-sm-5 col-md-4 col-lg-6 col-xl-6">
+            <div class="press-right col-sm-5 col-md-4 col-lg-5 col-xl-5">
                 <select class="form-control" name="units-right" id="press-units-right">
                     <option value=10>MPA</option>
                     <option value=1450>PSI</option>
@@ -95,7 +96,7 @@
 
         <div class="temp-selector">
             <!-- Выбор типа термопары -->
-            <div class="temp-left col-sm-5 col-md-4 col-lg-4 col-lg-6 col-xl-6" id="termocouple-div" style="display: block">
+            <div class="temp-left col-sm-5 col-md-4 col-lg-4 col-lg-5 col-xl-5" id="termocouple-div" style="display: block">
                 <select class="form-control" name="termocouple" id="termocouple">
                     <option value="k">TYPE-K</option>
                     <option value="j">TYPE-J</option>
@@ -111,7 +112,7 @@
             </div>
 
             <!-- Выбор типа термосопротивления -->
-            <div class="temp-left col-sm-5 col-md-4 col-lg-4 col-lg-6 col-xl-6" id="rtd-div" style="display: none">
+            <div class="temp-left col-sm-5 col-md-4 col-lg-4 col-lg-5 col-xl-5" id="rtd-div" style="display: none">
                 <select class="form-control" name="rtd" id="rtd">
                     <option value="100">PT-100</option>
                     <option value="1000">PT-1000</option>
@@ -121,9 +122,9 @@
                 </div>
             </div>
 
-            <div class="temp-right col-sm-5 col-md-4 col-lg-4 col-lg-6 col-xl-6">
+            <div class="temp-right col-sm-5 col-md-4 col-lg-4 col-lg-5 col-xl-5">
                 <div class="form-control">
-                    <p id="temp-right">Temp (-200...+1250)</p>
+                    <p id="temp-right">(-200...+1250)</p>
                 </div>
                 <div>
                     <input class="form-control mt-2" id="input-temp" type="number" placeholder="&#176C">

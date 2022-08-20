@@ -1,5 +1,3 @@
-// let $ = jQuery()
-
 $(function($){
 
     /* $("body")
@@ -138,7 +136,7 @@ $(function($){
         select_press_l.options[select_press_l.selectedIndex].foo()
         select_press_r.options[select_press_r.selectedIndex].foo()
         $("#output-press").val( function() {
-            if (input != 0) {
+            if (input !== 0) {
                 return Math.round((input * unit_r / unit_l) * 1000) / 1000
             }
             return 0
@@ -475,12 +473,12 @@ $(function($){
         if (type_temp === "termocouple") {
             $("#termocouple-div").css( "display", "block" );
             $("#rtd-div").css( "display", "none" );
-            $("#temp-right").text("Temp (-200...+1250)")
+            $("#temp-right").text("(-200...+1250)")
 
         } else {
             $("#termocouple-div").css( "display", "none" );
             $("#rtd-div").css( "display", "block" );
-            $("#temp-right").text("Temp (-200...+850)")
+            $("#temp-right").text("(-200...+850)")
         }
 
         $("#input-termocouple").val(function() {return ""})
@@ -492,7 +490,7 @@ $(function($){
             type_thermocouple = this.value
             for (const temp in obj_thermocouples) {
                 if (type_thermocouple === temp) {
-                    $("#temp-right").text("Temp " + obj_thermocouples[temp])
+                    $("#temp-right").text(obj_thermocouples[temp])
                 }
             }
 
@@ -523,7 +521,7 @@ $(function($){
 
     $.each(select_type_rtd, function(i) {
         select_type_rtd.options[i].foo = function() {
-            $("#temp-right").text("Temp (-200...+850)")
+            $("#temp-right").text("(-200...+850)")
             if (i === 0) {
                 rtd_100 = true
                 rtd_1000 = false
