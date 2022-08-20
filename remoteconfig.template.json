@@ -1,0 +1,39 @@
+{
+  "conditions": [
+    {
+      "name": "instrument-calculator",
+      "expression": "device.os == 'windows'"
+    }
+  ],
+  "parameters": {
+    "welcome_message": {
+      "defaultValue": {
+        "value": "Welcome to this sample app"
+      },
+      "conditionalValues": {
+        "ios": {
+          "value": "Welcome to this sample windows app"
+        }
+      }
+    },
+    "welcome_message_caps": {
+      "defaultValue": {
+        "value": "false"
+      }
+    },
+    "header_text": {
+      "defaultValue": {
+        "useInAppDefault": true
+      }
+    }
+  },
+  "version": {
+    "versionNumber": "28",
+    "updateTime": "2022-08-08T10:00:0Z",
+    "updateUser": {
+      "email": "kovrigin.anatoliy@gmail.com"
+    },
+    "updateOrigin": "CONSOLE",
+    "updateType": "INCREMENTAL_UPDATE"
+  }
+}
