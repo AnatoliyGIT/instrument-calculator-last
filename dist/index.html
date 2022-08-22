@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Instrument-calculator</title>
+
+    <script defer src="home.js"></script>
+
+    <link href="favicon.ico" rel="shortcut icon"/>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Marmelad&display=swap" rel="stylesheet">
+
+    <!--    <link rel="stylesheet" href="src/css/bootstrap.min.css"/>-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="home.css"/>
+
+    <script async src="https://kit.fontawesome.com/6a3db4aac8.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+</head>
+<body>
+
+<div class="container-fluid col-sm-12 col-lg-6 col-xl-5 pt-4">
+
+    <h1 class="mt-2">Instrumentation calculator</h1>
+
+    <ul class="nav nav-tabs" role="tablist" style="border-color: #B2BCFF">
+        <li class="nav-item col-3"><a style="background-color: #B2BCFF; border-color: #B2BCFF; color: #198754"
+                                      class="d-flex justify-content-center nav-link active" href="press.html"
+                                      aria-current="page" role="tab" data-toggle="pill">Pres</a></li>
+        <li class="nav-item col-3"><a class="d-flex justify-content-center nav-link" href="temp.html"
+                                      aria-current="page" role="tab" data-toggle="pill">Temp</a></li>
+        <li class="nav-item col-3"><a class="d-flex justify-content-center nav-link" href="flow.html"
+                                      aria-current="page" role="tab" data-toggle="pill">Flow</a></li>
+        <li class="nav-item col-3"><a class="d-flex justify-content-center nav-link" href="output.html"
+                                      aria-current="page" role="tab" data-toggle="pill">Out</a></li>
+    </ul>
+
+    <!-- Калькулятор единиц давления -->
+    <div class="press">
+        <!-- <div class="name-block mb-4 mt-2"><h3 class="name">Pressure</h3></div> -->
+        <div class="press-selector p-4">
+
+            <!-- Выбор единиц давления слева -->
+            <div class="press-left col-md-5">
+                <select class="form-select form-select-lg" name="units-left" id="press-units-left">
+                    <option value=10>MPA</option>
+                    <option value=1450>PSI</option>
+                    <option value=1021500>mm H2O</option>
+                    <option value=40146.32>In H2O (4 grad.C)</option>
+                    <option value=40218>In H2O (68 grad.F)</option>
+                    <option value=100>BAR</option>
+                    <option value=100000>mBAR</option>
+                    <option value=10000>kPa</option>
+                    <option value=2952>In Hg</option>
+                    <option value=75000>mm Hg</option>
+                    <option value=101.97>kg/cm2</option>
+                    <option value=101970>gm/cm2</option>
+                    <option value=101.97>ATM</option>
+                </select>
+                <div class="inputs" id="inputs-left">
+                    <input class="form-select form-select-lg mt-2" id=input-press placeholder="press" type="number">
+                </div>
+            </div>
+
+            <!-- Выбор единиц давления справа -->
+            <div class="press-right col-md-5">
+                <select class="form-select form-select-lg" name="units-right" id="press-units-right">
+                    <option value=10>MPA</option>
+                    <option value=1450>PSI</option>
+                    <option value=1021500>mm H2O</option>
+                    <option value=40146.32>In H2O (4 grad.C)</option>
+                    <option value=40218>In H2O (68 grad.F)</option>
+                    <option value=100>BAR</option>
+                    <option value=100000>mBAR</option>
+                    <option value=10000>kPa</option>
+                    <option value=2952>In Hg</option>
+                    <option value=75000>mm Hg</option>
+                    <option value=101.97>kg/cm2</option>
+                    <option value=101970>gm/cm2</option>
+                    <option value=101.97>ATM</option>
+                </select>
+                <div class="inputs" id="inputs-right">
+                    <input class="form-select form-select-lg mt-2" id=output-press type="number" placeholder="press"
+                           disabled>
+                </div>
+            </div>
+        </div>
+
+        <div class="buttons buttons-press mb-5">
+            <button class="btn btn-success mt-2 col-sm-4 col-md-3 col-lg-3" id=calc-press>CALC</button>
+        </div>
+    </div>
+
+</div>
+</body>
+
+</html>
