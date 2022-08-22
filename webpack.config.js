@@ -34,7 +34,7 @@ module.exports = {
         }]
     },
     devServer: {
-        port: process.env.PORT || 3050,
+        port: process.env.PORT || 3000,
         overlay: true
     },
     plugins: [

@@ -5,13 +5,16 @@ body {
     justify-content: center;
 }
 
-h1, h3 {
+h1, h3, a {
+    font-family: Verdana, sans-serif;
     text-align: center;
     margin: 20px 0 0 0;
 }
 
 h1 {
-    color: red;
+    color: #007E31;
+    font-weight: bold;
+    margin: 20px;
 }
 
 h3 {
@@ -43,7 +46,7 @@ select, input, #temp-right {
 
 }
 
-.container {
+.container-fluid {
     display: block;
     padding: 20px;
     margin: 10px 0 0 0;
@@ -51,17 +54,41 @@ select, input, #temp-right {
     border-radius: 10px;
 }
 
-.press, .temp {
+.press, .temp, .flow, .output {
     min-height: 20%;
-    border: 2px solid #e3e3e3;
-    border-radius: 10px;
+    border: 1px solid #e3e3e3;
+    border-top: 0;
+    border-radius: 0 0 10px 10px;
     padding: 0 0 10px 0;
-    margin: 10px 0;
 }
 
-.temp-selector, .press-selector {
-    margin: 10px 0 0 0;
-    padding: 10px 0 0 0;
+.press {
+    background-color: #B2BCFF;
+    border-color: #B2BCFF;
+}
+
+.temp {
+    background-color: #FFD186;
+    border-color: #FFD186;
+}
+
+.flow {
+    background-color: #BAFFB2;
+    border-color: #BAFFB2;
+}
+
+.output {
+    background-color: #FFBAF0;
+    border-color: #FFBAF0;
+}
+
+.active {
+    font-weight: bold;
+}
+
+.temp-selector, .press-selector, .flow-selector, .output-selector {
+    /*margin: 10px 0 0 0;*/
+    /*padding: 10px 0 0 0;*/
 }
 
 #temp-selector {
@@ -88,7 +115,6 @@ select, input, #temp-right {
 }
 
 #temp-right {
-    /*border: 1px solid #000;*/
     margin: 0;
     padding: 0 3px;
 }
@@ -106,21 +132,16 @@ h3 {
     font-size: 150%;
 }
 
-option {
-    /*font-size: 80%*/
+#temp-ranges {
+    background-color: #e9ecef;
 }
 
 
-
-
 @media (max-device-width: 992px) {
-    .container {
-        /*min-height: 99vh;*/
-    }
 
-    .press-selector {
-        /*border: 1px solid #ccc;*/
-        /*min-height: 50%;*/
+    .container-fluid {
+        min-height: 99vh;
+        min-width: 99vw;
     }
 
     .press, .temp {
@@ -128,7 +149,7 @@ option {
         flex-flow: column;
     }
 
-    input, select, button {
+    input, select, button, li {
         font-size: calc(1.375rem + 1.5vw)!important;
     }
 
@@ -139,6 +160,14 @@ option {
     .buttons {
         margin-top: 20px;
     }
+
+    h1 {
+        font-size: xxx-large;
+    }
+
+    #temp-ranges {
+        padding: 11px;
+    }
 }
 
 @media (min-device-width: 992px) {
@@ -146,96 +175,3 @@ option {
         min-height: 0;
     }
 }
-
-
-/*@media (min-device-width: 1301px) and (max-device-width: 1400px) {
-	.container {
-		min-height: 99vh;
-	}
-
-	h1 {
-  		font-size: 250%;
-	}
-
-	h3 {
-  		font-size: 150%;
-	}
-
-	select, input, button, #temp-right {
-		font-size: 16px;
-    	width: 200px;
-	}
-
-	option {
-		font-size: 70%
-	}
-}
-
-@media (min-device-width: 991px) and (max-device-width: 1300px) {
-	.container {
-		width: 60%;
-	}
-
-	h1 {
-  		font-size: 300%;
-	}
-
-	h3 {
-  		font-size: 200%;
-	}
-
-	select, input, button, #temp-right {
-		font-size: 17px;
-    	width: 200px;
-	}
-
-	option {
-		font-size: 70%
-	}
-}
-
-@media (min-device-width: 791px) and (max-device-width: 990px) {
-	.container {
-		width: 50%;
-	}
-
-	h1 {
-  		font-size: 200%;
-	}
-
-	h3 {
-  		font-size: 200%;
-	}
-
-	select, input, button, #temp-right {
-		font-size: 20px;
-    	width: 200px;
-	}
-
-	option {
-		font-size: 70%
-	}
-}
-
-@media (max-device-width: 790px) {
-	h1 {
-  		font-size: 500%;
-	}
-
-	h3 {
-  		font-size: 300%;
-	}
-
-	.container {
-		width: 90%;
-	}
-
-	select, input, button, #temp-right {
-		font-size: 30px;
-    	width: 300px;
-	}
-
-	option {
-		font-size: 50%
-	}
-}*/
