@@ -54,11 +54,11 @@ select, input, #temp-right {
     border-radius: 10px;
 }
 
-.press, .temp, .flow, .output {
+.press, .temp, .flow, .output, .level {
     min-height: 20%;
     border: 1px solid #e3e3e3;
     border-top: 0;
-    border-radius: 0 0 10px 10px;
+    border-radius: 10px;
     padding: 0 0 10px 0;
 }
 
@@ -136,8 +136,18 @@ h3 {
     background-color: #e9ecef;
 }
 
+.card-title {
+    font-weight: bold;
+    font-size: large;
+}
 
-@media (max-device-width: 992px) {
+@media (min-device-width: 650px) and (max-device-width: 980px){
+    .card-title {
+        font-size: xx-large;
+    }
+}
+
+@media (max-device-width: 980px) {
 
     .container-fluid {
         min-height: 99vh;
@@ -173,5 +183,11 @@ h3 {
 @media (min-device-width: 992px) {
     .press, .temp {
         min-height: 0;
+    }
+}
+
+@media (max-device-width: 650px) {
+    .card-title {
+        font-size: xxx-large;
     }
 }
