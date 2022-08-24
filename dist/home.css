@@ -21,17 +21,8 @@ h3 {
     color: #38A322;
 }
 
-input {
-    /*margin: 10px 0;*/
-}
-
-select {
-    /*width: 100%;*/
-}
-
 .name-block {
     margin: 0;
-    /*border: 1px solid #e3e3e3;*/
     border-radius: 5px;
 }
 
@@ -40,18 +31,13 @@ select {
     justify-content: center;
 }
 
-select, input, #temp-right {
-    /*border: 1px solid #e3e3e3;*/
-    /*border-radius: 5px;*/
-
-}
-
 .container-fluid {
     display: block;
     padding: 20px;
     margin: 10px 0 0 0;
     border: 2px solid #1ac0c6;
     border-radius: 10px;
+    background-color: #FAF7F4;
 }
 
 .press, .temp, .flow, .output, .level {
@@ -63,32 +49,32 @@ select, input, #temp-right {
 }
 
 .press {
-    background-color: #B2BCFF;
-    border-color: #B2BCFF;
+    background-color: rgba(13,110,253,0.5)!important;
+    border-color: rgba(13,110,253,0.5)!important;
 }
 
 .temp {
-    background-color: #FFD186;
-    border-color: #FFD186;
+    background-color: rgba(220,53,69,0.5)!important;
+    border-color: rgba(220,53,69,0.5)!important;
 }
 
 .flow {
-    background-color: #BAFFB2;
-    border-color: #BAFFB2;
+    background-color: rgba(25,135,84,0.5)!important;
+    border-color: rgba(25,135,84,0.5)!important;
+}
+
+.level {
+    background-color: rgba(255,193,7,0.5)!important;
+    border-color: rgba(255,193,7,0.5)!important;
 }
 
 .output {
-    background-color: #FFBAF0;
-    border-color: #FFBAF0;
+    background-color: rgba(13,202,240,0.5)!important;
+    border-color: rgba(13,202,240,0.5)!important;
 }
 
 .active {
     font-weight: bold;
-}
-
-.temp-selector, .press-selector, .flow-selector, .output-selector {
-    /*margin: 10px 0 0 0;*/
-    /*padding: 10px 0 0 0;*/
 }
 
 #temp-selector {
@@ -141,9 +127,51 @@ h3 {
     font-size: large;
 }
 
+img {
+    width: 120px;
+}
+
+.card-image, .image-top {
+    height: 130px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-radius: 5px;
+}
+
+#press-image, #image-top-press {
+    background-image: url("pressure.jpg");
+}
+
+#temp-image, #image-top-temp {
+    background-image: url("temperature.jpg");
+}
+
+#flow-image, #image-top-flow {
+    background-image: url("orifice-flow-meter.jpg");
+}
+
+#level-image, #image-top-level {
+    background-image: url("level.jpg");
+}
+
+#output-image, #image-top-output {
+    background-image: url("output.gif");
+}
+
+.image-top {
+    height: 350px;
+    width: auto;
+    background-size: contain;
+}
+
 @media (min-device-width: 650px) and (max-device-width: 980px){
     .card-title {
-        font-size: xx-large;
+        font-size: x-large;
+    }
+
+    .card-image {
+        height: 170px;
     }
 }
 
@@ -189,5 +217,16 @@ h3 {
 @media (max-device-width: 650px) {
     .card-title {
         font-size: xxx-large;
+    }
+
+    .card-image {
+        height: 450px;
+        margin: 20px;
+    }
+}
+
+@media (max-device-width: 300px) {
+    .card-image {
+        height: 750px;
     }
 }
