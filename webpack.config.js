@@ -3,13 +3,13 @@ const miniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
     entry: {
-        home: './src/index.js',
-        // request: './src/request.js',
-        // search: './src/search.js',
-        // add: './src/add.js',
-        // dashboard: './src/dashboard.js',
-        // document: './src/document.js',
-        // login: './src/login.js',
+        flow: './src/js/flow.js',
+        home: './src/js/home.js',
+        level: './src/js/level.js',
+        output: './src/js/output.js',
+        press: './src/js/press.js',
+        temp: './src/js/temp.js',
+        calibration: './src/js/calibration.js',
         // registration: './src/registration.js',
         // activation: './src/activation.js',
         // about: './src/about.js',

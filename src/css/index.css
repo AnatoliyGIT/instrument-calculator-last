@@ -26,6 +26,43 @@ h3 {
     border-radius: 5px;
 }
 
+#carousel-top {
+    height: 40vh;
+}
+
+.carusel-image {
+    height: 40vh;
+    width: 100%;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+#image-1 {
+    background-image: url("../images/endress-hauser-banner.jpg");
+}
+
+#image-2 {
+    background-image: url("../images/Instrumentation-1024x384.jpg");
+}
+
+#image-3 {
+    background-image: url("../images/Rosemounts.jpg");
+}
+
+#image-4 {
+    background-image: url("../images/beamex-1.jpg");
+}
+
+#image-5 {
+    background-image: url("../images/endress.jpg");
+}
+
+.carousel-item.active {
+    display: flex;
+}
+
 .inputs, .press-selector, .temp-selector, .selector-center {
     display: flex;
     justify-content: center;
@@ -40,7 +77,7 @@ h3 {
     background-color: #FAF7F4;
 }
 
-.press, .temp, .flow, .output, .level {
+.press, .temp, .flow, .output, .calibration, .level {
     min-height: 20%;
     border: 1px solid #e3e3e3;
     border-top: 0;
@@ -66,6 +103,11 @@ h3 {
 .level {
     background-color: rgba(255,193,7,0.5)!important;
     border-color: rgba(255,193,7,0.5)!important;
+}
+
+.calibration, .bg-violet {
+    background-color: rgba(11,66,193,0.7)!important;
+    border-color: rgba(11,66,193,0.7)!important;
 }
 
 .output {
@@ -127,10 +169,6 @@ h3 {
     font-size: large;
 }
 
-img {
-    width: 120px;
-}
-
 .card-image, .image-top {
     height: 130px;
     background-repeat: no-repeat;
@@ -140,23 +178,27 @@ img {
 }
 
 #press-image, #image-top-press {
-    background-image: url("pressure.jpg");
+    background-image: url("../images/press-2.png");
 }
 
 #temp-image, #image-top-temp {
-    background-image: url("temperature.jpg");
+    background-image: url("../images/bltl_m1_s2_5.png");
 }
 
 #flow-image, #image-top-flow {
-    background-image: url("orifice-flow-meter.jpg");
+    background-image: url("../images/flow-2.jpg");
 }
 
 #level-image, #image-top-level {
-    background-image: url("level.jpg");
+    background-image: url("../images/level-yokogawa.jpg");
+}
+
+#calibration-image, #image-top-calibration {
+    background-image: url("../images/Beamex-MC6-HART-calibration-v1-1024x678.jpg");
 }
 
 #output-image, #image-top-output {
-    background-image: url("output.gif");
+    background-image: url("../images/output.gif");
 }
 
 .image-top {
@@ -180,6 +222,10 @@ img {
     .container-fluid {
         min-height: 99vh;
         min-width: 99vw;
+    }
+
+    #carousel-top {
+        /*display: none;*/
     }
 
     .press, .temp {

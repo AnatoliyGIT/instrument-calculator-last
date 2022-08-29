@@ -1,51 +1,27 @@
 $(function($){
 
-// PRESSURE
-    let select_press_l = $("#press-units-left")[0]
-    let select_press_r = $("#press-units-right")[0]
-    let input = 0
-    let unit_l = 10
-    let unit_r = 10
-
-// Обходим левый селектор в input записываем введенное значение, в unit_l записываем value текущего селектора в Мегапаскалях
-    $.each(select_press_l, function(i) {
-        select_press_l.options[i].foo = function() {
-            input = Number($("#input-press").val())
-            unit_l = Number(this.value)
-        }
-    })
-
-// Обходим правый селектор в unit_r записываем value текущего селектора в Мегапаскалях
-    $.each(select_press_r, function(i) {
-        select_press_r.options[i].foo = function() {
-            unit_r = Number(this.value)
-        }
-    })
-
-// Функция калькулятор. Записывает в output вычисленное значение
-    $("#calc-press").on("click", function() {
-        select_press_l.options[select_press_l.selectedIndex].foo()
-        select_press_r.options[select_press_r.selectedIndex].foo()
-        $("#output-press").val( function() {
-            if (input !== 0) {
-                return Math.round((input * unit_r / unit_l) * 1000) / 1000
-            }
-            return 0
-        })
-    })
-
-
 // TEMPERATURE
     let select_type = $("#temp-selector")[0]
     let select_type_termocouple = $("#termocouple")[0]
     let select_type_rtd = $("#rtd")[0]
-    let type_temp
-    let input_temp = 0
+    let select_type_degrees_left = $("#degrees-left-select")[0]
+    let select_type_degrees_right = $("#degrees-right-select")[0]
+    let type_temp = ""
+    let unit_l = 0
+    let unit_r = 0
     let input_mv = 0
     let input_ohm = 0
+    let input_deg = 0
     let rtd = false
     let rtd_100 = false
     let rtd_1000 = false
+    let degrees = false
+    let celsius_left = false
+    let fahrenheit_left = false
+    let kelvin_left = false
+    let celsius_right = false
+    let fahrenheit_right = false
+    let kelvin_right = false
     let thermocouple = true
     let t = "type_k"
     let res = 0
@@ -333,14 +309,25 @@ $(function($){
             $("#input-rtd").val(function() {
                 return ""
             })
+            $("#input-degrees").val(function() {
+                return ""
+            })
             if (i === 0) {
+                degrees = false
                 rtd = false
                 rtd_100 = false
                 rtd_1000 = false
                 thermocouple = true
-            } else {
+            } else if (i === 1) {
+                degrees = false
                 rtd = true
                 rtd_100 = true
+                rtd_1000 = false
+                thermocouple = false
+            } else {
+                degrees = true
+                rtd = false
+                rtd_100 = false
                 rtd_1000 = false
                 thermocouple = false
             }
@@ -362,18 +349,36 @@ $(function($){
     $("#temp-selector").on("change", function() {
         select_type.options[select_type.selectedIndex].foo()
         if (type_temp === "termocouple") {
-            $("#termocouple-div").css( "display", "block" );
-            $("#rtd-div").css( "display", "none" );
-            $("#temp-right").text("(-200...+1250)")
+            $("#termocouple-div").css( "display", "block" )
+            $("#rtd-div").css( "display", "none" )
+            $("#degrees-left-div").css( "display", "none" )
+            $("#temp-right-div").css("display", "block")
+            $("#calc-temp-left").text("CALC mV").css("display", "block")
+            $("#calc-temp-right").text("CALC DEG")
+            $("#input-temp").prop( "disabled", false )
+
+        } else if (type_temp === "degrees") {
+            $("#termocouple-div").css( "display", "none" )
+            $("#rtd-div").css( "display", "none" )
+            $("#degrees-left-div").css( "display", "block" )
+            $("#temp-right-div").css("display", "none")
+            $("#calc-temp-left").text("CALC DEG").css("display", "none")
+            $("#calc-temp-right").text("CALC DEG")
+            $("#input-temp").prop( "disabled", true )
 
         } else {
-            $("#termocouple-div").css( "display", "none" );
-            $("#rtd-div").css( "display", "block" );
-            $("#temp-right").text("(-200...+850)")
+            $("#termocouple-div").css( "display", "none" )
+            $("#rtd-div").css( "display", "block" )
+            $("#degrees-left-div").css( "display", "none" )
+            $("#temp-right-div").css("display", "block")
+            $("#calc-temp-left").text("CALC Ohm").css("display", "block")
+            $("#calc-temp-right").text("CALC DEG")
+            $("#input-temp").prop( "disabled", false )
         }
 
         $("#input-termocouple").val(function() {return ""})
         $("#input-rtd").val(function() {return ""})
+        $("#input-degrees").val(function() {return ""})
     })
 
     $.each(select_type_termocouple, function(i) {
@@ -417,10 +422,57 @@ $(function($){
                 rtd_100 = true
                 rtd_1000 = false
                 thermocouple = false
+                degrees = false
             } else {
                 rtd_100 = false
                 rtd_1000 = true
                 thermocouple = false
+                degrees = false
+            }
+        }
+    })
+
+    // Выбираем что считаем
+    $.each(select_type_degrees_left, function(i) {
+        select_type_degrees_left.options[i].foo = function() {
+            $("#temp-right").text("degrees")
+            switch(i) {
+                case 0:
+                    celsius_left = true
+                    fahrenheit_left = false
+                    kelvin_left = false
+                    break;
+                case 1:
+                    celsius_left = false
+                    fahrenheit_left = true
+                    kelvin_left = false
+                    break;
+                case 2:
+                    celsius_left = false
+                    fahrenheit_left = false
+                    kelvin_left = true
+            }
+        }
+    })
+
+    $.each(select_type_degrees_right, function(i) {
+        select_type_degrees_right.options[i].foo = function() {
+            $("#temp-right").text("degrees")
+            switch(i) {
+                case 0:
+                    celsius_right = true
+                    fahrenheit_right = false
+                    kelvin_right = false
+                    break;
+                case 1:
+                    celsius_right = false
+                    fahrenheit_right = true
+                    kelvin_right = false
+                    break;
+                case 2:
+                    celsius_right = false
+                    fahrenheit_right = false
+                    kelvin_right = true
             }
         }
     })
@@ -493,14 +545,14 @@ $(function($){
                     }
                 })
             }
-            return "error"
+            return "Over range"
         })
     }
 
     let temp_calc = function(ohm_mv) {
         $("#input-temp").val(function() {
             ohm_mv = Number(ohm_mv)
-            if (rtd && !thermocouple) {
+            if (rtd && !thermocouple && !degrees) {
                 if (rtd_100 && !rtd_1000) {
                     if (ohm_mv <= 18.5) {
                         ohm_mv = 18.5
@@ -551,7 +603,7 @@ $(function($){
                     }
                 }
             }
-            if (!rtd && thermocouple) {
+            if (!rtd && thermocouple && !degrees) {
                 for (let type in obj_types) {
                     for (let temp in obj_types[type]) {
                         temp = Number(temp)
@@ -567,9 +619,79 @@ $(function($){
                     }
                 }
             }
-            return "error"
+            return "Over range"
         })
     }
+
+    let temp_degrees = function(input_deg) {
+        // console.log(input_deg)
+        select_type_degrees_left.options[select_type_degrees_left.selectedIndex].foo()
+        select_type_degrees_right.options[select_type_degrees_right.selectedIndex].foo()
+
+        $("#input-temp").val( function() {
+            switch(unit_l + "-" + unit_r) {
+                case "celsius-celsius":
+                    if (input_deg >= (-273.15)) {return input_deg} else {return "Over range"}
+                case "celsius-fahrenheit":
+                    if (input_deg >= (-273.15)) {
+                        return Math.round(((input_deg * (9/5) ) + 32) * 100) / 100
+                    } else {
+                        return "Over range"
+                    }
+                case "celsius-kelvin":
+                    if (input_deg >= (-273.15)) {
+                        return Math.round((input_deg + 273.15) * 100) / 100
+                    } else {
+                        return "Over range"
+                    }
+                case "fahrenheit-celsius":
+                    if (input_deg >= (-459.67)) {
+                        return Math.round(((input_deg - 32) * 5/9) * 100) / 100
+                    } else {
+                        return "Over range"
+                    }
+                case "fahrenheit-fahrenheit":
+                    if (input_deg >= (-459.67)) {return input_deg} else {return "Over range"}
+                case "fahrenheit-kelvin":
+                    if (input_deg >= (-459.67)) {
+                        return Math.round(((Math.round(((input_deg - 32) * 5/9) * 100) / 100) + 273.15) * 100) / 100
+                    } else {
+                        return "Over range"
+                    }
+                case "kelvin-celsius":
+                    if (input_deg >= (0)) {
+                        return input_deg - 273.15
+                    } else {
+                        return "Over range"
+                    }
+                case "kelvin-fahrenheit":
+                    if (input_deg >= (0)) {
+                        return Math.round(((input_deg - 273.15) * 9/5 + 32) * 100) / 100
+                    } else {
+                        return "Over range"
+                    }
+                case "kelvin-kelvin":
+                    if (input_deg >= (0)) {return input_deg} else {return "Over range"}
+                default:
+                    return "Over range"
+            }
+        })
+    }
+
+    // Обходим левый селектор в input записываем введенное значение, в unit_l записываем value текущего селектора в Мегапаскалях
+    $.each(select_type_degrees_left, function(i) {
+        select_type_degrees_left.options[i].foo = function() {
+            unit_l = this.value
+        }
+    })
+
+    // Обходим правый селектор в unit_r записываем value текущего селектора в Мегапаскалях
+    $.each(select_type_degrees_right, function(i) {
+        select_type_degrees_right.options[i].foo = function() {
+            unit_r = this.value
+        }
+    })
+
 
     $("#termocouple").on("change", function() {
         select_type_termocouple.options[select_type_termocouple.selectedIndex].foo()
@@ -577,6 +699,10 @@ $(function($){
 
     $("#rtd").on("change", function() {
         select_type_rtd.options[select_type_rtd.selectedIndex].foo()
+    })
+
+    $("#degrees").on("change", function() {
+        select_type_degrees.options[select_type_degrees.selectedIndex].foo()
     })
 
 
@@ -587,12 +713,16 @@ $(function($){
     $("#calc-temp-right").on("click", function() {
         input_mv = 0
         input_ohm = 0
+        input_deg = 0
         Number($("#input-termocouple").val()) ? input_mv = $("#input-termocouple").val() : input_mv
         Number($("#input-rtd").val()) ? input_ohm = $("#input-rtd").val() : input_ohm
-        if (!rtd && thermocouple) {
-            temp_calc(input_mv)
+        Number($("#input-degrees").val()) ? input_deg = $("#input-degrees").val() : input_deg
+        if (!rtd && thermocouple && !degrees) {
+            temp_calc(Number(input_mv))
+        } else if (rtd && !thermocouple && !degrees) {
+            temp_calc(Number(input_ohm))
         } else {
-            temp_calc(input_ohm)
+            temp_degrees(Number(input_deg))
         }
     })
 
