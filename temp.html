@@ -41,14 +41,14 @@
 				<div class="image-top" id="image-top-temp"></div>
 
 				<!-- Калькулятор температур -->
-				<div class="temp mt-5">
+				<div class="temp pb-5 mt-5">
 					<!-- <div class="name-block mb-4 mt-2"><h3 class="name">Temperature</h3></div> -->
 
 					<!-- Выбор типа температуры -->
 					<div class="selector-center p-4">
 						<div class="col col-sm-6 col-lg-4">
 							<select class="form-select form-select-lg" name="temp-selector" id="temp-selector">
-								<option value="termocouple">TERMOCOUPLE</option>
+								<option value="thermocouple">THERMOCOUPLE</option>
 								<option value="rtd">RTD</option>
 								<option value="degrees">DEGREES</option>
 							</select>
@@ -57,8 +57,8 @@
 
 					<div class="temp-selector">
 						<!-- Выбор типа термопары -->
-						<div class="temp-left col col-lg-5" id="termocouple-div" style="display: block">
-							<select class="form-select form-select-lg" name="termocouple" id="termocouple">
+						<div class="temp-left col col-lg-5" id="thermocouple-div" style="display: block">
+							<select class="form-select form-select-lg" name="thermocouple" id="thermocouple">
 								<option value="k">TYPE-K</option>
 								<option value="j">TYPE-J</option>
 								<option value="t">TYPE-T</option>
@@ -67,8 +67,8 @@
 								<option value="e">TYPE-E</option>
 								<option value="b">TYPE-B</option>
 							</select>
-							<div class="inputs inputs-termocouple">
-								<input class="form-select form-select-lg mt-2" id="input-termocouple" type="number" placeholder="mV">
+							<div class="inputs inputs-thermocouple">
+								<input class="form-select form-select-lg mt-2" id="input-thermocouple" placeholder="mV">
 							</div>
 						</div>
 
@@ -110,12 +110,6 @@
 								<input class="form-select form-select-lg mt-2" id="input-temp" placeholder="degrees">
 							</div>
 						</div>
-					</div>
-
-					<!-- Кнопки расчета температур -->
-					<div class="buttons buttons-temp">
-						<button class="btn btn-success mt-4 col col-sm-4 col-md-3 col-lg-3" id=calc-temp-left>CALC mV</button>
-						<button class="btn btn-success mt-4 col col-sm-4 col-md-3 col-lg-3" id=calc-temp-right>CALC DEG</button>
 					</div>
 				</div>
 

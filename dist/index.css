@@ -224,10 +224,6 @@ h3 {
         min-width: 99vw;
     }
 
-    #carousel-top {
-        display: none;
-    }
-
     .press, .temp {
         display: flex;
         flex-flow: column;
@@ -268,6 +264,10 @@ h3 {
     .card-image {
         height: 450px;
         margin: 20px;
+    }
+
+    #carousel-top {
+        display: none;
     }
 }
 

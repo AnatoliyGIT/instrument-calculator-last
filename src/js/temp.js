@@ -2,7 +2,7 @@ $(function($){
 
 // TEMPERATURE
     let select_type = $("#temp-selector")[0]
-    let select_type_termocouple = $("#termocouple")[0]
+    let select_type_thermocouple = $("#thermocouple")[0]
     let select_type_rtd = $("#rtd")[0]
     let select_type_degrees_left = $("#degrees-left-select")[0]
     let select_type_degrees_right = $("#degrees-right-select")[0]
@@ -303,7 +303,7 @@ $(function($){
     $.each(select_type, function(i) {
         select_type.options[i].foo = function() {
             type_temp = this.value
-            $("#input-termocouple").val(function() {
+            $("#input-thermocouple").val(function() {
                 return ""
             })
             $("#input-rtd").val(function() {
@@ -348,8 +348,8 @@ $(function($){
 
     $("#temp-selector").on("change", function() {
         select_type.options[select_type.selectedIndex].foo()
-        if (type_temp === "termocouple") {
-            $("#termocouple-div").css( "display", "block" )
+        if (type_temp === "thermocouple") {
+            $("#thermocouple-div").css( "display", "block" )
             $("#rtd-div").css( "display", "none" )
             $("#degrees-left-div").css( "display", "none" )
             $("#temp-right-div").css("display", "block")
@@ -358,7 +358,7 @@ $(function($){
             $("#input-temp").prop( "disabled", false )
 
         } else if (type_temp === "degrees") {
-            $("#termocouple-div").css( "display", "none" )
+            $("#thermocouple-div").css( "display", "none" )
             $("#rtd-div").css( "display", "none" )
             $("#degrees-left-div").css( "display", "block" )
             $("#temp-right-div").css("display", "none")
@@ -367,7 +367,7 @@ $(function($){
             $("#input-temp").prop( "disabled", true )
 
         } else {
-            $("#termocouple-div").css( "display", "none" )
+            $("#thermocouple-div").css( "display", "none" )
             $("#rtd-div").css( "display", "block" )
             $("#degrees-left-div").css( "display", "none" )
             $("#temp-right-div").css("display", "block")
@@ -376,13 +376,13 @@ $(function($){
             $("#input-temp").prop( "disabled", false )
         }
 
-        $("#input-termocouple").val(function() {return ""})
+        $("#input-thermocouple").val(function() {return ""})
         $("#input-rtd").val(function() {return ""})
         $("#input-degrees").val(function() {return ""})
     })
 
-    $.each(select_type_termocouple, function(i) {
-        select_type_termocouple.options[i].foo = function() {
+    $.each(select_type_thermocouple, function(i) {
+        select_type_thermocouple.options[i].foo = function() {
             type_thermocouple = this.value
             for (const temp in obj_thermocouples) {
                 if (type_thermocouple === temp) {
@@ -480,34 +480,7 @@ $(function($){
     let ohm_mv_calc = function(input_temp) {
         const inp = Number(input_temp)
         $("#input-rtd").val(function() {
-            let output = 18.5
             if (rtd && !thermocouple) {
-                if (inp < -200 || inp === "") {
-                    $("#input-temp").val(function() {
-                        if (rtd_100 && !rtd_1000) {
-                            output = 18.5
-                            return -200
-                        }
-                        if (!rtd_100 && rtd_1000) {
-                            output = 185.2
-                            return -200
-                        }
-                    })
-                    return output
-                }
-                if (inp > 850) {
-                    $("#input-temp").val(function() {
-                        if (rtd_100 && !rtd_1000) {
-                            output = 390.5
-                            return 850
-                        }
-                        if (!rtd_100 && rtd_1000) {
-                            output = 3904.8
-                            return 850
-                        }
-                    })
-                    return output
-                }
                 if (rtd_100 && !rtd_1000) {
                     for (let temp in obj_rtds.rtd_100) {
                         temp = Number(temp)
@@ -517,6 +490,7 @@ $(function($){
                             return Math.round((start + ((stop - start) / 50) * (inp - temp)) * 10) / 10
                         }
                     }
+                    return "Over range"
                 }
                 if (!rtd_100 && rtd_1000) {
                     for (let temp in obj_rtds.rtd_1000) {
@@ -527,10 +501,12 @@ $(function($){
                             return Math.round((start + ((stop - start) / 50) * (inp - temp)) * 10) / 10
                         }
                     }
+                    return "Over range"
                 }
+                return "Over range"
             }
             if (!rtd && thermocouple) {
-                $("#input-termocouple").val(function() {
+                $("#input-thermocouple").val(function() {
                     for (let type in obj_types) {
                         for (let temp in obj_types[type]) {
                             temp = Number(temp)
@@ -538,11 +514,14 @@ $(function($){
                                 const start = Math.round((obj_types[t][temp]) * 1000) / 1000
                                 const stop = Math.round((obj_types[t][temp + 50]) * 1000) / 1000
                                 res = Math.round((start + ((stop - start) / 50) * (inp - temp)) * 1000) / 1000
-                                // console.log(start, ',', stop)
-                                return res
+                                if (res) {
+                                    return res
+                                }
+                                return "Over range"
                             }
                         }
                     }
+                    return "Over range"
                 })
             }
             return "Over range"
@@ -550,22 +529,11 @@ $(function($){
     }
 
     let temp_calc = function(ohm_mv) {
+        select_type_degrees_right.options[select_type_degrees_right.selectedIndex].foo()
         $("#input-temp").val(function() {
             ohm_mv = Number(ohm_mv)
             if (rtd && !thermocouple && !degrees) {
                 if (rtd_100 && !rtd_1000) {
-                    if (ohm_mv <= 18.5) {
-                        ohm_mv = 18.5
-                        $("#input-rtd").val(function() {
-                            return 18.5
-                        })
-                    }
-                    if (ohm_mv >= 390.48) {
-                        ohm_mv = 390.48
-                        $("#input-rtd").val(function() {
-                            return 390.5
-                        })
-                    }
                     for (let temp in obj_rtds.rtd_100) {
                         if (ohm_mv >= obj_rtds.rtd_100[temp][0] && ohm_mv <= obj_rtds.rtd_100[temp][1]) {
                             temp = Number(temp)
@@ -574,23 +542,18 @@ $(function($){
                             const a = (obj_rtds.rtd_100[temp][1] - obj_rtds.rtd_100[temp][0]) / 50
                             const b = obj_rtds.rtd_100[temp][0]
                             const y = (x - b) / a
-                            return Math.round((y + temp) * 10) / 10
+                            let res = Math.round((y + temp) * 100) / 100
+                            if (unit_r === "fahrenheit") {
+                                res = Math.round(((res * 9/5) + 32) * 100) / 100
+                            }
+                            if (unit_r === "kelvin") {
+                                res = Math.round((res + 273.15) * 100) / 100
+                            }
+                            return res
                         }
                     }
                 }
                 if (rtd_1000 && !rtd_100) {
-                    if (ohm_mv < 185.2) {
-                        ohm_mv = 185.2
-                        $("#input-rtd").val(function() {
-                            return 185.2
-                        })
-                    }
-                    if (ohm_mv > 3904.80) {
-                        ohm_mv = 3904.80
-                        $("#input-rtd").val(function() {
-                            return 3904.80
-                        })
-                    }
                     for (let temp in obj_rtds.rtd_1000) {
                         if (ohm_mv >= obj_rtds.rtd_1000[temp][0] && ohm_mv <= obj_rtds.rtd_1000[temp][1]) {
                             temp = Number(temp)
@@ -598,7 +561,14 @@ $(function($){
                             const a = (obj_rtds.rtd_1000[temp][1] - obj_rtds.rtd_1000[temp][0]) / 50
                             const b = obj_rtds.rtd_1000[temp][0]
                             const y = (x - b) / a
-                            return Math.round((y + temp) * 10) / 10
+                            let res = Math.round((y + temp) * 100) / 100
+                            if (unit_r === "fahrenheit") {
+                                res = Math.round(((res * 9/5) + 32) * 100) / 100
+                            }
+                            if (unit_r === "kelvin") {
+                                res = Math.round((res + 273.15) * 100) / 100
+                            }
+                            return res
                         }
                     }
                 }
@@ -607,15 +577,20 @@ $(function($){
                 for (let type in obj_types) {
                     for (let temp in obj_types[type]) {
                         temp = Number(temp)
-                        // console.log(temp)
                         if (ohm_mv >= obj_types[t][temp] && ohm_mv <= obj_types[t][temp + 50]) {
                             const x = ohm_mv
                             const a = (obj_types[t][temp + 50] - obj_types[t][temp]) / 50
                             const b = obj_types[t][temp]
                             const y = (x - b) / a
-                            return Math.round((y + temp) * 10) / 10
+                            let res = Math.round((y + temp) * 100) / 100
+                            if (unit_r === "fahrenheit") {
+                                res = Math.round(((res * 9/5) + 32) * 100) / 100
+                            }
+                            if (unit_r === "kelvin") {
+                                res = Math.round((res + 273.15) * 100) / 100
+                            }
+                            return res
                         }
-
                     }
                 }
             }
@@ -624,7 +599,6 @@ $(function($){
     }
 
     let temp_degrees = function(input_deg) {
-        // console.log(input_deg)
         select_type_degrees_left.options[select_type_degrees_left.selectedIndex].foo()
         select_type_degrees_right.options[select_type_degrees_right.selectedIndex].foo()
 
@@ -693,8 +667,8 @@ $(function($){
     })
 
 
-    $("#termocouple").on("change", function() {
-        select_type_termocouple.options[select_type_termocouple.selectedIndex].foo()
+    $("#thermocouple").on("change", function() {
+        select_type_thermocouple.options[select_type_thermocouple.selectedIndex].foo()
     })
 
     $("#rtd").on("change", function() {
@@ -707,14 +681,14 @@ $(function($){
 
 
     $("#calc-temp-left").on("click", function() {
-        ohm_mv_calc($("#input-temp").val())
+        ohm_mv_calc(Number($("#input-temp").val()))
     })
 
     $("#calc-temp-right").on("click", function() {
         input_mv = 0
         input_ohm = 0
         input_deg = 0
-        Number($("#input-termocouple").val()) ? input_mv = $("#input-termocouple").val() : input_mv
+        Number($("#input-thermocouple").val()) ? input_mv = $("#input-thermocouple").val() : input_mv
         Number($("#input-rtd").val()) ? input_ohm = $("#input-rtd").val() : input_ohm
         Number($("#input-degrees").val()) ? input_deg = $("#input-degrees").val() : input_deg
         if (!rtd && thermocouple && !degrees) {
@@ -724,6 +698,48 @@ $(function($){
         } else {
             temp_degrees(Number(input_deg))
         }
+    })
+
+    $("#degrees-right-select").on("change", function () {
+        if (degrees) {
+            temp_degrees(Number($("#input-degrees").val()))
+        } else if (thermocouple) {
+            temp_calc(Number($("#input-thermocouple").val()))
+        } else if (rtd) {
+            temp_calc(Number($("#input-rtd").val()))
+        }
+    })
+
+    $("#degrees-left-select").on("change", function () {
+        if (degrees) {
+            temp_degrees(Number($("#input-degrees").val()))
+        } else {
+            temp_calc(Number($("#input-rtd").val()))
+        }
+    })
+
+    $("#rtd").on("change", function () {
+        ohm_mv_calc(Number($("#input-temp").val()))
+    })
+
+    $("#thermocouple").on("change", function () {
+        ohm_mv_calc(Number($("#input-temp").val()))
+    })
+
+    $("#input-thermocouple").on("change", function () {
+        temp_calc(Number($("#input-thermocouple").val()))
+    })
+
+    $("#input-rtd").on("change", function () {
+        temp_calc(Number($("#input-rtd").val()))
+    })
+
+    $("#input-temp").on("change", function () {
+        ohm_mv_calc(Number($("#input-temp").val()))
+    })
+
+    $("#input-degrees").on("change", function () {
+        temp_degrees(Number($("#input-degrees").val()))
     })
 
 })
