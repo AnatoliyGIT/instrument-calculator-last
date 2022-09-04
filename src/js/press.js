@@ -14,7 +14,8 @@ $(function ($) {
     let input = Number(input_press.val())
     let unit_l = 10
     let unit_r = 10
-    let additive = 0
+    let additive_l = 0
+    let additive_r = 0
 
 // Обходим левый селектор в input записываем введенное значение, в unit_l записываем value текущего селектора в Мегапаскалях
     $.each(select_l, function (i) {
@@ -36,7 +37,7 @@ $(function ($) {
         select_l.options[select_l.selectedIndex].foo()
         select_type_l.options[i].foo = function () {
             if (i === 1) {
-                // additive = Math.round((-1 * 101.97 / unit_l) * 1000) / 1000
+                additive_l = 1 * unit_r / 101.97
             }
         }
     })
@@ -45,21 +46,23 @@ $(function ($) {
     $.each(select_type_r, function (i) {
         select_type_r.options[i].foo = function () {
             if (i === 1) {
-                // console.log("additive")
+                additive_r = 1 * unit_l / 101.97
             }
         }
     })
 
 // Функция калькулятор. Записывает в output вычисленное значение
     let result = function () {
-        let add = additive
-        additive = 0
         select_l.options[select_l.selectedIndex].foo()
         select_r.options[select_r.selectedIndex].foo()
         select_type_l.options[select_type_l.selectedIndex].foo()
         select_type_r.options[select_type_r.selectedIndex].foo()
+        let add_l = additive_l
+        let add_r = additive_r
+        additive_l = 0
+        additive_r = 0
         output_press.val(function () {
-            return Math.round((input * unit_r / unit_l) * 1000) / 1000 + add
+            return Math.round(((input * unit_r / unit_l) + add_r - add_l) * 1000) / 1000
         })
     }
 
@@ -71,5 +74,11 @@ $(function ($) {
     })
     input_press.on("input", function () {
         return result()
+    })
+    select_type_left.on("change", function () {
+    	return result()
+    })
+    select_type_right.on("change", function () {
+    	return result()
     })
 })
