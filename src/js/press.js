@@ -37,7 +37,7 @@ $(function ($) {
         select_l.options[select_l.selectedIndex].foo()
         select_type_l.options[i].foo = function () {
             if (i === 1) {
-                additive_l = 1 * unit_r / 101.97
+                additive_l = Number(unit_r) / 101.97
             }
         }
     })
@@ -46,7 +46,7 @@ $(function ($) {
     $.each(select_type_r, function (i) {
         select_type_r.options[i].foo = function () {
             if (i === 1) {
-                additive_r = 1 * unit_l / 101.97
+                additive_r = Number(unit_r) / 101.97
             }
         }
     })
