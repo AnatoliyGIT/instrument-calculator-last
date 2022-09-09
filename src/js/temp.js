@@ -28,8 +28,8 @@ $(function($){
     let span_min_deg = -250
     let span_max_deg = 1350
 
-    $("#span-left").html(function() {return "Span:&nbsp;(" + span_min_mv + "&nbsp;...&nbsp;+" + span_max_mv + ")&nbsp;mV"})
-    $("#span-right").html(function() {return "Span:&nbsp;(" + span_min_deg + "&nbsp;...&nbsp;+" + span_max_deg + ")&nbsp;&#8451;"})
+    $(".span-left").html(function() {return "Span:&nbsp;(" + span_min_mv + "&nbsp;...&nbsp;+" + span_max_mv + ")&nbsp;mV"})
+    $(".span-right").html(function() {return "Span:&nbsp;(" + span_min_deg + "&nbsp;...&nbsp;+" + span_max_deg + ")&nbsp;&#8451;"})
     const obj_types = {
         "type_k": {
             "-250":-6.404,
@@ -351,8 +351,8 @@ $(function($){
         }
         select_type.options[select_type.selectedIndex].foo()
         if (type_temp === "thermocouple") {
-        	$("#span-left").html(function() {return "Span:&nbsp;(" + span_min_mv + "&nbsp;...&nbsp;+" + span_max_mv + ")&nbsp;mV"})
-        	$("#span-right").html(function() {return "Span:&nbsp;(" + span_min + "&nbsp;...&nbsp;+" + span_max + ")&nbsp;" + unit})
+        	$(".span-left").html(function() {return "Span:&nbsp;(" + span_min_mv + "&nbsp;...&nbsp;+" + span_max_mv + ")&nbsp;mV"})
+        	$(".span-right").html(function() {return "Span:&nbsp;(" + span_min + "&nbsp;...&nbsp;+" + span_max + ")&nbsp;" + unit})
             $("#thermocouple-div").css( "display", "block" )
             $("#rtd-div").css( "display", "none" )
             $("#degrees-left-div").css( "display", "none" )
@@ -375,8 +375,8 @@ $(function($){
             	span_max = 5000
             	unit = "&#8451"
         	}
-        	$("#span-left").html(function() {return "Span:&nbsp;(" + span_min + "&nbsp;...&nbsp;+" + span_max + ")&nbsp;" + unit})
-        	$("#span-right").html(function() {return "Span:&nbsp;(" + span_min + "&nbsp;...&nbsp;+" + span_max + ")&nbsp;" + unit})
+        	$(".span-left").html(function() {return "Span:&nbsp;(" + span_min + "&nbsp;...&nbsp;+" + span_max + ")&nbsp;" + unit})
+        	$(".span-right").html(function() {return "Span:&nbsp;(" + span_min + "&nbsp;...&nbsp;+" + span_max + ")&nbsp;" + unit})
             $("#thermocouple-div").css( "display", "none" )
             $("#rtd-div").css( "display", "none" )
             $("#degrees-left-div").css( "display", "block" )
@@ -399,8 +399,8 @@ $(function($){
             	span_max = 850
             	unit = "&#8451"
         	}
-        	$("#span-left").html(function() {return "Span:&nbsp;(" + span_min_ohm + "&nbsp;...&nbsp;+" + span_max_ohm + ")&nbsp;Ohm"})
-        	$("#span-right").html(function() {return "Span:&nbsp;(" + span_min + "&nbsp;...&nbsp;+" + span_max + ")&nbsp;" + unit})
+        	$(".span-left").html(function() {return "Span:&nbsp;(" + span_min_ohm + "&nbsp;...&nbsp;+" + span_max_ohm + ")&nbsp;Ohm"})
+        	$(".span-right").html(function() {return "Span:&nbsp;(" + span_min + "&nbsp;...&nbsp;+" + span_max + ")&nbsp;" + unit})
             $("#thermocouple-div").css( "display", "none" )
             $("#rtd-div").css( "display", "block" )
             $("#degrees-left-div").css( "display", "none" )
@@ -750,8 +750,8 @@ $(function($){
             span_max = Math.round((span_max + 273.15) * 100) / 100
             unit = "K"
         }
-        $("#span-left").html(function() {return "Span:&nbsp;(" + span_min_mv + "&nbsp;...&nbsp;+" + span_max_mv + ")&nbsp;mV"})
-        $("#span-right").html(function() {return "Span:&nbsp;(" + span_min + "&nbsp;...&nbsp;+" + span_max + ")&nbsp;" + unit})
+        $(".span-left").html(function() {return "Span:&nbsp;(" + span_min_mv + "&nbsp;...&nbsp;+" + span_max_mv + ")&nbsp;mV"})
+        $(".span-right").html(function() {return "Span:&nbsp;(" + span_min + "&nbsp;...&nbsp;+" + span_max + ")&nbsp;" + unit})
         $("#input-thermocouple").val(function() {return ""})
         $("#input-temp").val(function() {return ""})
     })
@@ -759,7 +759,7 @@ $(function($){
     $("#rtd").on("change", function() {
     	select_type_degrees_right.options[select_type_degrees_right.selectedIndex].foo()
     	select_type_rtd.options[select_type_rtd.selectedIndex].foo()
-        $("#span-left").html(function() {return "Span:&nbsp;(" + span_min_ohm + "&nbsp;...&nbsp;+" + span_max_ohm + ")&nbsp;Ohm"})
+        $(".span-left").html(function() {return "Span:&nbsp;(" + span_min_ohm + "&nbsp;...&nbsp;+" + span_max_ohm + ")&nbsp;Ohm"})
         $("#input-rtd").val(function() {return ""})
         $("#input-temp").val(function() {return ""})
     })
@@ -796,7 +796,7 @@ $(function($){
             	unit = "&#8451"
         	}
         }
-    	$("#span-right").html(function() {return "Span:&nbsp;(" + span_min + "&nbsp;...&nbsp;+" + span_max + ")&nbsp;" + unit})
+    	$(".span-right").html(function() {return "Span:&nbsp;(" + span_min + "&nbsp;...&nbsp;+" + span_max + ")&nbsp;" + unit})
 
         if (degrees) {
             temp_degrees(Number($("#input-degrees").val()))
@@ -809,7 +809,7 @@ $(function($){
 
     $("#degrees-left-select").on("change", function () {
     	select_type_degrees_left.options[select_type_degrees_left.selectedIndex].foo()
-    	$("#span-left").html(function() {return "Span:&nbsp;(" + span_min_deg + "&nbsp;...&nbsp;+" + span_max_deg + ")&nbsp;&#8451;"})
+    	$(".span-left").html(function() {return "Span:&nbsp;(" + span_min_deg + "&nbsp;...&nbsp;+" + span_max_deg + ")&nbsp;&#8451;"})
         if (degrees) {
             temp_degrees(Number($("#input-degrees").val()))
         } else {

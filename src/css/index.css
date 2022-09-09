@@ -207,6 +207,10 @@ h3 {
     background-size: contain;
 }
 
+.span-left, .span-right {
+    font-size: 2rem!important;
+}
+
 @media (min-device-width: 650px) and (max-device-width: 980px){
     .card-title {
         font-size: x-large;
@@ -274,5 +278,11 @@ h3 {
 @media (max-device-width: 300px) {
     .card-image {
         height: 750px;
+    }
+}
+
+@media (min-device-width: 1200px) {
+    .span-left, .span-right {
+        font-size: 1.5rem!important;
     }
 }

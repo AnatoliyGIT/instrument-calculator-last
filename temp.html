@@ -76,19 +76,12 @@
             </div>
         </div>
 
-        <div class="description-ranges d-flex flex-nowrap justify-content-center">
-            <div class="col col-5">
-                <p id="span-left" class="description-left form-select-lg m-0"></p>
-            </div>
-            <div class="ms-4 me-4 ps-4 pe-4"></div>
-            <div class="col col-5">
-                <p id="span-right" class="description-right form-select-lg m-0"></p>
-            </div>
-        </div>
-
-        <div class="temp-selector">
+        <div class="temp-selector d-flex flex-wrap justify-content-center">
             <!-- Выбор типа термопары -->
-            <div class="temp-left col col-lg-5" id="thermocouple-div">
+            <div class="temp-left col-xl-5 col-md-10" id="thermocouple-div">
+                <div class="col col-5">
+                    <p class="span-left description-left form-select-lg m-0"></p>
+                </div>
                 <select class="form-select form-select-lg" name="thermocouple" id="thermocouple" title="thermocouple">
                     <option value="k">TYPE-K</option>
                     <option value="j">TYPE-J</option>
@@ -105,7 +98,10 @@
             </div>
 
             <!-- Выбор типа термосопротивления -->
-            <div class="temp-left col col-lg-5" id="rtd-div">
+            <div class="temp-left col-xl-5 col-md-10" id="rtd-div">
+                <div class="col col-5">
+                    <p class="span-left description-left form-select-lg m-0"></p>
+                </div>
                 <select class="form-select form-select-lg" name="rtd" id="rtd" title="rtd">
                     <option value="100">PT-100</option>
                     <option value="1000">PT-1000</option>
@@ -117,7 +113,10 @@
             </div>
 
             <!-- Выбор градусов (цельсия/кельвина/форингейта) -->
-            <div class="temp-left col col-lg-5" id="degrees-left-div">
+            <div class="temp-left col-xl-5 col-md-10" id="degrees-left-div">
+                <div class="col col-5">
+                    <p class="span-left description-left form-select-lg m-0"></p>
+                </div>
                 <select class="form-select form-select-lg" name="degrees" id="degrees-left-select" title="degrees">
                     <option value="celsius">Celsius</option>
                     <option value="fahrenheit">Fahrenheit</option>
@@ -130,11 +129,14 @@
             </div>
 
             <!-- Знак равно -->
-            <div class="d-flex align-items-center justify-content-center">
-                <h1>=</h1>
+            <div class="d-flex align-items-center justify-content-center col-xl-1 col-md-10 mt-3">
+                <h1 id="equal">=</h1>
             </div>
 
-            <div class="temp-right col col-lg-5" id="degrees-right-div">
+            <div class="temp-right col-xl-5 col-md-10" id="degrees-right-div">
+                <div class="col col-5">
+                    <p class="span-right description-right form-select-lg m-0"></p>
+                </div>
                 <select class="form-select form-select-lg" name="degrees" id="degrees-right-select" title="degrees">
                     <option value="celsius">Celsius</option>
                     <option value="fahrenheit">Fahrenheit</option>
