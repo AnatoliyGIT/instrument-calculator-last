@@ -50,11 +50,11 @@
     <div class="image-top" id="image-top-press"></div>
 
     <!-- Калькулятор единиц давления -->
-    <div class="press mt-5">
-        <div class="press-selector p-4">
+    <div class="press m-0-auto">
+        <div class="press-selector p-4 d-flex flex-wrap justify-content-center">
 
             <!-- Выбор единиц давления слева -->
-            <div class="press-left col-md-5">
+            <div class="press-left col-xl-5 col-md-10">
                 <select class="form-select form-select-lg mt-2" name="press-type-left" id="press-type-left">
                     <option value=gauge>Gauge</option>
                     <option value=absolute>Absolute</option>
@@ -83,12 +83,12 @@
             </div>
 
             <!-- Знак равно -->
-            <div class="d-flex align-items-center justify-content-center">
-                <h1>=</h1>
+            <div class="d-flex align-items-center justify-content-center col-xl-1 col-md-10">
+                <h1 id="equal">=</h1>
             </div>
 
             <!-- Выбор единиц давления справа -->
-            <div class="press-right col-md-5">
+            <div class="press-right col-xl-5 col-md-10">
                 <select class="form-select form-select-lg mt-2" name="press-type-right" id="press-type-right">
                     <option value=gauge>Gauge</option>
                     <option value=absolute>Absolute</option>
