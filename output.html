@@ -22,8 +22,13 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 	<style>
-		a {text-decoration: auto;}
-		i {font-size: 50px;}
+		a {
+			text-decoration: auto;
+		}
+
+		i {
+			font-size: 50px;
+		}
 	</style>
 </head>
 
@@ -33,18 +38,80 @@
 
 	<div class="d-flex flex-nowrap align-items-center mb-4">
 		<a class="d-flex justify-content-center col-1 m-0" href="index.html">
-			<i class="col-1 fa fa-solid fa-angle-left" style="color: rgba(13,202,240,0.5)!important;"></i>
+			<i class="col-1 fa fa-solid fa-angle-left" style="color: rgba(13,110,253,0.5)!important;"></i>
 		</a>
 		<h1 class="col-10">Instrumentation calculator (Output)</h1>
 		<div class="col-1"></div>
 	</div>
 	<div class="image-top" id="image-top-output"></div>
 
-	<div class="output mt-5">
-		<div class="output-selector p-4">
-			<h1>There is nothing here yet...</h1>
-			<h1>Здесь пока ничего нет...</h1>
+	<!-- Калькулятор выходного сигнала -->
+	<div class="output m-0-auto">
+
+		<div class="output-selector p-4 d-flex flex-wrap justify-content-center">
+			<div class="col-xl-5 col-md-10">
+				<label class="col-12">
+					<select class="form-select form-select-lg mt-2">
+						<option value="">Linear</option>
+						<option value="">Square</option>
+					</select>
+				</label>
+			</div>
 		</div>
+		<div class="output-selector p-4 d-flex flex-wrap justify-content-center">
+			<div class="col-xl-3 col-md-10 mt-md-2">
+				<div class="col col-12">
+					<p class="fs-5 span-left description-left form-select-lg m-0">Lover Range Value</p>
+				</div>
+				<label class="col-12">
+					<input class="form-select form-select-lg" id="input-lover-range" placeholder="LRV"
+						   title="lover-range" inputmode="numeric">
+				</label>
+			</div>
+			<div class="col-xl-1 col-lg-10 mt-md-2"></div>
+			<div class="col-xl-3 col-md-10 mt-md-2">
+				<div class="col">
+					<p class="fs-5 span-left description-left form-select-lg m-0">Current Value</p>
+				</div>
+				<label class="col-12">
+					<input class="form-select form-select-lg" id="input-current-value" placeholder="Current value"
+						   title="current-value" inputmode="numeric">
+				</label>
+			</div>
+			<div class="col-xl-1 col-lg-10 mt-md-2"></div>
+			<div class="col-xl-3 col-md-10 mt-md-2">
+				<div class="col">
+					<p class="fs-5 span-left description-left form-select-lg m-0">Upper Range Value</p>
+				</div>
+				<label class="col-12">
+					<input class="form-select form-select-lg" id="input-upper-range" placeholder="URV"
+						   title="upper-range" inputmode="numeric">
+				</label>
+			</div>
+
+		</div>
+
+
+		<div class="output-selector p-4 d-flex flex-wrap justify-content-center">
+			<div class="col-xl-4 col-md-10 mt-md-2">
+				<div class="col">
+					<p class="fs-5 span-left description-left form-select-lg m-0">Result of mA</p>
+				</div>
+				<label class="col-12">
+					<input class="form-select form-select-lg mt-2 mb-2" type="number" placeholder="mA" disabled>
+				</label>
+			</div>
+			<div class="col-xl-1 col-lg-10 mt-md-2"></div>
+			<div class="col-xl-4 col-md-10 mt-md-2">
+				<div class="col">
+					<p class="fs-5 span-left description-left form-select-lg m-0">Result of percents</p>
+				</div>
+				<label class="col-12">
+					<input class="form-select form-select-lg mt-2 mb-2" type="number" placeholder="%" disabled>
+				</label>
+			</div>
+		</div>
+
 	</div>
 </div>
 
