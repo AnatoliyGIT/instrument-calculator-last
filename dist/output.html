@@ -46,9 +46,9 @@
 		<div class="output-selector p-4 d-flex flex-wrap justify-content-center">
 			<div class="col-xl-5 col-md-10">
 				<label class="col-12">
-					<select class="form-select form-select-lg mt-2">
-						<option value="">Linear</option>
-						<option value="">Square</option>
+					<select class="form-select form-select-lg mt-2" id="selector-output">
+						<option value="lin">Linear</option>
+						<option value="sqr">Square</option>
 					</select>
 				</label>
 			</div>
@@ -69,7 +69,7 @@
 					<p class="fs-5 span-left description-left form-select-lg m-0">Current Value</p>
 				</div>
 				<label class="col-12">
-					<input class="form-select form-select-lg" id="input-current-value" placeholder="Current value"
+					<input class="form-select form-select-lg" id="input-current-range-value" placeholder="Current value"
 						   title="current-value" inputmode="numeric">
 				</label>
 			</div>
@@ -88,21 +88,30 @@
 
 
 		<div class="output-selector p-4 d-flex flex-wrap justify-content-center">
-			<div class="col-xl-4 col-md-10 mt-md-2">
+			<div class="col-xl-3 col-md-10 mt-md-2">
+				<div class="col">
+					<p class="fs-5 span-left description-left form-select-lg m-0">Range</p>
+				</div>
+				<label class="col-12">
+					<input class="form-select form-select-lg mt-2 mb-2" id="input-output-range" type="number" placeholder="Range">
+				</label>
+			</div>
+			<div class="col-xl-1 col-lg-10 mt-md-2"></div>
+			<div class="col-xl-3 col-md-10 mt-md-2">
 				<div class="col">
 					<p class="fs-5 span-left description-left form-select-lg m-0">Result of mA</p>
 				</div>
 				<label class="col-12">
-					<input class="form-select form-select-lg mt-2 mb-2" type="number" placeholder="mA" disabled>
+					<input class="form-select form-select-lg mt-2 mb-2" type="number" id="output-ma" placeholder="mA" disabled>
 				</label>
 			</div>
 			<div class="col-xl-1 col-lg-10 mt-md-2"></div>
-			<div class="col-xl-4 col-md-10 mt-md-2">
+			<div class="col-xl-3 col-md-10 mt-md-2">
 				<div class="col">
 					<p class="fs-5 span-left description-left form-select-lg m-0">Result of percents</p>
 				</div>
 				<label class="col-12">
-					<input class="form-select form-select-lg mt-2 mb-2" type="number" placeholder="%" disabled>
+					<input class="form-select form-select-lg mt-2 mb-2" type="number" id="output-percents" placeholder="%" disabled>
 				</label>
 			</div>
 		</div>
