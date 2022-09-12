@@ -27,27 +27,136 @@
 	</style>
 </head>
 
-		<body>
+<body>
+	<div class="container-fluid col-sm-12 col-lg-8 pt-4">
 
-			<div class="container-fluid col-sm-12 col-lg-8 pt-4">
+		<div class="d-flex flex-nowrap align-items-center mb-4">
+			<a class="d-flex justify-content-center col-1 m-0" href="index.html" title="arrow">
+				<i class="col-1 fa fa-solid fa-angle-left" style="color: rgba(255,193,7,0.5)!important;"></i>
+			</a>
+			<h1 class="col-10">Instrumentation calculator (Level)</h1>
+			<div class="col-1"></div>
+		</div>
+	<div class="image-top" id="image-top-level"></div>
 
-				<div class="d-flex flex-nowrap align-items-center mb-4">
-					<a class="d-flex justify-content-center col-1 m-0" href="index.html">
-						<i class="col-1 fa fa-solid fa-angle-left" style="color: rgba(255,193,7,0.5)!important;"></i>
-					</a>
-					<h1 class="col-10">Instrumentation calculator (Level meter)</h1>
-					<div class="col-1"></div>
-				</div>
-				<div class="image-top" id="image-top-level"></div>
+	<!-- Калькулятор ... -->
+				<div class="level m-0-auto">
 
-				<div class="level mt-5">
-					<div class="output-selector p-4">
-						<h1>There is nothing here yet...</h1>
-						<h1>Здесь пока ничего нет...</h1>
+					<div class="level-selector p-4 d-flex flex-wrap justify-content-center">
+						<div class="col-12 col-xl-3">
+							<div class="col-12">
+								<p class="fs-5 span-left description-left form-select-lg m-0">What's in pipe?</p>
+							</div>
+							<label class="col-12">
+								<select class="form-select form-select-lg" id="selector-liquid">
+									<option value="gas">Gas</option>
+									<option value="water">Water (&#961;=1.0)</option>
+									<option value="glycerine">Glycerine (&#961;=1.26)</option>
+									<option value="phase_separation">Phase separation</option>
+								</select>
+							</label>
+						</div>
+						<div class="col-xl-1 col-lg-10 mt-md-2"></div>
+						<div class="col-12 col-xl-3">
+							<div class="col-12">
+								<p class="fs-5 span-left description-left form-select-lg m-0">Density (SG<sub>FF</sub>)</p>
+							</div>
+							<label class="col-12">
+								<input class="form-select form-select-lg" id="density-ff" placeholder="density" title="h1" type="number">
+							</label>
+						</div>
+						<div class="col-xl-1 col-lg-10 mt-md-2"></div>
+						<div class="col-12 col-xl-3">
+							<div class="col-12">
+								<p class="fs-5 span-left description-left form-select-lg m-0">Density (SG<sub>p</sub>)</p>
+							</div>
+							<label class="col-12">
+								<input class="form-select form-select-lg" id="density-p" placeholder="density" title="h1" type="number">
+							</label>
+						</div>
 					</div>
+
+					<div class="level-selector p-4 d-flex flex-wrap justify-content-center">
+						<div class="col-xl-3 col-12 mt-md-2">
+							<div class="col-12">
+								<p class="fs-5 span-left description-left form-select-lg m-0">Distance H<sub>1</sub> (mm)</p>
+							</div>
+							<label class="col-12">
+								<input class="form-select form-select-lg" id="distance-1" placeholder="mm" title="h1" type="number">
+							</label>
+						</div>
+						<div class="col-xl-1 col-lg-10 mt-md-2"></div>
+						<div class="col-xl-3 col-12 mt-md-2">
+							<div class="col-12">
+								<p class="fs-5 span-left description-left form-select-lg m-0">Distance H<sub>2</sub> (mm)</p>
+							</div>
+							<label class="col-12">
+								<input class="form-select form-select-lg" id="distance-2" placeholder="mm" title="h1" type="number">
+							</label>
+						</div>
+						<div class="col-xl-1 col-lg-10 mt-md-2"></div>
+						<div class="col-xl-3 col-12 mt-md-2">
+							<div class="col-12">
+								<p class="fs-5 span-left description-left form-select-lg m-0">Distance H<sub>curr</sub> (mm)</p>
+							</div>
+							<label class="col-12">
+								<input class="form-select form-select-lg" id="distance-curr" placeholder="mm" title="h1" type="number">
+							</label>
+						</div>
+
+					</div>
+
+					<div class="level-selector p-4 d-flex flex-wrap justify-content-center">
+						<div class="col-xl-3 col-12 mt-md-2">
+							<div class="col-12">
+								<p class="fs-5 span-left description-left form-select-lg m-0">Range mmH<sub>2</sub>O</p>
+							</div>
+							<label class="col-12">
+								<input class="form-select form-select-lg mt-2 mb-2" id="range-mmh2o" type="number" placeholder="Range">
+							</label>
+						</div>
+						<div class="col-xl-1 col-lg-10 mt-md-2"></div>
+						<div class="col-xl-3 col-12 mt-md-2">
+							<div class="col">
+								<p class="fs-5 span-left description-left form-select-lg m-0">Lower range value (LRV)</p>
+							</div>
+							<label class="col-12">
+								<input class="form-select form-select-lg mt-2 mb-2" type="number" id="lrv" placeholder="mmH2O">
+							</label>
+						</div>
+						<div class="col-xl-1 col-lg-10 mt-md-2"></div>
+						<div class="col-xl-3 col-12 mt-md-2">
+							<div class="col">
+								<p class="fs-5 span-left description-left form-select-lg m-0">Upper range value (URV)</p>
+							</div>
+							<label class="col-12">
+								<input class="form-select form-select-lg mt-2 mb-2" type="number" id="urv" placeholder="mmH2O">
+							</label>
+						</div>
+					</div>
+
+					<div class="level-selector p-4 d-flex flex-wrap justify-content-center">
+						<div class="col-xl-3 col-12 mt-md-2">
+							<div class="col">
+								<p class="fs-5 span-left description-left form-select-lg m-0">Result of mA</p>
+							</div>
+							<label class="col-12">
+								<input class="form-select form-select-lg mt-2 mb-2" type="number" id="result-ma" placeholder="mA">
+							</label>
+						</div>
+						<div class="col-xl-1 col-lg-10 mt-md-2"></div>
+						<div class="col-xl-3 col-12 mt-md-2">
+							<div class="col">
+								<p class="fs-5 span-left description-left form-select-lg m-0">Percents result</p>
+							</div>
+							<label class="col-12">
+								<input class="form-select form-select-lg mt-2 mb-2" type="number" id="result-percents" placeholder="%">
+							</label>
+						</div>
+					</div>
+
 				</div>
 			</div>
-
 		</body>
 
 </html>
