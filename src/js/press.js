@@ -84,7 +84,15 @@ $(function ($) {
     })
 
     input_press.focus(function () {
-        if (window.screen.width <= 1200) {
+        const width = window.screen.width
+        const height = window.screen.height
+        if (width <= 1200) {
+            if (width > height) {
+                $("#modal-dialog").css("max-width", function () {return "60vw"})
+            } else {
+                $("#modal-dialog").css("max-width", function () {return "100vw"})
+            }
+            $("#keyboard-input").val(() => {return $("#input-press").val()})
             keyboard.show()
         }
     })
