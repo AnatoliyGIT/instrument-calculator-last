@@ -292,3 +292,7 @@ h3 {
     align-items: end;
     max-width: 90vw;
 }
+
+.modal-body button {
+    font-weight: bold;
+}

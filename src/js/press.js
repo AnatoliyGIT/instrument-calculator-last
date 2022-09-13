@@ -84,6 +84,58 @@ $(function ($) {
     })
 
     input_press.focus(function () {
-        keyboard.show()
+        if (window.screen.width <= 1200) {
+            keyboard.show()
+        }
+    })
+
+    $("#one").on("click", function () {
+        $("#keyboard-input").val(() => {return $("#keyboard-input").val() + "1"})
+    })
+    $("#two").on("click", function () {
+        $("#keyboard-input").val(() => {return $("#keyboard-input").val() + "2"})
+    })
+    $("#three").on("click", function () {
+        $("#keyboard-input").val(() => {return $("#keyboard-input").val() + "3"})
+    })
+    $("#for").on("click", function () {
+        $("#keyboard-input").val(() => {return $("#keyboard-input").val() + "4"})
+    })
+    $("#fife").on("click", function () {
+        $("#keyboard-input").val(() => {return $("#keyboard-input").val() + "5"})
+    })
+    $("#six").on("click", function () {
+        $("#keyboard-input").val(() => {return $("#keyboard-input").val() + "6"})
+    })
+    $("#seven").on("click", function () {
+        $("#keyboard-input").val(() => {return $("#keyboard-input").val() + "7"})
+    })
+    $("#eight").on("click", function () {
+        $("#keyboard-input").val(() => {return $("#keyboard-input").val() + "8"})
+    })
+    $("#nine").on("click", function () {
+        $("#keyboard-input").val(() => {return $("#keyboard-input").val() + "9"})
+    })
+    $("#zero").on("click", function () {
+        $("#keyboard-input").val(() => {return $("#keyboard-input").val() + "0"})
+    })
+    $("#dot").on("click", function () {
+        $("#keyboard-input").val(() => {return $("#keyboard-input").val() + "."})
+    })
+    $("#minus").on("click", function () {
+        $("#keyboard-input").val(() => {return $("#keyboard-input").val() + "-"})
+    })
+    $("#backspace").on("click", function () {
+        $("#keyboard-input").val(() => {
+            const value = $("#keyboard-input").val()
+            return value.substring(0, value.length - 1)
+        })
+    })
+    $("#enter").on("click", function () {
+        $("#input-press").val(function () {
+            return Number($("#keyboard-input").val())
+        })
+        keyboard.hide()
+        result()
     })
 })
