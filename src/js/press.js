@@ -83,6 +83,7 @@ $(function ($) {
     	return result()
     })
 
+    // Start KEYBOARD
     input_press.focus(function () {
         const width = window.screen.width
         const height = window.screen.height
@@ -142,4 +143,5 @@ $(function ($) {
         keyboard.hide()
         result()
     })
+    // End KEYBOARD
 })
