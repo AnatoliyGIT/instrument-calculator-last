@@ -292,3 +292,9 @@ h3 {
     align-items: end;
     max-width: 90vw;
 }
+
+#modal-dialog {
+    display: flex;
+    align-items: end;
+    max-width: 90vw;
+}
