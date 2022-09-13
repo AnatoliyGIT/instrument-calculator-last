@@ -5,7 +5,9 @@
 	<meta name="description" content="Instrumentation calculator of temperature">
 	<meta name="keywords" content="HTML,CSS,JavaScript">
 	<meta name="author" content="Anatoly Kovrigin">
-<!--	<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+	<meta name="viewport" content="user-scalable=0"/>
+<!--	<meta name="viewport" content="width=device-width, initial-scale=0.5, maximum-scale=0.5, user-scalable=0"/>-->
+
 	<title>Instrument-calculator</title>
 
 		<script defer src="press.js"></script>
@@ -31,6 +33,8 @@
 	<style>
 		a {text-decoration: auto;}
 		i {font-size: 50px;}
+		.btn {background-color: rgba(153, 153, 153, 0.3);}
+		.modal-content {border-radius: 1rem;}
 	</style>
 </head>
 
@@ -75,8 +79,7 @@
 					<option value=98.6923>ATM</option>
 				</select>
 				<div class="inputs" id="inputs-left">
-					<input class="form-select form-select-lg mt-2 mb-2" id=input-press placeholder="press"
-						   type="number" unputmode="none">
+					<input class="form-select form-select-lg mt-2 mb-2" id=input-press placeholder="press" unputmode="none">
 				</div>
 			</div>
 
@@ -129,58 +132,58 @@
 					<div class="container">
 						<div class="row d-flex justify-content-center">
 							<div class="col d-flex justify-content-center m-2">
-								<button id="one" class="fs-1 w-100 btn btn-light" type="button">1</button>
+								<button id="one" class="fs-1 w-100 btn" type="button">1</button>
 							</div>
 							<div class="col d-flex justify-content-center m-2">
-								<button id="two" class="fs-1 w-100 btn btn-light" type="button">2</button>
+								<button id="two" class="fs-1 w-100 btn" type="button">2</button>
 							</div>
 							<div class="col d-flex justify-content-center m-2">
-								<button id="three" class="fs-1 w-100 btn btn-light" type="button">3</button>
+								<button id="three" class="fs-1 w-100 btn" type="button">3</button>
 							</div>
 							<div class="col d-flex justify-content-center m-2">
-								<button id="backspace" class="fs-1 w-100 btn btn-light" type="button"><i class="fa fa-solid fa-delete-left"></i></button>
-							</div>
-						</div>
-						<div class="row d-flex justify-content-center">
-							<div class="col d-flex justify-content-center m-2">
-								<button id="for" class="fs-1 w-100 btn btn-light" type="button">4</button>
-							</div>
-							<div class="col d-flex justify-content-center m-2">
-								<button id="fife" class="fs-1 w-100 btn btn-light" type="button">5</button>
-							</div>
-							<div class="col d-flex justify-content-center m-2">
-								<button id="six" class="fs-1 w-100 btn btn-light" type="button">6</button>
-							</div>
-							<div class="col d-flex justify-content-center m-2">
-								<label><input id="keyboard-input" class="fs-1 w-100 form-control" /></label>
+								<button id="backspace" class="fs-1 w-100 btn" type="button"><i class="fa fa-solid fa-delete-left"></i></button>
 							</div>
 						</div>
 						<div class="row d-flex justify-content-center">
 							<div class="col d-flex justify-content-center m-2">
-								<button id="seven" class="fs-1 w-100 btn btn-light" type="button">7</button>
+								<button id="for" class="fs-1 w-100 btn" type="button">4</button>
 							</div>
 							<div class="col d-flex justify-content-center m-2">
-								<button id="eight" class="fs-1 w-100 btn btn-light" type="button">8</button>
+								<button id="fife" class="fs-1 w-100 btn" type="button">5</button>
 							</div>
 							<div class="col d-flex justify-content-center m-2">
-								<button id="nine" class="fs-1 w-100 btn btn-light" type="button">9</button>
+								<button id="six" class="fs-1 w-100 btn" type="button">6</button>
 							</div>
 							<div class="col d-flex justify-content-center m-2">
-								<button class="fs-1 w-100 btn btn-light" type="button"></button>
+								<button class="fs-1 w-100 btn" type="button"></button>
 							</div>
 						</div>
 						<div class="row d-flex justify-content-center">
 							<div class="col d-flex justify-content-center m-2">
-								<button id="minus" class="fs-1 w-100 btn btn-light" type="button">-</button>
+								<button id="seven" class="fs-1 w-100 btn" type="button">7</button>
 							</div>
 							<div class="col d-flex justify-content-center m-2">
-								<button id="zero" class="fs-1 w-100 btn btn-light" type="button">0</button>
+								<button id="eight" class="fs-1 w-100 btn" type="button">8</button>
 							</div>
 							<div class="col d-flex justify-content-center m-2">
-								<button id="dot" class="w-100 btn btn-light" type="button" style="font-weight: bold">.</button>
+								<button id="nine" class="fs-1 w-100 btn" type="button">9</button>
 							</div>
 							<div class="col d-flex justify-content-center m-2">
-								<button id="enter" class="fs-1 w-100 btn btn-light" type="button"><i class="fa-solid fa-grip-lines"></i></button>
+								<button class="fs-1 w-100 btn" type="button"></button>
+							</div>
+						</div>
+						<div class="row d-flex justify-content-center">
+							<div class="col d-flex justify-content-center m-2">
+								<button id="minus" class="fs-1 w-100 btn" type="button">-</button>
+							</div>
+							<div class="col d-flex justify-content-center m-2">
+								<button id="zero" class="fs-1 w-100 btn" type="button">0</button>
+							</div>
+							<div class="col d-flex justify-content-center m-2">
+								<button id="dot" class="w-100 btn" type="button">.</button>
+							</div>
+							<div class="col d-flex justify-content-center m-2">
+								<button id="enter" class="fs-1 w-100 btn" type="button">ENT</button>
 							</div>
 						</div>
 					</div>

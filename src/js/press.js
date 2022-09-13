@@ -90,59 +90,55 @@ $(function ($) {
             if (width > height) {
                 $("#modal-dialog").css("max-width", function () {return "60vw"})
             } else {
-                $("#modal-dialog").css("max-width", function () {return "100vw"})
+                $("#modal-dialog").css("max-width", function () {return "95vw"})
             }
-            $("#keyboard-input").val(() => {return $("#input-press").val()})
             keyboard.show()
         }
     })
 
     $("#one").on("click", function () {
-        $("#keyboard-input").val(() => {return $("#keyboard-input").val() + "1"})
+        $("#input-press").val(() => {return $("#input-press").val() + "1"})
     })
     $("#two").on("click", function () {
-        $("#keyboard-input").val(() => {return $("#keyboard-input").val() + "2"})
+        $("#input-press").val(() => {return $("#input-press").val() + "2"})
     })
     $("#three").on("click", function () {
-        $("#keyboard-input").val(() => {return $("#keyboard-input").val() + "3"})
+        $("#input-press").val(() => {return $("#input-press").val() + "3"})
     })
     $("#for").on("click", function () {
-        $("#keyboard-input").val(() => {return $("#keyboard-input").val() + "4"})
+        $("#input-press").val(() => {return $("#input-press").val() + "4"})
     })
     $("#fife").on("click", function () {
-        $("#keyboard-input").val(() => {return $("#keyboard-input").val() + "5"})
+        $("#input-press").val(() => {return $("#input-press").val() + "5"})
     })
     $("#six").on("click", function () {
-        $("#keyboard-input").val(() => {return $("#keyboard-input").val() + "6"})
+        $("#input-press").val(() => {return $("#input-press").val() + "6"})
     })
     $("#seven").on("click", function () {
-        $("#keyboard-input").val(() => {return $("#keyboard-input").val() + "7"})
+        $("#input-press").val(() => {return $("#input-press").val() + "7"})
     })
     $("#eight").on("click", function () {
-        $("#keyboard-input").val(() => {return $("#keyboard-input").val() + "8"})
+        $("#input-press").val(() => {return $("#input-press").val() + "8"})
     })
     $("#nine").on("click", function () {
-        $("#keyboard-input").val(() => {return $("#keyboard-input").val() + "9"})
+        $("#input-press").val(() => {return $("#input-press").val() + "9"})
     })
     $("#zero").on("click", function () {
-        $("#keyboard-input").val(() => {return $("#keyboard-input").val() + "0"})
+        $("#input-press").val(() => {return $("#input-press").val() + "0"})
     })
     $("#dot").on("click", function () {
-        $("#keyboard-input").val(() => {return $("#keyboard-input").val() + "."})
+        $("#input-press").val(() => {return $("#input-press").val() + "."})
     })
     $("#minus").on("click", function () {
-        $("#keyboard-input").val(() => {return $("#keyboard-input").val() + "-"})
+        $("#input-press").val(() => {return $("#input-press").val() + "-"})
     })
     $("#backspace").on("click", function () {
-        $("#keyboard-input").val(() => {
-            const value = $("#keyboard-input").val()
+        $("#input-press").val(() => {
+            const value = $("#input-press").val()
             return value.substring(0, value.length - 1)
         })
     })
     $("#enter").on("click", function () {
-        $("#input-press").val(function () {
-            return Number($("#keyboard-input").val())
-        })
         keyboard.hide()
         result()
     })
