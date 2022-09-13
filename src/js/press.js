@@ -16,6 +16,7 @@ $(function ($) {
     let unit_r = 10
     let additive_l = 0
     let additive_r = 0
+    var keyboard = new bootstrap.Modal(document.getElementById('keyboard'), {})
 
 // Обходим левый селектор в input записываем введенное значение, в unit_l записываем value текущего селектора в Мегапаскалях
     $.each(select_l, function (i) {
@@ -80,5 +81,9 @@ $(function ($) {
     })
     select_type_right.on("change", function () {
     	return result()
+    })
+    
+    input_press.focus(function () {
+        keyboard.show()
     })
 })
