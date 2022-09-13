@@ -286,3 +286,9 @@ h3 {
         font-size: 1.5rem!important;
     }
 }
+
+#modal-dialog {
+    display: flex;
+    align-items: end;
+    max-width: 90vw;
+}
