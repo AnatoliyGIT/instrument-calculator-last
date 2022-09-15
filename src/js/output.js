@@ -81,179 +81,180 @@ $(function ($) {
         calc_percents()
     })
 
-        // Start KEYBOARD
+    // Start KEYBOARD
     let keyboard = new bootstrap.Modal(document.getElementById('keyboard'), {})
     let html = undefined
     let focus = undefined
     let res = ""
+    let data = {}
 
-    let how_focus = function(i_html, k_board, out) {
-        let foc;
+    let get_focus = function (i_html, focus, k_board) {
+        $("#keyboard_input").children("span").html(i_html.val())
+        const width = window.screen.width
+        const height = window.screen.height
+        if (width <= 1200) {
+            if (width > height) {
+                $("#modal-dialog").css("max-width", function () {
+                    return "60vw"
+                })
+            } else {
+                $("#modal-dialog").css("max-width", function () {
+                    return "95vw"
+                })
+            }
+            html = i_html
+            res = html.val()
+            k_board.show()
+        }
         return {
-            "focus": foc,
             "html": i_html,
-            "board": k_board,
-            "res": out
+            "focus": focus,
+            "result": res
         }
     }
 
     input_lover_range.on("focus", function () {
-        focus = "lover"
-        $("#keyboard_input").children("span").html(input_lover_range.val())
-        const width = window.screen.width
-        const height = window.screen.height
-        if (width <= 1200) {
-            if (width > height) {
-                $("#modal-dialog").css("max-width", function () {return "60vw"})
-            } else {
-                $("#modal-dialog").css("max-width", function () {return "95vw"})
-            }
-            html = input_lover_range
-            res = html.val()
-            keyboard.show()
-        }
+        data = get_focus(input_lover_range, "lover", keyboard)
+        html = data.html
+        res = data.result
+        focus = data.focus
     })
-
     input_current_range_value.on("focus", function () {
-        focus = "current"
-        $("#keyboard_input").children("span").html(input_current_range_value.val())
-        const width = window.screen.width
-        const height = window.screen.height
-        if (width <= 1200) {
-            if (width > height) {
-                $("#modal-dialog").css("max-width", function () {return "60vw"})
-            } else {
-                $("#modal-dialog").css("max-width", function () {return "95vw"})
-            }
-            html = input_current_range_value
-            res = html.val()
-            keyboard.show()
-        }
+        data = get_focus(input_current_range_value, "current", keyboard)
+        html = data.html
+        res = data.result
+        focus = data.focus
     })
-
     input_upper_range.on("focus", function () {
-        focus = "upper"
-        $("#keyboard_input").children("span").html(input_upper_range.val())
-        const width = window.screen.width
-        const height = window.screen.height
-        if (width <= 1200) {
-            if (width > height) {
-                $("#modal-dialog").css("max-width", function () {return "60vw"})
-            } else {
-                $("#modal-dialog").css("max-width", function () {return "95vw"})
-            }
-            html = input_upper_range
-            res = html.val()
-            keyboard.show()
-        }
+        data = get_focus(input_upper_range, "upper", keyboard)
+        html = data.html
+        res = data.result
+        focus = data.focus
     })
-
     input_output_range.on("focus", function () {
-        focus = "range"
-        $("#keyboard_input").children("span").html(input_output_range.val())
-        const width = window.screen.width
-        const height = window.screen.height
-        if (width <= 1200) {
-            if (width > height) {
-                $("#modal-dialog").css("max-width", function () {return "60vw"})
-            } else {
-                $("#modal-dialog").css("max-width", function () {return "95vw"})
-            }
-            html = input_output_range
-            res = html.val()
-            keyboard.show()
-        }
+        data = get_focus(input_output_range, "range", keyboard)
+        html = data.html
+        res = data.result
+        focus = data.focus
     })
 
-        $("#one").on("click", function () {
-            res = res + "1"
-            $("#keyboard_input").children("span").html(res)
-            html.val(() => {return res})
+    $("#one").on("click", function () {
+        res = res + "1"
+        $("#keyboard_input").children("span").html(res)
+        html.val(() => {
+            return res
         })
-        $("#two").on("click", function () {
-            res = res + "2"
-            $("#keyboard_input").children("span").html(res)
-            html.val(() => {return res})
+    })
+    $("#two").on("click", function () {
+        res = res + "2"
+        $("#keyboard_input").children("span").html(res)
+        html.val(() => {
+            return res
         })
-        $("#three").on("click", function () {
-            res = res + "3"
-            $("#keyboard_input").children("span").html(res)
-            html.val(() => {return res})
+    })
+    $("#three").on("click", function () {
+        res = res + "3"
+        $("#keyboard_input").children("span").html(res)
+        html.val(() => {
+            return res
         })
-        $("#for").on("click", function () {
-            res = res + "4"
-            $("#keyboard_input").children("span").html(res)
-            html.val(() => {return res})
+    })
+    $("#for").on("click", function () {
+        res = res + "4"
+        $("#keyboard_input").children("span").html(res)
+        html.val(() => {
+            return res
         })
-        $("#fife").on("click", function () {
-            res = res + "5"
-            $("#keyboard_input").children("span").html(res)
-            html.val(() => {return res})
+    })
+    $("#fife").on("click", function () {
+        res = res + "5"
+        $("#keyboard_input").children("span").html(res)
+        html.val(() => {
+            return res
         })
-        $("#six").on("click", function () {
-            res = res + "6"
-            $("#keyboard_input").children("span").html(res)
-            html.val(() => {return res})
+    })
+    $("#six").on("click", function () {
+        res = res + "6"
+        $("#keyboard_input").children("span").html(res)
+        html.val(() => {
+            return res
         })
-        $("#seven").on("click", function () {
-            res = res + "7"
-            $("#keyboard_input").children("span").html(res)
-            html.val(() => {return res})
+    })
+    $("#seven").on("click", function () {
+        res = res + "7"
+        $("#keyboard_input").children("span").html(res)
+        html.val(() => {
+            return res
         })
-        $("#eight").on("click", function () {
-            res = res + "8"
-            $("#keyboard_input").children("span").html(res)
-            html.val(() => {return res})
+    })
+    $("#eight").on("click", function () {
+        res = res + "8"
+        $("#keyboard_input").children("span").html(res)
+        html.val(() => {
+            return res
         })
-        $("#nine").on("click", function () {
-            res = res + "9"
-            $("#keyboard_input").children("span").html(res)
-            html.val(() => {return res})
+    })
+    $("#nine").on("click", function () {
+        res = res + "9"
+        $("#keyboard_input").children("span").html(res)
+        html.val(() => {
+            return res
         })
-        $("#zero").on("click", function () {
-            res = res + "0"
-            $("#keyboard_input").children("span").html(res)
-            html.val(() => {return res})
+    })
+    $("#zero").on("click", function () {
+        res = res + "0"
+        $("#keyboard_input").children("span").html(res)
+        html.val(() => {
+            return res
         })
-        $("#dot").on("click", function () {
-            res = res + "."
-            $("#keyboard_input").children("span").html(res)
-            html.val(() => {return res})
+    })
+    $("#dot").on("click", function () {
+        res = res + "."
+        $("#keyboard_input").children("span").html(res)
+        html.val(() => {
+            return res
         })
-        $("#minus").on("click", function () {
-            res = res + "-"
-            $("#keyboard_input").children("span").html(res)
-            html.val(() => {return res})
+    })
+    $("#minus").on("click", function () {
+        res = res + "-"
+        $("#keyboard_input").children("span").html(res)
+        html.val(() => {
+            return res
         })
-        $("#backspace").on("click", function () {
-            res = res.substring(0, res.length - 1)
-            $("#keyboard_input").children("span").html(res)
-            html.val(() => {return res})
+    })
+    $("#backspace").on("click", function () {
+        res = res.substring(0, res.length - 1)
+        $("#keyboard_input").children("span").html(res)
+        html.val(() => {
+            return res
         })
-        $("#enter").on("click", function () {
-            $("#keyboard_input").children("span").html("")
-            html.val(() => {return res})
-            keyboard.hide()
-            switch (focus) {
-                case "lover":
+    })
+    $("#enter").on("click", function () {
+        $("#keyboard_input").children("span").html("")
+        html.val(() => {
+            return res
+        })
+        keyboard.hide()
+        switch (focus) {
+            case "lover":
                 calc_range()
                 calc_ma()
                 calc_percents()
-            break;
-                case "current":
+                break;
+            case "current":
                 calc_ma()
                 calc_percents()
-            break;
-                case "upper":
+                break;
+            case "upper":
                 calc_range()
                 calc_ma()
                 calc_percents()
-            break;
-                case "range":
-                Math.round((Number(input_output_range.val()) + Number(input_lover_range.val())) * 10) / 10
-            }
-        })
-
-
+                break;
+            case "range":
+                input_upper_range.val(() => {
+                    return Math.round((Number(input_output_range.val()) + Number(input_lover_range.val())) * 10) / 10
+                })
+        }
+    })
     // End KEYBOARD
 })
