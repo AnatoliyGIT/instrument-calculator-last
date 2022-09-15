@@ -1,11 +1,16 @@
 $(function($){
 
 // TEMPERATURE
-    let select_type = $("#temp-selector")[0]
-    let select_type_thermocouple = $("#thermocouple")[0]
-    let select_type_rtd = $("#rtd")[0]
-    let select_type_degrees_left = $("#degrees-left-select")[0]
-    let select_type_degrees_right = $("#degrees-right-select")[0]
+    const temp_selector = $("#temp-selector")
+    let select_type = temp_selector[0]
+    const select_thermocouple = $("#thermocouple")
+    let select_type_thermocouple = select_thermocouple[0]
+    const select_rtd = $("#rtd")
+    let select_type_rtd = select_rtd[0]
+    const degrees_left_select = $("#degrees-left-select")
+    let select_type_degrees_left = degrees_left_select[0]
+    const degrees_right_select = $("#degrees-right-select")
+    let select_type_degrees_right = degrees_right_select[0]
     let type_temp = ""
     let unit_l = 0
     let unit_r = "celsius"
@@ -335,7 +340,7 @@ $(function($){
 
     let type_thermocouple = "k"
 
-    $("#temp-selector").on("change", function() {
+    temp_selector.on("change", function() {
     	let span_min = Number(span_min_deg)
     	let span_max = Number(span_max_deg)
     	let unit = "&#8451"
@@ -734,16 +739,16 @@ $(function($){
         })
     }
 
-    $("#thermocouple").on("change", function() {
+    select_thermocouple.on("change", function() {
         select_type_thermocouple.options[select_type_thermocouple.selectedIndex].foo()
         let span_min = Number(span_min_deg)
     	let span_max = Number(span_max_deg)
-    	let unit = "&#8451"
+    	let unit = "&#8451;"
     	select_type_degrees_right.options[select_type_degrees_right.selectedIndex].foo()
     	if (unit_r === "fahrenheit") {
             span_min = Math.round(((span_min * 9/5) + 32) * 100) / 100
             span_max = Math.round(((span_max * 9/5) + 32) * 100) / 100
-            unit = "&#8457"
+            unit = "&#8457;"
         }
         if (unit_r === "kelvin") {
             span_min = Math.round((span_min + 273.15) * 100) / 100
@@ -756,7 +761,7 @@ $(function($){
         $("#input-temp").val(function() {return ""})
     })
 
-    $("#rtd").on("change", function() {
+    select_rtd.on("change", function() {
     	select_type_degrees_right.options[select_type_degrees_right.selectedIndex].foo()
     	select_type_rtd.options[select_type_rtd.selectedIndex].foo()
         $(".span-left").html(function() {return "Span:&nbsp;(" + span_min_ohm + "&nbsp;...&nbsp;+" + span_max_ohm + ")&nbsp;Ohm"})
@@ -764,15 +769,15 @@ $(function($){
         $("#input-temp").val(function() {return ""})
     })
 
-    $("#degrees-right-select").on("change", function () {
+    degrees_right_select.on("change", function () {
     	let span_min = Number(span_min_deg)
     	let span_max = Number(span_max_deg)
-    	let unit = "&#8451"
+    	let unit = "&#8451;"
     	select_type_degrees_right.options[select_type_degrees_right.selectedIndex].foo()
     	if (unit_r === "fahrenheit") {
             span_min = Math.round(((span_min * 9/5) + 32) * 100) / 100
             span_max = Math.round(((span_max * 9/5) + 32) * 100) / 100
-            unit = "&#8457"
+            unit = "&#8457;"
         }
         if (unit_r === "kelvin") {
             span_min = Math.round((span_min + 273.15) * 100) / 100
@@ -783,7 +788,7 @@ $(function($){
         	if (unit_r === "fahrenheit") {
             	span_min = -328
             	span_max = 1562
-            	unit = "&#8457"
+            	unit = "&#8457;"
         	}
         	if (unit_r === "kelvin") {
             	span_min = 73.15
@@ -793,7 +798,7 @@ $(function($){
         	if (unit_r === "celsius") {
             	span_min = -200
             	span_max = 850
-            	unit = "&#8451"
+            	unit = "&#8451;"
         	}
         }
     	$(".span-right").html(function() {return "Span:&nbsp;(" + span_min + "&nbsp;...&nbsp;+" + span_max + ")&nbsp;" + unit})
@@ -807,7 +812,7 @@ $(function($){
         }
     })
 
-    $("#degrees-left-select").on("change", function () {
+    degrees_left_select.on("change", function () {
     	select_type_degrees_left.options[select_type_degrees_left.selectedIndex].foo()
     	$(".span-left").html(function() {return "Span:&nbsp;(" + span_min_deg + "&nbsp;...&nbsp;+" + span_max_deg + ")&nbsp;&#8451;"})
         if (degrees) {
@@ -817,7 +822,7 @@ $(function($){
         }
     })
 
-    $("#thermocouple").on("change", function () {
+    select_thermocouple.on("change", function () {
     	select_type_degrees_right.options[select_type_degrees_right.selectedIndex].foo()
         ohm_mv_calc(Number($("#input-temp").val()))
     })
