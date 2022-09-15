@@ -31,169 +31,174 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     <style>
-        a {text-decoration: auto;}
-        i {font-size: 50px;}
-        .btn {background-color: rgba(153, 153, 153, 0.3);}
-        .modal-content {border-radius: 1rem;}
-    </style>
+		a {text-decoration: auto;}
+		i {font-size: 50px;}
+		.btn {background-color: rgba(153, 153, 153, 0.3);}
+		.modal-content {border-radius: 1rem;}
+	</style>
 </head>
 
 <body>
 
 <div class="container-fluid col-sm-12 col-lg-8 pt-4">
 
-    <div class="d-flex flex-nowrap align-items-center mb-4">
-        <a class="d-flex justify-content-center col-1 m-0" href="index.html">
-            <i class="col-1 fa fa-solid fa-angle-left" style="color: rgba(13,110,253,0.5)!important;"></i>
-        </a>
-        <h1 class="col-10">Instrumentation calculator (Pressure)</h1>
-        <div class="col-1"></div>
-    </div>
-    <div class="image-top" id="image-top-press"></div>
+	<div class="d-flex flex-nowrap align-items-center mb-4">
+		<a class="d-flex justify-content-center col-1 m-0" href="index.html">
+			<i class="col-1 fa fa-solid fa-angle-left" style="color: rgba(13,110,253,0.5)!important;"></i>
+		</a>
+		<h1 class="col-10">Instrumentation calculator (Pressure)</h1>
+		<div class="col-1"></div>
+	</div>
+	<div class="image-top" id="image-top-press"></div>
 
-    <!-- Калькулятор единиц давления -->
-    <div class="press m-0-auto">
-        <div class="press-selector p-4 d-flex flex-wrap justify-content-center">
+	<!-- Калькулятор единиц давления -->
+	<div class="press m-0-auto">
+		<div class="press-selector p-4 d-flex flex-wrap justify-content-center">
 
-            <!-- Выбор единиц давления слева -->
-            <div class="press-left col-xl-5 col-md-10">
-                <select class="form-select form-select-lg mt-2" name="press-type-left" id="press-type-left">
-                    <option value=gauge>Gauge</option>
-                    <option value=absolute>Absolute</option>
-                </select>
-                <select class="form-select form-select-lg mt-2" name="units-left" id="press-units-left">
-                    <option value=1021500>mm H2O</option>
-                    <option value=40146.32>In H2O (4 grad.C)</option>
-                    <option value=40218>In H2O (68 grad.F)</option>
-                    <option value=1450>PSI</option>
-                    <option value=100000>mBAR</option>
-                    <option value=100>BAR</option>
-                    <option value=10000000>Pa</option>
-                    <option value=10000>kPa</option>
-                    <option value=10>MPA</option>
-                    <option value=2952>In Hg</option>
-                    <option value=75000>mm Hg</option>
-                    <option value=101.97>kg/cm2</option>
-                    <option value=1019700>kg/m2</option>
-                    <option value=101970>gm/cm2</option>
-                    <option value=98.6923>ATM</option>
-                </select>
-                <div class="inputs" id="inputs-left">
-                    <input class="form-select form-select-lg mt-2 mb-2" id=input-press placeholder="press" unputmode="none">
-                </div>
-            </div>
+			<!-- Выбор единиц давления слева -->
+			<div class="press-left col-xl-5 col-md-10">
+				<select class="form-select form-select-lg mt-2" name="press-type-left" id="press-type-left">
+					<option value=gauge>Gauge</option>
+					<option value=absolute>Absolute</option>
+				</select>
+				<select class="form-select form-select-lg mt-2" name="units-left" id="press-units-left">
+					<option value=1021500>mm H2O</option>
+					<option value=40146.32>In H2O (4 grad.C)</option>
+					<option value=40218>In H2O (68 grad.F)</option>
+					<option value=1450>PSI</option>
+					<option value=100000>mBAR</option>
+					<option value=100>BAR</option>
+					<option value=10000000>Pa</option>
+					<option value=10000>kPa</option>
+					<option value=10>MPA</option>
+					<option value=2952>In Hg</option>
+					<option value=75000>mm Hg</option>
+					<option value=101.97>kg/cm2</option>
+					<option value=1019700>kg/m2</option>
+					<option value=101970>gm/cm2</option>
+					<option value=98.6923>ATM</option>
+				</select>
+				<div class="inputs" id="inputs-left">
+					<input class="form-select form-select-lg mt-2 mb-2" id=input-press placeholder="press" unputmode="none">
+				</div>
+			</div>
 
-            <!-- Знак равно -->
-            <div class="d-flex align-items-center justify-content-center col-xl-1 col-md-10">
-                <h1 id="equal">=</h1>
-            </div>
+			<!-- Знак равно -->
+			<div class="d-flex align-items-center justify-content-center col-xl-1 col-md-10">
+				<h1 id="equal">=</h1>
+			</div>
 
-            <!-- Выбор единиц давления справа -->
-            <div class="press-right col-xl-5 col-md-10">
-                <select class="form-select form-select-lg mt-2" name="press-type-right" id="press-type-right">
-                    <option value=gauge>Gauge</option>
-                    <option value=absolute>Absolute</option>
-                </select>
-                <select class="form-select form-select-lg mt-2" name="units-right" id="press-units-right">
-                    <option value=1021500>mm H2O</option>
-                    <option value=40146.32>In H2O (4 grad.C)</option>
-                    <option value=40218>In H2O (68 grad.F)</option>
-                    <option value=1450>PSI</option>
-                    <option value=100000>mBAR</option>
-                    <option value=100>BAR</option>
-                    <option value=10000000>Pa</option>
-                    <option value=10000>kPa</option>
-                    <option value=10>MPA</option>
-                    <option value=2952>In Hg</option>
-                    <option value=75000>mm Hg</option>
-                    <option value=101.97>kg/cm2</option>
-                    <option value=1019700>kg/m2</option>
-                    <option value=101970>gm/cm2</option>
-                    <option value=98.6923>ATM</option>
-                </select>
-                <div class="inputs" id="inputs-right">
-                    <input class="form-select form-select-lg mt-2 mb-2" id=output-press type="number"
-                           placeholder="press" disabled>
-                </div>
-            </div>
-        </div>
+			<!-- Выбор единиц давления справа -->
+			<div class="press-right col-xl-5 col-md-10">
+				<select class="form-select form-select-lg mt-2" name="press-type-right" id="press-type-right">
+					<option value=gauge>Gauge</option>
+					<option value=absolute>Absolute</option>
+				</select>
+				<select class="form-select form-select-lg mt-2" name="units-right" id="press-units-right">
+					<option value=1021500>mm H2O</option>
+					<option value=40146.32>In H2O (4 grad.C)</option>
+					<option value=40218>In H2O (68 grad.F)</option>
+					<option value=1450>PSI</option>
+					<option value=100000>mBAR</option>
+					<option value=100>BAR</option>
+					<option value=10000000>Pa</option>
+					<option value=10000>kPa</option>
+					<option value=10>MPA</option>
+					<option value=2952>In Hg</option>
+					<option value=75000>mm Hg</option>
+					<option value=101.97>kg/cm2</option>
+					<option value=1019700>kg/m2</option>
+					<option value=101970>gm/cm2</option>
+					<option value=98.6923>ATM</option>
+				</select>
+				<div class="inputs" id="inputs-right">
+					<input class="form-select form-select-lg mt-2 mb-2" id=output-press type="number"
+						   placeholder="press" disabled>
+				</div>
+			</div>
+		</div>
 
-    </div>
+	</div>
 
-    <!-- Keyboard -->
-    <div class="modal" id="keyboard" tabindex="-1" aria-labelledby="keyboard_label" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" id="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header border-bottom-0">
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
+	<!-- Keyboard -->
+	<div class="modal" id="keyboard" tabindex="-1" aria-labelledby="keyboard_label" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" id="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header border-bottom-0">
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
 
-                <div class="modal-body">
-                    <div class="container">
-                        <div class="row d-flex justify-content-center">
-                            <div class="col d-flex justify-content-center m-2">
-                                <button id="one" class="fs-1 w-100 btn" type="button">1</button>
-                            </div>
-                            <div class="col d-flex justify-content-center m-2">
-                                <button id="two" class="fs-1 w-100 btn" type="button">2</button>
-                            </div>
-                            <div class="col d-flex justify-content-center m-2">
-                                <button id="three" class="fs-1 w-100 btn" type="button">3</button>
-                            </div>
-                            <div class="col d-flex justify-content-center m-2">
-                                <button id="backspace" class="fs-1 w-100 btn" type="button"><i class="fa fa-solid fa-delete-left"></i></button>
-                            </div>
-                        </div>
-                        <div class="row d-flex justify-content-center">
-                            <div class="col d-flex justify-content-center m-2">
-                                <button id="for" class="fs-1 w-100 btn" type="button">4</button>
-                            </div>
-                            <div class="col d-flex justify-content-center m-2">
-                                <button id="fife" class="fs-1 w-100 btn" type="button">5</button>
-                            </div>
-                            <div class="col d-flex justify-content-center m-2">
-                                <button id="six" class="fs-1 w-100 btn" type="button">6</button>
-                            </div>
-                            <div class="col d-flex justify-content-center m-2">
-                                <button class="fs-1 w-100 btn" type="button"></button>
-                            </div>
-                        </div>
-                        <div class="row d-flex justify-content-center">
-                            <div class="col d-flex justify-content-center m-2">
-                                <button id="seven" class="fs-1 w-100 btn" type="button">7</button>
-                            </div>
-                            <div class="col d-flex justify-content-center m-2">
-                                <button id="eight" class="fs-1 w-100 btn" type="button">8</button>
-                            </div>
-                            <div class="col d-flex justify-content-center m-2">
-                                <button id="nine" class="fs-1 w-100 btn" type="button">9</button>
-                            </div>
-                            <div class="col d-flex justify-content-center m-2">
-                                <button class="fs-1 w-100 btn" type="button"></button>
-                            </div>
-                        </div>
-                        <div class="row d-flex justify-content-center">
-                            <div class="col d-flex justify-content-center m-2">
-                                <button id="minus" class="fs-1 w-100 btn" type="button">-</button>
-                            </div>
-                            <div class="col d-flex justify-content-center m-2">
-                                <button id="zero" class="fs-1 w-100 btn" type="button">0</button>
-                            </div>
-                            <div class="col d-flex justify-content-center m-2">
-                                <button id="dot" class="w-100 btn" type="button">.</button>
-                            </div>
-                            <div class="col d-flex justify-content-center m-2">
-                                <button id="enter" class="fs-1 w-100 btn" type="button">ENT</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+				<div class="modal-body">
+					<div class="container">
+						<div class="row d-flex justify-content-center">
+							<div class="col d-flex justify-content-center m-2">
+								<input id="keyboard_input" class="fs-1 w-100 btn" type="text" disabled />
+							</div>
+						</div>
+						<div class="row d-flex justify-content-center">
+							<div class="col d-flex justify-content-center m-2">
+								<button id="one" class="fs-1 w-100 btn" type="button">1</button>
+							</div>
+							<div class="col d-flex justify-content-center m-2">
+								<button id="two" class="fs-1 w-100 btn" type="button">2</button>
+							</div>
+							<div class="col d-flex justify-content-center m-2">
+								<button id="three" class="fs-1 w-100 btn" type="button">3</button>
+							</div>
+							<div class="col d-flex justify-content-center m-2">
+								<button id="backspace" class="fs-1 w-100 btn" type="button"><i class="fa fa-solid fa-delete-left"></i></button>
+							</div>
+						</div>
+						<div class="row d-flex justify-content-center">
+							<div class="col d-flex justify-content-center m-2">
+								<button id="for" class="fs-1 w-100 btn" type="button">4</button>
+							</div>
+							<div class="col d-flex justify-content-center m-2">
+								<button id="fife" class="fs-1 w-100 btn" type="button">5</button>
+							</div>
+							<div class="col d-flex justify-content-center m-2">
+								<button id="six" class="fs-1 w-100 btn" type="button">6</button>
+							</div>
+							<div class="col d-flex justify-content-center m-2">
+								<button class="fs-1 w-100 btn" type="button"></button>
+							</div>
+						</div>
+						<div class="row d-flex justify-content-center">
+							<div class="col d-flex justify-content-center m-2">
+								<button id="seven" class="fs-1 w-100 btn" type="button">7</button>
+							</div>
+							<div class="col d-flex justify-content-center m-2">
+								<button id="eight" class="fs-1 w-100 btn" type="button">8</button>
+							</div>
+							<div class="col d-flex justify-content-center m-2">
+								<button id="nine" class="fs-1 w-100 btn" type="button">9</button>
+							</div>
+							<div class="col d-flex justify-content-center m-2">
+								<button class="fs-1 w-100 btn" type="button"></button>
+							</div>
+						</div>
+						<div class="row d-flex justify-content-center">
+							<div class="col d-flex justify-content-center m-2">
+								<button id="minus" class="fs-1 w-100 btn" type="button">-</button>
+							</div>
+							<div class="col d-flex justify-content-center m-2">
+								<button id="zero" class="fs-1 w-100 btn" type="button">0</button>
+							</div>
+							<div class="col d-flex justify-content-center m-2">
+								<button id="dot" class="w-100 btn" type="button">.</button>
+							</div>
+							<div class="col d-flex justify-content-center m-2">
+								<button id="enter" class="fs-1 w-100 btn" type="button">ENT</button>
+							</div>
+						</div>
+					</div>
+				</div>
 
-                <!-- <div class="modal-footer"> -->
+				<!-- <div class="modal-footer"> -->
 
-            </div>
-        </div>
-    </div>
+			</div>
+		</div>
+	</div>
 </div>
 
 </body>
