@@ -16,7 +16,6 @@ $(function ($) {
     let unit_r = 10
     let additive_l = 0
     let additive_r = 0
-    let keyboard = new bootstrap.Modal(document.getElementById('keyboard'), {})
 
 // Обходим левый селектор в input записываем введенное значение, в unit_l записываем value текущего селектора в Мегапаскалях
     $.each(select_l, function (i) {
@@ -77,14 +76,21 @@ $(function ($) {
         return result()
     })
     select_type_left.on("change", function () {
-    	return result()
+        return result()
     })
     select_type_right.on("change", function () {
-    	return result()
+        return result()
     })
 
     // Start KEYBOARD
-    input_press.focus(function () {
+    let keyboard = new bootstrap.Modal(document.getElementById('keyboard'), {})
+    let html = undefined
+    let focus = undefined
+    let res = ""
+
+    input_press.on("focus", function () {
+        focus = "inp_press"
+        $("#keyboard_input").val(() => {return input_press.val()})
         const width = window.screen.width
         const height = window.screen.height
         if (width <= 1200) {
@@ -93,55 +99,87 @@ $(function ($) {
             } else {
                 $("#modal-dialog").css("max-width", function () {return "95vw"})
             }
-            keyboard.show()
         }
+        html = input_press
+        res = html.val()
+        keyboard.show()
     })
 
-    $("#one").on("click", function () {
-        $("#input-press").val(() => {return $("#input-press").val() + "1"})
-    })
-    $("#two").on("click", function () {
-        $("#input-press").val(() => {return $("#input-press").val() + "2"})
-    })
-    $("#three").on("click", function () {
-        $("#input-press").val(() => {return $("#input-press").val() + "3"})
-    })
-    $("#for").on("click", function () {
-        $("#input-press").val(() => {return $("#input-press").val() + "4"})
-    })
-    $("#fife").on("click", function () {
-        $("#input-press").val(() => {return $("#input-press").val() + "5"})
-    })
-    $("#six").on("click", function () {
-        $("#input-press").val(() => {return $("#input-press").val() + "6"})
-    })
-    $("#seven").on("click", function () {
-        $("#input-press").val(() => {return $("#input-press").val() + "7"})
-    })
-    $("#eight").on("click", function () {
-        $("#input-press").val(() => {return $("#input-press").val() + "8"})
-    })
-    $("#nine").on("click", function () {
-        $("#input-press").val(() => {return $("#input-press").val() + "9"})
-    })
-    $("#zero").on("click", function () {
-        $("#input-press").val(() => {return $("#input-press").val() + "0"})
-    })
-    $("#dot").on("click", function () {
-        $("#input-press").val(() => {return $("#input-press").val() + "."})
-    })
-    $("#minus").on("click", function () {
-        $("#input-press").val(() => {return $("#input-press").val() + "-"})
-    })
-    $("#backspace").on("click", function () {
-        $("#input-press").val(() => {
-            const value = $("#input-press").val()
-            return value.substring(0, value.length - 1)
+        $("#one").on("click", function () {
+            res = res + "1"
+            $("#keyboard_input").val(() => {return res})
+            html.val(() => {return res})
+            
         })
-    })
-    $("#enter").on("click", function () {
-        keyboard.hide()
-        result()
-    })
+        $("#two").on("click", function () {
+            res = res + "2"
+            $("#keyboard_input").val(() => {return res})
+            html.val(() => {return res})
+        })
+        $("#three").on("click", function () {
+            res = res + "3"
+            $("#keyboard_input").val(() => {return res})
+            html.val(() => {return res})
+        })
+        $("#for").on("click", function () {
+            res = res + "4"
+            $("#keyboard_input").val(() => {return res})
+            html.val(() => {return res})
+        })
+        $("#fife").on("click", function () {
+            res = res + "5"
+            $("#keyboard_input").val(() => {return res})
+            html.val(() => {return res})
+        })
+        $("#six").on("click", function () {
+            res = res + "6"
+            $("#keyboard_input").val(() => {return res})
+            html.val(() => {return res})
+        })
+        $("#seven").on("click", function () {
+            res = res + "7"
+            $("#keyboard_input").val(() => {return res})
+            html.val(() => {return res})
+        })
+        $("#eight").on("click", function () {
+            res = res + "8"
+            $("#keyboard_input").val(() => {return res})
+            html.val(() => {return res})
+        })
+        $("#nine").on("click", function () {
+            res = res + "9"
+            $("#keyboard_input").val(() => {return res})
+            html.val(() => {return res})
+        })
+        $("#zero").on("click", function () {
+            res = res + "0"
+            $("#keyboard_input").val(() => {return res})
+            html.val(() => {return res})
+        })
+        $("#dot").on("click", function () {
+            res = res + "."
+            $("#keyboard_input").val(() => {return res})
+            html.val(() => {return res})
+        })
+        $("#minus").on("click", function () {
+            res = res + "-"
+            $("#keyboard_input").val(() => {return res})
+            html.val(() => {return res})
+        })
+        $("#backspace").on("click", function () {
+            res = res.substring(0, res.length - 1)
+            $("#keyboard_input").val(() => {return res})
+            html.val(() => {return res})
+        })
+        $("#enter").on("click", function () {
+            $("#keyboard_input").val(() => {return ""})
+            html.val(() => {return res})
+            keyboard.hide()
+            switch (focus) {
+                case "inp_press":
+                result()
+            }
+        })
+
     // End KEYBOARD
 })
