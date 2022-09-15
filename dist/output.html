@@ -11,7 +11,6 @@
 	<title>Instrument-calculator</title>
 
 	<script defer src="output.js"></script>
-	<link rel="stylesheet" href="index.css"/>
 	<link href="images/favicon.ico" rel="shortcut icon"/>
 <!--	<script defer src="src/js/output.js"></script>-->
 <!--	<link rel="stylesheet" href="src/css/index.css"/>-->
@@ -30,10 +29,8 @@
 	<script src="https://kit.fontawesome.com/e87fbb1bab.js" crossorigin="anonymous"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-	<style>
-		a {text-decoration: auto;}
-		i {font-size: 50px;}
-	</style>
+	<link rel="stylesheet" href="index.css"/>
+
 </head>
 
 <body>
@@ -69,7 +66,7 @@
 				</div>
 				<label class="col-12">
 					<input class="form-select form-select-lg" id="input-lover-range" placeholder="LRV"
-						   title="lover-range" inputmode="numeric">
+						   title="lover-range" inputmode="none">
 				</label>
 			</div>
 			<div class="col-xl-1 col-lg-10 mt-md-2"></div>
@@ -79,7 +76,7 @@
 				</div>
 				<label class="col-12">
 					<input class="form-select form-select-lg" id="input-current-range-value" placeholder="Current value"
-						   title="current-value" inputmode="numeric">
+						   title="current-value" inputmode="none">
 				</label>
 			</div>
 			<div class="col-xl-1 col-lg-10 mt-md-2"></div>
@@ -89,7 +86,7 @@
 				</div>
 				<label class="col-12">
 					<input class="form-select form-select-lg" id="input-upper-range" placeholder="URV"
-						   title="upper-range" inputmode="numeric">
+						   title="upper-range" inputmode="none">
 				</label>
 			</div>
 
@@ -102,7 +99,8 @@
 					<p class="fs-5 span-left description-left form-select-lg m-0">Range</p>
 				</div>
 				<label class="col-12">
-					<input class="form-select form-select-lg mt-2 mb-2" id="input-output-range" type="number" placeholder="Range">
+					<input class="form-select form-select-lg mt-2 mb-2" id="input-output-range" inputmode="none"
+						   placeholder="Range">
 				</label>
 			</div>
 			<div class="col-xl-1 col-lg-10 mt-md-2"></div>
@@ -111,7 +109,8 @@
 					<p class="fs-5 span-left description-left form-select-lg m-0">Result of mA</p>
 				</div>
 				<label class="col-12">
-					<input class="form-select form-select-lg mt-2 mb-2" type="number" id="output-ma" placeholder="mA" disabled>
+					<input class="form-select form-select-lg mt-2 mb-2" type="number" id="output-ma" placeholder="mA"
+						   disabled>
 				</label>
 			</div>
 			<div class="col-xl-1 col-lg-10 mt-md-2"></div>
@@ -120,11 +119,87 @@
 					<p class="fs-5 span-left description-left form-select-lg m-0">Result of percents</p>
 				</div>
 				<label class="col-12">
-					<input class="form-select form-select-lg mt-2 mb-2" type="number" id="output-percents" placeholder="%" disabled>
+					<input class="form-select form-select-lg mt-2 mb-2" type="number" id="output-percents"
+						   placeholder="%" disabled>
 				</label>
 			</div>
 		</div>
 
+	</div>
+</div>
+
+<!-- Keyboard -->
+<div class="modal" id="keyboard" tabindex="-1" aria-labelledby="keyboard_label" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" id="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-body">
+				<div class="container-lg">
+
+					<div class="row d-flex justify-content-center">
+						<div class="col d-flex justify-content-center m-2">
+							<button id="keyboard_input" class="fs-1 w-100 btn" disabled><span></span></button>
+						</div>
+					</div>
+					<div class="row d-flex justify-content-center">
+						<div class="col d-flex justify-content-center m-1">
+							<button id="one" class="fs-1 w-100 btn m-1" type="button"><span>1</span></button>
+						</div>
+						<div class="col d-flex justify-content-center m-1">
+							<button id="two" class="fs-1 w-100 btn m-1" type="button"><span>2</span></button>
+						</div>
+						<div class="col d-flex justify-content-center m-1">
+							<button id="three" class="fs-1 w-100 btn m-1" type="button"><span>3</span></button>
+						</div>
+						<div class="col d-flex justify-content-center m-1">
+							<button id="backspace" class="fs-1 w-100 btn m-1" type="button"><i class="fa fa-solid fa-delete-left"></i></button>
+						</div>
+					</div>
+					<div class="row d-flex justify-content-center">
+						<div class="col d-flex justify-content-center m-1">
+							<button id="for" class="fs-1 w-100 btn m-1" type="button"><span>4</span></button>
+						</div>
+						<div class="col d-flex justify-content-center m-1">
+							<button id="fife" class="fs-1 w-100 btn m-1" type="button"><span>5</span></button>
+						</div>
+						<div class="col d-flex justify-content-center m-1">
+							<button id="six" class="fs-1 w-100 btn m-1" type="button"><span>6</span></button>
+						</div>
+						<div class="col d-flex justify-content-center m-1">
+							<button class="fs-1 w-100 btn m-1" type="button"></button>
+						</div>
+					</div>
+					<div class="row d-flex justify-content-center">
+						<div class="col d-flex justify-content-center m-1">
+							<button id="seven" class="fs-1 w-100 btn m-1" type="button"><span>7</span></button>
+						</div>
+						<div class="col d-flex justify-content-center m-1">
+							<button id="eight" class="fs-1 w-100 btn m-1" type="button"><span>8</span></button>
+						</div>
+						<div class="col d-flex justify-content-center m-1">
+							<button id="nine" class="fs-1 w-100 btn m-1" type="button"><span>9</span></button>
+						</div>
+						<div class="col d-flex justify-content-center m-1">
+							<button class="fs-1 w-100 btn m-1" type="button"></button>
+						</div>
+					</div>
+					<div class="row d-flex justify-content-center">
+						<div class="col d-flex justify-content-center m-1">
+							<button id="minus" class="fs-1 w-100 btn m-1" type="button"><span>-</span></button>
+						</div>
+						<div class="col d-flex justify-content-center m-1">
+							<button id="zero" class="fs-1 w-100 btn m-1" type="button"><span>0</span></button>
+						</div>
+						<div class="col d-flex justify-content-center m-1">
+							<button id="dot" class="w-100 btn m-1" type="button"><span>.</span></button>
+						</div>
+						<div class="col d-flex justify-content-center m-1">
+							<button id="enter" class="fs-1 w-100 btn m-1" type="button"><span>ENT</span></button>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
 

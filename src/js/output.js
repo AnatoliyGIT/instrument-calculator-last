@@ -16,7 +16,7 @@ $(function ($) {
         }
     })
 
-    selector_output.on("change", function (i) {
+    selector_output.on("change", function () {
         selector_output[0].options[selector_output[0].selectedIndex].foo()
         calc_ma()
         calc_percents()
@@ -88,7 +88,7 @@ $(function ($) {
     let res = ""
 
     let how_focus = function(i_html, k_board, out) {
-        
+        let foc;
         return {
             "focus": foc,
             "html": i_html,
@@ -99,7 +99,7 @@ $(function ($) {
 
     input_lover_range.on("focus", function () {
         focus = "lover"
-        $("#keyboard_input").val(() => {return input_lover_range.val()})
+        $("#keyboard_input").children("span").html(input_lover_range.val())
         const width = window.screen.width
         const height = window.screen.height
         if (width <= 1200) {
@@ -108,15 +108,15 @@ $(function ($) {
             } else {
                 $("#modal-dialog").css("max-width", function () {return "95vw"})
             }
+            html = input_lover_range
+            res = html.val()
+            keyboard.show()
         }
-        html = input_lover_range
-        res = html.val()
-        keyboard.show()
     })
 
     input_current_range_value.on("focus", function () {
         focus = "current"
-        $("#keyboard_input").val(() => {return input_current_range_value.val()})
+        $("#keyboard_input").children("span").html(input_current_range_value.val())
         const width = window.screen.width
         const height = window.screen.height
         if (width <= 1200) {
@@ -125,15 +125,15 @@ $(function ($) {
             } else {
                 $("#modal-dialog").css("max-width", function () {return "95vw"})
             }
+            html = input_current_range_value
+            res = html.val()
+            keyboard.show()
         }
-        html = input_current_range_value
-        res = html.val()
-        keyboard.show()
     })
 
     input_upper_range.on("focus", function () {
         focus = "upper"
-        $("#keyboard_input").val(() => {return input_upper_range.val()})
+        $("#keyboard_input").children("span").html(input_upper_range.val())
         const width = window.screen.width
         const height = window.screen.height
         if (width <= 1200) {
@@ -142,15 +142,15 @@ $(function ($) {
             } else {
                 $("#modal-dialog").css("max-width", function () {return "95vw"})
             }
+            html = input_upper_range
+            res = html.val()
+            keyboard.show()
         }
-        html = input_upper_range
-        res = html.val()
-        keyboard.show()
     })
 
     input_output_range.on("focus", function () {
         focus = "range"
-        $("#keyboard_input").val(() => {return input_output_range.val()})
+        $("#keyboard_input").children("span").html(input_output_range.val())
         const width = window.screen.width
         const height = window.screen.height
         if (width <= 1200) {
@@ -159,80 +159,79 @@ $(function ($) {
             } else {
                 $("#modal-dialog").css("max-width", function () {return "95vw"})
             }
+            html = input_output_range
+            res = html.val()
+            keyboard.show()
         }
-        html = input_output_range
-        res = html.val()
-        keyboard.show()
     })
 
         $("#one").on("click", function () {
             res = res + "1"
-            $("#keyboard_input").val(() => {return res})
+            $("#keyboard_input").children("span").html(res)
             html.val(() => {return res})
-            
         })
         $("#two").on("click", function () {
             res = res + "2"
-            $("#keyboard_input").val(() => {return res})
+            $("#keyboard_input").children("span").html(res)
             html.val(() => {return res})
         })
         $("#three").on("click", function () {
             res = res + "3"
-            $("#keyboard_input").val(() => {return res})
+            $("#keyboard_input").children("span").html(res)
             html.val(() => {return res})
         })
         $("#for").on("click", function () {
             res = res + "4"
-            $("#keyboard_input").val(() => {return res})
+            $("#keyboard_input").children("span").html(res)
             html.val(() => {return res})
         })
         $("#fife").on("click", function () {
             res = res + "5"
-            $("#keyboard_input").val(() => {return res})
+            $("#keyboard_input").children("span").html(res)
             html.val(() => {return res})
         })
         $("#six").on("click", function () {
             res = res + "6"
-            $("#keyboard_input").val(() => {return res})
+            $("#keyboard_input").children("span").html(res)
             html.val(() => {return res})
         })
         $("#seven").on("click", function () {
             res = res + "7"
-            $("#keyboard_input").val(() => {return res})
+            $("#keyboard_input").children("span").html(res)
             html.val(() => {return res})
         })
         $("#eight").on("click", function () {
             res = res + "8"
-            $("#keyboard_input").val(() => {return res})
+            $("#keyboard_input").children("span").html(res)
             html.val(() => {return res})
         })
         $("#nine").on("click", function () {
             res = res + "9"
-            $("#keyboard_input").val(() => {return res})
+            $("#keyboard_input").children("span").html(res)
             html.val(() => {return res})
         })
         $("#zero").on("click", function () {
             res = res + "0"
-            $("#keyboard_input").val(() => {return res})
+            $("#keyboard_input").children("span").html(res)
             html.val(() => {return res})
         })
         $("#dot").on("click", function () {
             res = res + "."
-            $("#keyboard_input").val(() => {return res})
+            $("#keyboard_input").children("span").html(res)
             html.val(() => {return res})
         })
         $("#minus").on("click", function () {
             res = res + "-"
-            $("#keyboard_input").val(() => {return res})
+            $("#keyboard_input").children("span").html(res)
             html.val(() => {return res})
         })
         $("#backspace").on("click", function () {
             res = res.substring(0, res.length - 1)
-            $("#keyboard_input").val(() => {return res})
+            $("#keyboard_input").children("span").html(res)
             html.val(() => {return res})
         })
         $("#enter").on("click", function () {
-            $("#keyboard_input").val(() => {return ""})
+            $("#keyboard_input").children("span").html("")
             html.val(() => {return res})
             keyboard.hide()
             switch (focus) {

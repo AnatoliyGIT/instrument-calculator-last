@@ -14,7 +14,6 @@
     <!--	<link rel="stylesheet" href="index.css"/>-->
     <!--	<link href="images/favicon.ico" rel="shortcut icon"/>-->
     <script defer src="src/js/press.js"></script>
-    <link rel="stylesheet" href="src/css/index.css"/>
     <link href="src/images/favicon.ico" rel="shortcut icon"/>
 
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
@@ -30,12 +29,8 @@
     <script src="https://kit.fontawesome.com/e87fbb1bab.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-    <style>
-		a {text-decoration: auto;}
-		i {font-size: 50px;}
-		.btn {background-color: rgba(153, 153, 153, 0.3);}
-		.modal-content {border-radius: 1rem;}
-	</style>
+	<link rel="stylesheet" href="src/css/index.css"/>
+
 </head>
 
 <body>
@@ -124,81 +119,77 @@
 	<div class="modal" id="keyboard" tabindex="-1" aria-labelledby="keyboard_label" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered" id="modal-dialog">
 			<div class="modal-content">
-				<div class="modal-header border-bottom-0">
-					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-				</div>
-
 				<div class="modal-body">
-					<div class="container">
+					<div class="container-lg">
+
 						<div class="row d-flex justify-content-center">
 							<div class="col d-flex justify-content-center m-2">
-								<input id="keyboard_input" class="fs-1 w-100 btn" type="text" disabled />
+								<button id="keyboard_input" class="fs-1 w-100 btn" disabled><span></span></button>
 							</div>
 						</div>
 						<div class="row d-flex justify-content-center">
-							<div class="col d-flex justify-content-center m-2">
-								<button id="one" class="fs-1 w-100 btn" type="button">1</button>
+							<div class="col d-flex justify-content-center m-1">
+								<button id="one" class="fs-1 w-100 btn m-1" type="button"><span>1</span></button>
 							</div>
-							<div class="col d-flex justify-content-center m-2">
-								<button id="two" class="fs-1 w-100 btn" type="button">2</button>
+							<div class="col d-flex justify-content-center m-1">
+								<button id="two" class="fs-1 w-100 btn m-1" type="button"><span>2</span></button>
 							</div>
-							<div class="col d-flex justify-content-center m-2">
-								<button id="three" class="fs-1 w-100 btn" type="button">3</button>
+							<div class="col d-flex justify-content-center m-1">
+								<button id="three" class="fs-1 w-100 btn m-1" type="button"><span>3</span></button>
 							</div>
-							<div class="col d-flex justify-content-center m-2">
-								<button id="backspace" class="fs-1 w-100 btn" type="button"><i class="fa fa-solid fa-delete-left"></i></button>
-							</div>
-						</div>
-						<div class="row d-flex justify-content-center">
-							<div class="col d-flex justify-content-center m-2">
-								<button id="for" class="fs-1 w-100 btn" type="button">4</button>
-							</div>
-							<div class="col d-flex justify-content-center m-2">
-								<button id="fife" class="fs-1 w-100 btn" type="button">5</button>
-							</div>
-							<div class="col d-flex justify-content-center m-2">
-								<button id="six" class="fs-1 w-100 btn" type="button">6</button>
-							</div>
-							<div class="col d-flex justify-content-center m-2">
-								<button class="fs-1 w-100 btn" type="button"></button>
+							<div class="col d-flex justify-content-center m-1">
+								<button id="backspace" class="fs-1 w-100 btn m-1" type="button"><i class="fa fa-solid fa-delete-left"></i></button>
 							</div>
 						</div>
 						<div class="row d-flex justify-content-center">
-							<div class="col d-flex justify-content-center m-2">
-								<button id="seven" class="fs-1 w-100 btn" type="button">7</button>
+							<div class="col d-flex justify-content-center m-1">
+								<button id="for" class="fs-1 w-100 btn m-1" type="button"><span>4</span></button>
 							</div>
-							<div class="col d-flex justify-content-center m-2">
-								<button id="eight" class="fs-1 w-100 btn" type="button">8</button>
+							<div class="col d-flex justify-content-center m-1">
+								<button id="fife" class="fs-1 w-100 btn m-1" type="button"><span>5</span></button>
 							</div>
-							<div class="col d-flex justify-content-center m-2">
-								<button id="nine" class="fs-1 w-100 btn" type="button">9</button>
+							<div class="col d-flex justify-content-center m-1">
+								<button id="six" class="fs-1 w-100 btn m-1" type="button"><span>6</span></button>
 							</div>
-							<div class="col d-flex justify-content-center m-2">
-								<button class="fs-1 w-100 btn" type="button"></button>
+							<div class="col d-flex justify-content-center m-1">
+								<button class="fs-1 w-100 btn m-1" type="button"></button>
 							</div>
 						</div>
 						<div class="row d-flex justify-content-center">
-							<div class="col d-flex justify-content-center m-2">
-								<button id="minus" class="fs-1 w-100 btn" type="button">-</button>
+							<div class="col d-flex justify-content-center m-1">
+								<button id="seven" class="fs-1 w-100 btn m-1" type="button"><span>7</span></button>
 							</div>
-							<div class="col d-flex justify-content-center m-2">
-								<button id="zero" class="fs-1 w-100 btn" type="button">0</button>
+							<div class="col d-flex justify-content-center m-1">
+								<button id="eight" class="fs-1 w-100 btn m-1" type="button"><span>8</span></button>
 							</div>
-							<div class="col d-flex justify-content-center m-2">
-								<button id="dot" class="w-100 btn" type="button">.</button>
+							<div class="col d-flex justify-content-center m-1">
+								<button id="nine" class="fs-1 w-100 btn m-1" type="button"><span>9</span></button>
 							</div>
-							<div class="col d-flex justify-content-center m-2">
-								<button id="enter" class="fs-1 w-100 btn" type="button">ENT</button>
+							<div class="col d-flex justify-content-center m-1">
+								<button class="fs-1 w-100 btn m-1" type="button"></button>
 							</div>
 						</div>
+						<div class="row d-flex justify-content-center">
+							<div class="col d-flex justify-content-center m-1">
+								<button id="minus" class="fs-1 w-100 btn m-1" type="button"><span>-</span></button>
+							</div>
+							<div class="col d-flex justify-content-center m-1">
+								<button id="zero" class="fs-1 w-100 btn m-1" type="button"><span>0</span></button>
+							</div>
+							<div class="col d-flex justify-content-center m-1">
+								<button id="dot" class="w-100 btn m-1" type="button"><span>.</span></button>
+							</div>
+							<div class="col d-flex justify-content-center m-1">
+								<button id="enter" class="fs-1 w-100 btn m-1" type="button"><span>ENT</span></button>
+							</div>
+						</div>
+
 					</div>
 				</div>
-
-				<!-- <div class="modal-footer"> -->
-
 			</div>
 		</div>
 	</div>
+
 </div>
 
 </body>

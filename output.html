@@ -1,214 +1,208 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="description" content="Instrumentation calculator of temperature">
-	<meta name="keywords" content="HTML,CSS,JavaScript">
-	<meta name="author" content="Anatoly Kovrigin">
-	<meta name="viewport" content="user-scalable=0"/>
-	<!--	<meta name="viewport" content="width=device-width, initial-scale=0.5, maximum-scale=0.5, user-scalable=0"/>-->
+    <meta charset="UTF-8">
+    <meta name="description" content="Instrumentation calculator of temperature">
+    <meta name="keywords" content="HTML,CSS,JavaScript">
+    <meta name="author" content="Anatoly Kovrigin">
+    <meta name="viewport" content="user-scalable=0"/>
+    <!--	<meta name="viewport" content="width=device-width, initial-scale=0.5, maximum-scale=0.5, user-scalable=0"/>-->
 
-	<title>Instrument-calculator</title>
+    <title>Instrument-calculator</title>
 
-<!--	<script defer src="output.js"></script>-->
-<!--	<link rel="stylesheet" href="index.css"/>-->
-<!--	<link href="images/favicon.ico" rel="shortcut icon"/>-->
-	<script defer src="src/js/output.js"></script>
-	<link rel="stylesheet" href="src/css/index.css"/>
-	<link href="src/images/favicon.ico" rel="shortcut icon"/>
+    <!--	<script defer src="output.js"></script>-->
+    <!--	<link rel="stylesheet" href="index.css"/>-->
+    <!--	<link href="images/favicon.ico" rel="shortcut icon"/>-->
+    <script defer src="src/js/output.js"></script>
+    <link href="src/images/favicon.ico" rel="shortcut icon"/>
 
-	<link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css2?family=Marmelad&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Marmelad&display=swap" rel="stylesheet">
 
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-		  integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
-			integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+            integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+            crossorigin="anonymous"></script>
 
-	<script src="https://kit.fontawesome.com/e87fbb1bab.js" crossorigin="anonymous"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/e87fbb1bab.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-	<style>
-		a {text-decoration: auto;}
-		i {font-size: 50px;}
-		.btn {background-color: rgba(153, 153, 153, 0.3);}
-		.modal-content {border-radius: 1rem;}
-	</style>
+    <link rel="stylesheet" href="src/css/index.css"/>
+
 </head>
 
 <body>
 
 <div class="container-fluid col-sm-12 col-lg-8 pt-4">
 
-	<div class="d-flex flex-nowrap align-items-center mb-4">
-		<a class="d-flex justify-content-center col-1 m-0" href="index.html">
-			<i class="col-1 fa fa-solid fa-angle-left" style="color: rgba(13,110,253,0.5)!important;"></i>
-		</a>
-		<h1 class="col-10">Instrumentation calculator (Output)</h1>
-		<div class="col-1"></div>
-	</div>
-	<div class="image-top" id="image-top-output"></div>
+    <div class="d-flex flex-nowrap align-items-center mb-4">
+        <a class="d-flex justify-content-center col-1 m-0" href="index.html">
+            <i class="col-1 fa fa-solid fa-angle-left" style="color: rgba(13,110,253,0.5)!important;"></i>
+        </a>
+        <h1 class="col-10">Instrumentation calculator (Output)</h1>
+        <div class="col-1"></div>
+    </div>
+    <div class="image-top" id="image-top-output"></div>
 
-	<!-- Калькулятор выходного сигнала -->
-	<div class="output m-0-auto">
+    <!-- Калькулятор выходного сигнала -->
+    <div class="output m-0-auto">
 
-		<div class="output-selector p-4 d-flex flex-wrap justify-content-center">
-			<div class="col-xl-5 col-md-10">
-				<label class="col-12">
-					<select class="form-select form-select-lg mt-2" id="selector-output">
-						<option value="lin">Linear</option>
-						<option value="sqr">Square</option>
-					</select>
-				</label>
-			</div>
-		</div>
-		<div class="output-selector p-4 d-flex flex-wrap justify-content-center">
-			<div class="col-xl-3 col-md-10 mt-md-2">
-				<div class="col col-12">
-					<p class="fs-5 span-left description-left form-select-lg m-0">Lover Range Value</p>
-				</div>
-				<label class="col-12">
-					<input class="form-select form-select-lg" id="input-lover-range" placeholder="LRV"
-						   title="lover-range" inputmode="numeric">
-				</label>
-			</div>
-			<div class="col-xl-1 col-lg-10 mt-md-2"></div>
-			<div class="col-xl-3 col-md-10 mt-md-2">
-				<div class="col">
-					<p class="fs-5 span-left description-left form-select-lg m-0">Current Value</p>
-				</div>
-				<label class="col-12">
-					<input class="form-select form-select-lg" id="input-current-range-value" placeholder="Current value"
-						   title="current-value" inputmode="numeric">
-				</label>
-			</div>
-			<div class="col-xl-1 col-lg-10 mt-md-2"></div>
-			<div class="col-xl-3 col-md-10 mt-md-2">
-				<div class="col">
-					<p class="fs-5 span-left description-left form-select-lg m-0">Upper Range Value</p>
-				</div>
-				<label class="col-12">
-					<input class="form-select form-select-lg" id="input-upper-range" placeholder="URV"
-						   title="upper-range" inputmode="numeric">
-				</label>
-			</div>
+        <div class="output-selector p-4 d-flex flex-wrap justify-content-center">
+            <div class="col-xl-5 col-md-10">
+                <label class="col-12">
+                    <select class="form-select form-select-lg mt-2" id="selector-output">
+                        <option value="lin">Linear</option>
+                        <option value="sqr">Square</option>
+                    </select>
+                </label>
+            </div>
+        </div>
+        <div class="output-selector p-4 d-flex flex-wrap justify-content-center">
+            <div class="col-xl-3 col-md-10 mt-md-2">
+                <div class="col col-12">
+                    <p class="fs-5 span-left description-left form-select-lg m-0">Lover Range Value</p>
+                </div>
+                <label class="col-12">
+                    <input class="form-select form-select-lg" id="input-lover-range" placeholder="LRV"
+                           title="lover-range" inputmode="none">
+                </label>
+            </div>
+            <div class="col-xl-1 col-lg-10 mt-md-2"></div>
+            <div class="col-xl-3 col-md-10 mt-md-2">
+                <div class="col">
+                    <p class="fs-5 span-left description-left form-select-lg m-0">Current Value</p>
+                </div>
+                <label class="col-12">
+                    <input class="form-select form-select-lg" id="input-current-range-value" placeholder="Current value"
+                           title="current-value" inputmode="none">
+                </label>
+            </div>
+            <div class="col-xl-1 col-lg-10 mt-md-2"></div>
+            <div class="col-xl-3 col-md-10 mt-md-2">
+                <div class="col">
+                    <p class="fs-5 span-left description-left form-select-lg m-0">Upper Range Value</p>
+                </div>
+                <label class="col-12">
+                    <input class="form-select form-select-lg" id="input-upper-range" placeholder="URV"
+                           title="upper-range" inputmode="none">
+                </label>
+            </div>
 
-		</div>
+        </div>
 
 
-		<div class="output-selector p-4 d-flex flex-wrap justify-content-center">
-			<div class="col-xl-3 col-md-10 mt-md-2">
-				<div class="col">
-					<p class="fs-5 span-left description-left form-select-lg m-0">Range</p>
-				</div>
-				<label class="col-12">
-					<input class="form-select form-select-lg mt-2 mb-2" id="input-output-range" type="number" placeholder="Range">
-				</label>
-			</div>
-			<div class="col-xl-1 col-lg-10 mt-md-2"></div>
-			<div class="col-xl-3 col-md-10 mt-md-2">
-				<div class="col">
-					<p class="fs-5 span-left description-left form-select-lg m-0">Result of mA</p>
-				</div>
-				<label class="col-12">
-					<input class="form-select form-select-lg mt-2 mb-2" type="number" id="output-ma" placeholder="mA" disabled>
-				</label>
-			</div>
-			<div class="col-xl-1 col-lg-10 mt-md-2"></div>
-			<div class="col-xl-3 col-md-10 mt-md-2">
-				<div class="col">
-					<p class="fs-5 span-left description-left form-select-lg m-0">Result of percents</p>
-				</div>
-				<label class="col-12">
-					<input class="form-select form-select-lg mt-2 mb-2" type="number" id="output-percents" placeholder="%" disabled>
-				</label>
-			</div>
-		</div>
+        <div class="output-selector p-4 d-flex flex-wrap justify-content-center">
+            <div class="col-xl-3 col-md-10 mt-md-2">
+                <div class="col">
+                    <p class="fs-5 span-left description-left form-select-lg m-0">Range</p>
+                </div>
+                <label class="col-12">
+                    <input class="form-select form-select-lg mt-2 mb-2" id="input-output-range" inputmode="none"
+                           placeholder="Range">
+                </label>
+            </div>
+            <div class="col-xl-1 col-lg-10 mt-md-2"></div>
+            <div class="col-xl-3 col-md-10 mt-md-2">
+                <div class="col">
+                    <p class="fs-5 span-left description-left form-select-lg m-0">Result of mA</p>
+                </div>
+                <label class="col-12">
+                    <input class="form-select form-select-lg mt-2 mb-2" type="number" id="output-ma" placeholder="mA"
+                           disabled>
+                </label>
+            </div>
+            <div class="col-xl-1 col-lg-10 mt-md-2"></div>
+            <div class="col-xl-3 col-md-10 mt-md-2">
+                <div class="col">
+                    <p class="fs-5 span-left description-left form-select-lg m-0">Result of percents</p>
+                </div>
+                <label class="col-12">
+                    <input class="form-select form-select-lg mt-2 mb-2" type="number" id="output-percents"
+                           placeholder="%" disabled>
+                </label>
+            </div>
+        </div>
 
-	</div>
+    </div>
 </div>
 
 <!-- Keyboard -->
-	<div class="modal" id="keyboard" tabindex="-1" aria-labelledby="keyboard_label" aria-hidden="true">
-		<div class="modal-dialog modal-dialog-centered" id="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header border-bottom-0">
-					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-				</div>
+<div class="modal" id="keyboard" tabindex="-1" aria-labelledby="keyboard_label" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" id="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="container-lg">
 
-				<div class="modal-body">
-					<div class="container">
-						<div class="row d-flex justify-content-center">
-							<div class="col d-flex justify-content-center m-2">
-								<input id="keyboard_input" class="fs-1 w-100 btn" type="text" disabled />
-							</div>
-						</div>
-						<div class="row d-flex justify-content-center">
-							<div class="col d-flex justify-content-center m-2">
-								<button id="one" class="fs-1 w-100 btn" type="button">1</button>
-							</div>
-							<div class="col d-flex justify-content-center m-2">
-								<button id="two" class="fs-1 w-100 btn" type="button">2</button>
-							</div>
-							<div class="col d-flex justify-content-center m-2">
-								<button id="three" class="fs-1 w-100 btn" type="button">3</button>
-							</div>
-							<div class="col d-flex justify-content-center m-2">
-								<button id="backspace" class="fs-1 w-100 btn" type="button"><i class="fa fa-solid fa-delete-left"></i></button>
-							</div>
-						</div>
-						<div class="row d-flex justify-content-center">
-							<div class="col d-flex justify-content-center m-2">
-								<button id="for" class="fs-1 w-100 btn" type="button">4</button>
-							</div>
-							<div class="col d-flex justify-content-center m-2">
-								<button id="fife" class="fs-1 w-100 btn" type="button">5</button>
-							</div>
-							<div class="col d-flex justify-content-center m-2">
-								<button id="six" class="fs-1 w-100 btn" type="button">6</button>
-							</div>
-							<div class="col d-flex justify-content-center m-2">
-								<button class="fs-1 w-100 btn" type="button"></button>
-							</div>
-						</div>
-						<div class="row d-flex justify-content-center">
-							<div class="col d-flex justify-content-center m-2">
-								<button id="seven" class="fs-1 w-100 btn" type="button">7</button>
-							</div>
-							<div class="col d-flex justify-content-center m-2">
-								<button id="eight" class="fs-1 w-100 btn" type="button">8</button>
-							</div>
-							<div class="col d-flex justify-content-center m-2">
-								<button id="nine" class="fs-1 w-100 btn" type="button">9</button>
-							</div>
-							<div class="col d-flex justify-content-center m-2">
-								<button class="fs-1 w-100 btn" type="button"></button>
-							</div>
-						</div>
-						<div class="row d-flex justify-content-center">
-							<div class="col d-flex justify-content-center m-2">
-								<button id="minus" class="fs-1 w-100 btn" type="button">-</button>
-							</div>
-							<div class="col d-flex justify-content-center m-2">
-								<button id="zero" class="fs-1 w-100 btn" type="button">0</button>
-							</div>
-							<div class="col d-flex justify-content-center m-2">
-								<button id="dot" class="w-100 btn" type="button">.</button>
-							</div>
-							<div class="col d-flex justify-content-center m-2">
-								<button id="enter" class="fs-1 w-100 btn" type="button">ENT</button>
-							</div>
-						</div>
-					</div>
-				</div>
+                    <div class="row d-flex justify-content-center">
+                        <div class="col d-flex justify-content-center m-2">
+                            <button id="keyboard_input" class="fs-1 w-100 btn" disabled><span></span></button>
+                        </div>
+                    </div>
+                    <div class="row d-flex justify-content-center">
+                        <div class="col d-flex justify-content-center m-1">
+                            <button id="one" class="fs-1 w-100 btn m-1" type="button"><span>1</span></button>
+                        </div>
+                        <div class="col d-flex justify-content-center m-1">
+                            <button id="two" class="fs-1 w-100 btn m-1" type="button"><span>2</span></button>
+                        </div>
+                        <div class="col d-flex justify-content-center m-1">
+                            <button id="three" class="fs-1 w-100 btn m-1" type="button"><span>3</span></button>
+                        </div>
+                        <div class="col d-flex justify-content-center m-1">
+                            <button id="backspace" class="fs-1 w-100 btn m-1" type="button"><i class="fa fa-solid fa-delete-left"></i></button>
+                        </div>
+                    </div>
+                    <div class="row d-flex justify-content-center">
+                        <div class="col d-flex justify-content-center m-1">
+                            <button id="for" class="fs-1 w-100 btn m-1" type="button"><span>4</span></button>
+                        </div>
+                        <div class="col d-flex justify-content-center m-1">
+                            <button id="fife" class="fs-1 w-100 btn m-1" type="button"><span>5</span></button>
+                        </div>
+                        <div class="col d-flex justify-content-center m-1">
+                            <button id="six" class="fs-1 w-100 btn m-1" type="button"><span>6</span></button>
+                        </div>
+                        <div class="col d-flex justify-content-center m-1">
+                            <button class="fs-1 w-100 btn m-1" type="button"></button>
+                        </div>
+                    </div>
+                    <div class="row d-flex justify-content-center">
+                        <div class="col d-flex justify-content-center m-1">
+                            <button id="seven" class="fs-1 w-100 btn m-1" type="button"><span>7</span></button>
+                        </div>
+                        <div class="col d-flex justify-content-center m-1">
+                            <button id="eight" class="fs-1 w-100 btn m-1" type="button"><span>8</span></button>
+                        </div>
+                        <div class="col d-flex justify-content-center m-1">
+                            <button id="nine" class="fs-1 w-100 btn m-1" type="button"><span>9</span></button>
+                        </div>
+                        <div class="col d-flex justify-content-center m-1">
+                            <button class="fs-1 w-100 btn m-1" type="button"></button>
+                        </div>
+                    </div>
+                    <div class="row d-flex justify-content-center">
+                        <div class="col d-flex justify-content-center m-1">
+                            <button id="minus" class="fs-1 w-100 btn m-1" type="button"><span>-</span></button>
+                        </div>
+                        <div class="col d-flex justify-content-center m-1">
+                            <button id="zero" class="fs-1 w-100 btn m-1" type="button"><span>0</span></button>
+                        </div>
+                        <div class="col d-flex justify-content-center m-1">
+                            <button id="dot" class="w-100 btn m-1" type="button"><span>.</span></button>
+                        </div>
+                        <div class="col d-flex justify-content-center m-1">
+                            <button id="enter" class="fs-1 w-100 btn m-1" type="button"><span>ENT</span></button>
+                        </div>
+                    </div>
 
-				<!-- <div class="modal-footer"> -->
-
-			</div>
-		</div>
-	</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 </body>
 
