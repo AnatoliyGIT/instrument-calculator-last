@@ -32,6 +32,10 @@ $(function($){
     let span_max_ohm = 390.48
     let span_min_deg = -250
     let span_max_deg = 1350
+    const input_thermocouple = $("#input-thermocouple")
+    const input_temp = $("#input-temp")
+    const input_rtd = $("#input-rtd")
+    const input_degrees = $("#input-degrees")
 
     $(".span-left").html(function() {return "Span:&nbsp;(" + span_min_mv + "&nbsp;...&nbsp;+" + span_max_mv + ")&nbsp;mV"})
     $(".span-right").html(function() {return "Span:&nbsp;(" + span_min_deg + "&nbsp;...&nbsp;+" + span_max_deg + ")&nbsp;&#8451;"})
@@ -313,13 +317,13 @@ $(function($){
     $.each(select_type, function(i) {
         select_type.options[i].foo = function() {
             type_temp = this.value
-            $("#input-thermocouple").val(function() {
+            input_thermocouple.val(function() {
                 return ""
             })
-            $("#input-rtd").val(function() {
+            input_rtd.val(function() {
                 return ""
             })
-            $("#input-degrees").val(function() {
+            input_degrees.val(function() {
                 return ""
             })
             if (i === 0) {
@@ -341,6 +345,7 @@ $(function($){
     let type_thermocouple = "k"
 
     temp_selector.on("change", function() {
+        window.navigator.vibrate(10)
     	let span_min = Number(span_min_deg)
     	let span_max = Number(span_max_deg)
     	let unit = "&#8451"
@@ -362,7 +367,7 @@ $(function($){
             $("#rtd-div").css( "display", "none" )
             $("#degrees-left-div").css( "display", "none" )
             $("#temp-right-div").css("display", "block")
-            $("#input-temp").prop( "disabled", false )
+            input_temp.prop( "disabled", false )
 
         } else if (type_temp === "degrees") {
         	if (unit_r === "fahrenheit") {
@@ -386,7 +391,7 @@ $(function($){
             $("#rtd-div").css( "display", "none" )
             $("#degrees-left-div").css( "display", "block" )
             $("#temp-right-div").css("display", "none")
-            $("#input-temp").prop( "disabled", true )
+            input_temp.prop( "disabled", true )
 
         } else if (type_temp === "rtd") {
         	if (unit_r === "fahrenheit") {
@@ -410,12 +415,12 @@ $(function($){
             $("#rtd-div").css( "display", "block" )
             $("#degrees-left-div").css( "display", "none" )
             $("#temp-right-div").css("display", "block")
-            $("#input-temp").prop( "disabled", false )
+            input_temp.prop( "disabled", false )
         }
 
-        $("#input-thermocouple").val(function() {return ""})
-        $("#input-rtd").val(function() {return ""})
-        $("#input-degrees").val(function() {return ""})
+        input_thermocouple.val(function() {return ""})
+        input_rtd.val(function() {return ""})
+        input_degrees.val(function() {return ""})
     })
 
     $.each(select_type_thermocouple, function(i) {
@@ -547,7 +552,7 @@ $(function($){
     	select_type_rtd.options[select_type_rtd.selectedIndex].foo()
     	select_type_degrees_right.options[select_type_degrees_right.selectedIndex].foo()
         let inp = Number(input_temp)
-        $("#input-rtd").val(function() {
+        input_rtd.val(function() {
             if (rtd && !thermocouple) {
             	if (unit_r === "fahrenheit") {
                     inp = Math.round(((inp - 32) * 5/9) * 100) / 100
@@ -588,7 +593,7 @@ $(function($){
                 return ""
             }
             if (!rtd && thermocouple) {
-                $("#input-thermocouple").val(function() {
+                input_thermocouple.val(function() {
                 	if (unit_r === "fahrenheit") {
                         inp = Math.round(((inp - 32) * 5/9) * 100) / 100
                     }
@@ -617,7 +622,7 @@ $(function($){
     }
 
     let temp_calc = function(ohm_mv) {
-        $("#input-temp").val(function() {
+        input_temp.val(function() {
             let ohm = Number(ohm_mv)
             if (rtd && !thermocouple && !degrees) {
                 if (rtd_100 && !rtd_1000) {
@@ -689,7 +694,7 @@ $(function($){
         select_type_degrees_left.options[select_type_degrees_left.selectedIndex].foo()
         select_type_degrees_right.options[select_type_degrees_right.selectedIndex].foo()
 
-        $("#input-temp").val( function() {
+        input_temp.val( function() {
             switch(unit_l + "-" + unit_r) {
                 case "celsius-celsius":
                     if (input_deg >= (-273.15)) {return input_deg} else {return ""}
@@ -740,6 +745,7 @@ $(function($){
     }
 
     select_thermocouple.on("change", function() {
+        window.navigator.vibrate(10)
         select_type_thermocouple.options[select_type_thermocouple.selectedIndex].foo()
         let span_min = Number(span_min_deg)
     	let span_max = Number(span_max_deg)
@@ -757,19 +763,21 @@ $(function($){
         }
         $(".span-left").html(function() {return "Span:&nbsp;(" + span_min_mv + "&nbsp;...&nbsp;+" + span_max_mv + ")&nbsp;mV"})
         $(".span-right").html(function() {return "Span:&nbsp;(" + span_min + "&nbsp;...&nbsp;+" + span_max + ")&nbsp;" + unit})
-        $("#input-thermocouple").val(function() {return ""})
-        $("#input-temp").val(function() {return ""})
+        input_thermocouple.val(function() {return ""})
+        input_temp.val(function() {return ""})
     })
 
     select_rtd.on("change", function() {
+        window.navigator.vibrate(10)
     	select_type_degrees_right.options[select_type_degrees_right.selectedIndex].foo()
     	select_type_rtd.options[select_type_rtd.selectedIndex].foo()
         $(".span-left").html(function() {return "Span:&nbsp;(" + span_min_ohm + "&nbsp;...&nbsp;+" + span_max_ohm + ")&nbsp;Ohm"})
-        $("#input-rtd").val(function() {return ""})
-        $("#input-temp").val(function() {return ""})
+        input_rtd.val(function() {return ""})
+        input_temp.val(function() {return ""})
     })
 
     degrees_right_select.on("change", function () {
+        window.navigator.vibrate(10)
     	let span_min = Number(span_min_deg)
     	let span_max = Number(span_max_deg)
     	let unit = "&#8451;"
@@ -804,44 +812,240 @@ $(function($){
     	$(".span-right").html(function() {return "Span:&nbsp;(" + span_min + "&nbsp;...&nbsp;+" + span_max + ")&nbsp;" + unit})
 
         if (degrees) {
-            temp_degrees(Number($("#input-degrees").val()))
+            temp_degrees(Number(input_degrees.val()))
         } else if (thermocouple) {
-            temp_calc(Number($("#input-thermocouple").val()))
+            temp_calc(Number(input_thermocouple.val()))
         } else if (rtd) {
-            temp_calc(Number($("#input-rtd").val()))
+            temp_calc(Number(input_rtd.val()))
         }
     })
 
     degrees_left_select.on("change", function () {
+        window.navigator.vibrate(10)
     	select_type_degrees_left.options[select_type_degrees_left.selectedIndex].foo()
     	$(".span-left").html(function() {return "Span:&nbsp;(" + span_min_deg + "&nbsp;...&nbsp;+" + span_max_deg + ")&nbsp;&#8451;"})
         if (degrees) {
-            temp_degrees(Number($("#input-degrees").val()))
+            temp_degrees(Number(input_degrees.val()))
         } else {
-            temp_calc(Number($("#input-rtd").val()))
+            temp_calc(Number(input_rtd.val()))
         }
     })
 
     select_thermocouple.on("change", function () {
+        window.navigator.vibrate(10)
     	select_type_degrees_right.options[select_type_degrees_right.selectedIndex].foo()
-        ohm_mv_calc(Number($("#input-temp").val()))
+        ohm_mv_calc(Number(input_temp.val()))
     })
 
-    $("#input-thermocouple").on("input", function () {
-        temp_calc(Number($("#input-thermocouple").val()))
+    input_thermocouple.on("input", function () {
+        temp_calc(Number(input_thermocouple.val()))
     })
 
-    $("#input-rtd").on("input", function () {
-        temp_calc(Number($("#input-rtd").val()))
+    input_rtd.on("input", function () {
+        temp_calc(Number(input_rtd.val()))
     })
 
-    $("#input-temp").on("input", function () {
+    input_temp.on("input", function () {
     	select_type_degrees_right.options[select_type_degrees_right.selectedIndex].foo()
-        ohm_mv_calc(Number($("#input-temp").val()))
+        ohm_mv_calc(Number(input_temp.val()))
     })
 
-    $("#input-degrees").on("input", function () {
-        temp_degrees(Number($("#input-degrees").val()))
+    input_degrees.on("input", function () {
+        temp_degrees(Number(input_degrees.val()))
     })
+
+    // Start KEYBOARD
+    let keyboard = new bootstrap.Modal(document.getElementById('keyboard'), {})
+    let html = undefined
+    let focus = undefined
+    let res = ""
+    let data = {}
+
+    let get_focus = function (i_html, focus, k_board) {
+        $("#keyboard_input").children("span").html(i_html.val())
+        const width = window.screen.width
+        const height = window.screen.height
+        if (width <= 1200) {
+            if (width > height) {
+                $("#modal-dialog").css("max-width", function () {
+                    return "60vw"
+                })
+            } else {
+                $("#modal-dialog").css("max-width", function () {
+                    return "95vw"
+                })
+            }
+            html = i_html
+            res = html.val()
+            k_board.show()
+        }
+        return {
+            "html": i_html,
+            "focus": focus,
+            "result": res
+        }
+    }
+
+    // Получение фокуса
+    input_thermocouple.on("focus", function () {
+        data = get_focus(input_thermocouple, "thermocouple", keyboard)
+        html = data.html
+        res = data.result
+        focus = data.focus
+    })
+    input_temp.on("focus", function () {
+        data = get_focus(input_temp, "temperature-right", keyboard)
+        html = data.html
+        res = data.result
+        focus = data.focus
+    })
+    input_rtd.on("focus", function () {
+        data = get_focus(input_rtd, "rtd", keyboard)
+        html = data.html
+        res = data.result
+        focus = data.focus
+    })
+    input_degrees.on("focus", function () {
+        data = get_focus(input_degrees, "degrees", keyboard)
+        html = data.html
+        res = data.result
+        focus = data.focus
+    })
+
+    $("#one").on("click", function () {
+        window.navigator.vibrate(10)
+        res = res + "1"
+        $("#keyboard_input").children("span").html(res)
+        html.val(() => {
+            return res
+        })
+    })
+    $("#two").on("click", function () {
+        window.navigator.vibrate(10)
+        res = res + "2"
+        $("#keyboard_input").children("span").html(res)
+        html.val(() => {
+            return res
+        })
+    })
+    $("#three").on("click", function () {
+        window.navigator.vibrate(10)
+        res = res + "3"
+        $("#keyboard_input").children("span").html(res)
+        html.val(() => {
+            return res
+        })
+    })
+    $("#for").on("click", function () {
+        window.navigator.vibrate(10)
+        res = res + "4"
+        $("#keyboard_input").children("span").html(res)
+        html.val(() => {
+            return res
+        })
+    })
+    $("#fife").on("click", function () {
+        window.navigator.vibrate(10)
+        res = res + "5"
+        $("#keyboard_input").children("span").html(res)
+        html.val(() => {
+            return res
+        })
+    })
+    $("#six").on("click", function () {
+        window.navigator.vibrate(10)
+        res = res + "6"
+        $("#keyboard_input").children("span").html(res)
+        html.val(() => {
+            return res
+        })
+    })
+    $("#seven").on("click", function () {
+        window.navigator.vibrate(10)
+        res = res + "7"
+        $("#keyboard_input").children("span").html(res)
+        html.val(() => {
+            return res
+        })
+    })
+    $("#eight").on("click", function () {
+        window.navigator.vibrate(10)
+        res = res + "8"
+        $("#keyboard_input").children("span").html(res)
+        html.val(() => {
+            return res
+        })
+    })
+    $("#nine").on("click", function () {
+        window.navigator.vibrate(10)
+        res = res + "9"
+        $("#keyboard_input").children("span").html(res)
+        html.val(() => {
+            return res
+        })
+    })
+    $("#zero").on("click", function () {
+        window.navigator.vibrate(10)
+        res = res + "0"
+        $("#keyboard_input").children("span").html(res)
+        html.val(() => {
+            return res
+        })
+    })
+    $("#dot").on("click", function () {
+        window.navigator.vibrate(10)
+        res = res + "."
+        $("#keyboard_input").children("span").html(res)
+        html.val(() => {
+            return res
+        })
+    })
+    $("#minus").on("click", function () {
+        window.navigator.vibrate(10)
+        res = res + "-"
+        $("#keyboard_input").children("span").html(res)
+        html.val(() => {
+            return res
+        })
+    })
+    $("#backspace").on("click", function () {
+        window.navigator.vibrate(10)
+        res = res.substring(0, res.length - 1)
+        $("#keyboard_input").children("span").html(res)
+        html.val(() => {
+            return res
+        })
+    })
+    $("#erase").on("click", function () {
+        window.navigator.vibrate(10)
+        res = ""
+        $("#keyboard_input").children("span").html("")
+        html.val(() => {
+            return res
+        })
+    })
+    $("#enter").on("click", function () {
+        window.navigator.vibrate(10)
+        $("#keyboard_input").children("span").html("")
+        html.val(() => {
+            return res
+        })
+        keyboard.hide()
+        switch (focus) {
+            case "thermocouple":
+                temp_calc(Number(res))
+                break;
+            case "temperature-right":
+                select_type_degrees_right.options[select_type_degrees_right.selectedIndex].foo()
+                ohm_mv_calc(Number(res))
+                break;
+            case "rtd":
+                temp_calc(Number(res))
+                break;
+            case "degrees":
+                temp_degrees(Number(res))
+        }
+    })
+    // End KEYBOARD
 
 })
