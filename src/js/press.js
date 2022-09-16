@@ -67,9 +67,11 @@ $(function ($) {
     }
 
     select_press_l.on("change", function () {
+        window.navigator.vibrate(10)
         return result()
     })
     select_press_r.on("change", function () {
+        window.navigator.vibrate(10)
         return result()
     })
     input_press.on("input", function () {
@@ -122,6 +124,7 @@ $(function ($) {
     })
 
     $("#one").on("click", function () {
+        window.navigator.vibrate(10)
         res = res + "1"
         $("#keyboard_input").children("span").html(res)
         html.val(() => {
@@ -129,6 +132,7 @@ $(function ($) {
         })
     })
     $("#two").on("click", function () {
+        window.navigator.vibrate(10)
         res = res + "2"
         $("#keyboard_input").children("span").html(res)
         html.val(() => {
@@ -136,6 +140,7 @@ $(function ($) {
         })
     })
     $("#three").on("click", function () {
+        window.navigator.vibrate(10)
         res = res + "3"
         $("#keyboard_input").children("span").html(res)
         html.val(() => {
@@ -143,6 +148,7 @@ $(function ($) {
         })
     })
     $("#for").on("click", function () {
+        window.navigator.vibrate(10)
         res = res + "4"
         $("#keyboard_input").children("span").html(res)
         html.val(() => {
@@ -150,6 +156,7 @@ $(function ($) {
         })
     })
     $("#fife").on("click", function () {
+        window.navigator.vibrate(10)
         res = res + "5"
         $("#keyboard_input").children("span").html(res)
         html.val(() => {
@@ -157,6 +164,7 @@ $(function ($) {
         })
     })
     $("#six").on("click", function () {
+        window.navigator.vibrate(10)
         res = res + "6"
         $("#keyboard_input").children("span").html(res)
         html.val(() => {
@@ -164,6 +172,7 @@ $(function ($) {
         })
     })
     $("#seven").on("click", function () {
+        window.navigator.vibrate(10)
         res = res + "7"
         $("#keyboard_input").children("span").html(res)
         html.val(() => {
@@ -171,6 +180,7 @@ $(function ($) {
         })
     })
     $("#eight").on("click", function () {
+        window.navigator.vibrate(10)
         res = res + "8"
         $("#keyboard_input").children("span").html(res)
         html.val(() => {
@@ -178,6 +188,7 @@ $(function ($) {
         })
     })
     $("#nine").on("click", function () {
+        window.navigator.vibrate(10)
         res = res + "9"
         $("#keyboard_input").children("span").html(res)
         html.val(() => {
@@ -185,6 +196,7 @@ $(function ($) {
         })
     })
     $("#zero").on("click", function () {
+        window.navigator.vibrate(10)
         res = res + "0"
         $("#keyboard_input").children("span").html(res)
         html.val(() => {
@@ -192,6 +204,7 @@ $(function ($) {
         })
     })
     $("#dot").on("click", function () {
+        window.navigator.vibrate(10)
         res = res + "."
         $("#keyboard_input").children("span").html(res)
         html.val(() => {
@@ -199,6 +212,7 @@ $(function ($) {
         })
     })
     $("#minus").on("click", function () {
+        window.navigator.vibrate(10)
         res = res + "-"
         $("#keyboard_input").children("span").html(res)
         html.val(() => {
@@ -206,13 +220,23 @@ $(function ($) {
         })
     })
     $("#backspace").on("click", function () {
+        window.navigator.vibrate(10)
         res = res.substring(0, res.length - 1)
         $("#keyboard_input").children("span").html(res)
         html.val(() => {
             return res
         })
     })
+    $("#erase").on("click", function () {
+        window.navigator.vibrate(10)
+        $("#keyboard_input").children("span").html("")
+        res = ""
+        html.val(() => {
+            return res
+        })
+    })
     $("#enter").on("click", function () {
+        window.navigator.vibrate(10)
         $("#keyboard_input").children("span").html("")
         html.val(() => {
             return res
