@@ -221,7 +221,9 @@ $(function ($) {
     })
     $("#dot").on("click", function () {
         window.navigator.vibrate(10)
-        res = res + "."
+        if (!res.includes(".")) {
+            res = res + ".";
+        }
         $("#keyboard_input").children("span").html(res)
         html.val(() => {
             return res
@@ -229,8 +231,12 @@ $(function ($) {
     })
     $("#minus").on("click", function () {
         window.navigator.vibrate(10)
-        res = res + "-"
-        $("#keyboard_input").children("span").html(res)
+        if (res[0] !== '-') {
+            res = "-" + res
+        } else {
+            res = res.slice(1)
+        }
+        $("#keyboard_input").children("span").html(res);
         html.val(() => {
             return res
         })
