@@ -35,182 +35,186 @@
 
 <body>
 
-<div class="container-fluid col-sm-12 col-lg-8 pt-4">
+	<div class="container-fluid col-sm-12 col-lg-8 pt-4">
 
-	<div class="d-flex flex-nowrap align-items-center mb-4">
-		<a class="d-flex justify-content-center col-1 m-0" href="index.html" title="arrow">
-			<i class="col-1 fa fa-solid fa-angle-left" style="color: rgba(220, 53, 69, 0.5) !important;"></i>
-		</a>
-		<h1 class="col-10">Instrumentation calculator (Temperature)</h1>
-		<div class="col-1"></div>
-	</div>
-	<div class="image-top" id="image-top-temp"></div>
+		<div class="d-flex flex-nowrap align-items-center mb-4">
+			<a class="d-flex justify-content-center col-1 m-0" href="index.html" title="arrow">
+				<i class="col-1 fa fa-solid fa-angle-left" style="color: rgba(220, 53, 69, 0.5) !important;"></i>
+			</a>
+			<h1 class="col-10">Instrumentation calculator (Temperature)</h1>
+			<div class="col-1"></div>
+		</div>
+		<div class="image-top" id="image-top-temp"></div>
 
-	<!-- Калькулятор температур -->
-	<div class="temp pb-5 mt-5">
+		<!-- Калькулятор температур -->
+		<div class="temp pb-5 mt-5">
 
-		<!-- Выбор типа температуры -->
-		<div class="selector-center p-4">
-			<div class="col col-sm-6 col-lg-4">
-				<select class="form-select form-select-lg" name="temp-selector" id="temp-selector" title="temp">
-					<option value="thermocouple">THERMOCOUPLE</option>
-					<option value="rtd">RTD</option>
-					<option value="degrees">DEGREES</option>
-				</select>
+			<!-- Выбор типа температуры -->
+			<div class="selector-center p-4">
+				<div class="col col-sm-6 col-lg-4">
+					<select class="form-select form-select-lg" name="temp-selector" id="temp-selector" title="temp">
+						<option value="thermocouple">THERMOCOUPLE</option>
+						<option value="rtd">RTD</option>
+						<option value="degrees">DEGREES</option>
+					</select>
+				</div>
+			</div>
+
+			<div class="temp-selector d-flex flex-wrap justify-content-center">
+				<!-- Выбор типа термопары -->
+				<div class="temp-left col-xl-5 col-md-10" id="thermocouple-div">
+					<div class="col col-5">
+						<p class="span-left description-left form-select-lg m-0"></p>
+					</div>
+					<select class="form-select form-select-lg" name="thermocouple" id="thermocouple" title="thermocouple">
+						<option value="k">TYPE-K</option>
+						<option value="j">TYPE-J</option>
+						<option value="t">TYPE-T</option>
+						<option value="r">TYPE-R</option>
+						<option value="s">TYPE-S</option>
+						<option value="e">TYPE-E</option>
+						<option value="b">TYPE-B</option>
+					</select>
+					<div class="inputs inputs-thermocouple">
+						<input class="form-select form-select-lg mt-2" id="input-thermocouple" placeholder="mV"
+							   title="thermocouple" inputmode="none">
+					</div>
+				</div>
+
+				<!-- Выбор типа термосопротивления -->
+				<div class="temp-left col-xl-5 col-md-10" id="rtd-div" style="display: none">
+					<div class="col col-5">
+						<p class="span-left description-left form-select-lg m-0"></p>
+					</div>
+					<select class="form-select form-select-lg" name="rtd" id="rtd" title="rtd">
+						<option value="100">PT-100</option>
+						<option value="1000">PT-1000</option>
+					</select>
+					<div class="inputs inputs-rtd">
+						<input class="form-select form-select-lg mt-2" id="input-rtd" placeholder="Ohm" title="rtd"
+							   inputmode="none">
+					</div>
+				</div>
+
+				<!-- Выбор градусов (цельсия/кельвина/форингейта) -->
+				<div class="temp-left col-xl-5 col-md-10" id="degrees-left-div" style="display: none">
+					<div class="col col-5">
+						<p class="span-left description-left form-select-lg m-0"></p>
+					</div>
+					<select class="form-select form-select-lg" name="degrees" id="degrees-left-select" title="degrees">
+						<option value="celsius">Celsius</option>
+						<option value="fahrenheit">Fahrenheit</option>
+						<option value="kelvin">Kelvin</option>
+					</select>
+					<div class="inputs inputs-grad">
+						<input class="form-select form-select-lg mt-2" id="input-degrees" placeholder="degrees"
+							   title="degrees" inputmode="none">
+					</div>
+				</div>
+
+				<!-- Знак равно -->
+				<div class="d-flex align-items-center justify-content-center col-xl-1 col-md-10 mt-3">
+					<h1 id="equal">=</h1>
+				</div>
+
+				<div class="temp-right col-xl-5 col-md-10" id="degrees-right-div">
+					<div class="col col-5">
+						<p class="span-right description-right form-select-lg m-0"></p>
+					</div>
+					<select class="form-select form-select-lg" name="degrees" id="degrees-right-select" title="degrees">
+						<option value="celsius">Celsius</option>
+						<option value="fahrenheit">Fahrenheit</option>
+						<option value="kelvin">Kelvin</option>
+					</select>
+					<div>
+						<input class="form-select form-select-lg mt-2" id="input-temp" placeholder="degrees" title="temp"
+							   inputmode="none">
+					</div>
+				</div>
 			</div>
 		</div>
 
-		<div class="temp-selector d-flex flex-wrap justify-content-center">
-			<!-- Выбор типа термопары -->
-			<div class="temp-left col-xl-5 col-md-10" id="thermocouple-div">
-				<div class="col col-5">
-					<p class="span-left description-left form-select-lg m-0"></p>
-				</div>
-				<select class="form-select form-select-lg" name="thermocouple" id="thermocouple" title="thermocouple">
-					<option value="k">TYPE-K</option>
-					<option value="j">TYPE-J</option>
-					<option value="t">TYPE-T</option>
-					<option value="r">TYPE-R</option>
-					<option value="s">TYPE-S</option>
-					<option value="e">TYPE-E</option>
-					<option value="b">TYPE-B</option>
-				</select>
-				<div class="inputs inputs-thermocouple">
-					<input class="form-select form-select-lg mt-2" id="input-thermocouple" placeholder="mV"
-						   title="thermocouple" inputmode="none">
-				</div>
-			</div>
+	</div>
 
-			<!-- Выбор типа термосопротивления -->
-			<div class="temp-left col-xl-5 col-md-10" id="rtd-div" style="display: none">
-				<div class="col col-5">
-					<p class="span-left description-left form-select-lg m-0"></p>
-				</div>
-				<select class="form-select form-select-lg" name="rtd" id="rtd" title="rtd">
-					<option value="100">PT-100</option>
-					<option value="1000">PT-1000</option>
-				</select>
-				<div class="inputs inputs-rtd">
-					<input class="form-select form-select-lg mt-2" id="input-rtd" placeholder="Ohm" title="rtd"
-						   inputmode="none">
-				</div>
-			</div>
+	<!-- Start keyboard -->
+	<div class="modal" id="keyboard" tabindex="-1" aria-labelledby="keyboard_label" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" id="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-body">
+					<div class="container-lg">
 
-			<!-- Выбор градусов (цельсия/кельвина/форингейта) -->
-			<div class="temp-left col-xl-5 col-md-10" id="degrees-left-div" style="display: none">
-				<div class="col col-5">
-					<p class="span-left description-left form-select-lg m-0"></p>
-				</div>
-				<select class="form-select form-select-lg" name="degrees" id="degrees-left-select" title="degrees">
-					<option value="celsius">Celsius</option>
-					<option value="fahrenheit">Fahrenheit</option>
-					<option value="kelvin">Kelvin</option>
-				</select>
-				<div class="inputs inputs-grad">
-					<input class="form-select form-select-lg mt-2" id="input-degrees" placeholder="degrees"
-						   title="degrees" inputmode="none">
-				</div>
-			</div>
+						<div class="row d-flex justify-content-center">
+							<div class="col d-flex justify-content-center m-2">
+								<button id="keyboard_input" class="fs-1 w-100 btn" disabled><span></span></button>
+							</div>
+						</div>
+						<div class="row d-flex justify-content-center">
+							<div class="col d-flex justify-content-center m-1">
+								<button id="one" class="fs-1 w-100 btn m-1" type="button"><span>1</span></button>
+							</div>
+							<div class="col d-flex justify-content-center m-1">
+								<button id="two" class="fs-1 w-100 btn m-1" type="button"><span>2</span></button>
+							</div>
+							<div class="col d-flex justify-content-center m-1">
+								<button id="three" class="fs-1 w-100 btn m-1" type="button"><span>3</span></button>
+							</div>
+							<div class="col d-flex justify-content-center m-1">
+								<button id="backspace" class="fs-1 w-100 btn m-1" type="button"><i
+										class="fa fa-solid fa-delete-left"></i></button>
+							</div>
+						</div>
+						<div class="row d-flex justify-content-center">
+							<div class="col d-flex justify-content-center m-1">
+								<button id="for" class="fs-1 w-100 btn m-1" type="button"><span>4</span></button>
+							</div>
+							<div class="col d-flex justify-content-center m-1">
+								<button id="fife" class="fs-1 w-100 btn m-1" type="button"><span>5</span></button>
+							</div>
+							<div class="col d-flex justify-content-center m-1">
+								<button id="six" class="fs-1 w-100 btn m-1" type="button"><span>6</span></button>
+							</div>
+							<div class="col d-flex justify-content-center m-1">
+								<button id="erase" class="fs-1 w-100 btn m-1" type="button"><i
+										class="fa-solid fa-eraser"></i></button>
+							</div>
+						</div>
+						<div class="row d-flex justify-content-center">
+							<div class="col d-flex justify-content-center m-1">
+								<button id="seven" class="fs-1 w-100 btn m-1" type="button"><span>7</span></button>
+							</div>
+							<div class="col d-flex justify-content-center m-1">
+								<button id="eight" class="fs-1 w-100 btn m-1" type="button"><span>8</span></button>
+							</div>
+							<div class="col d-flex justify-content-center m-1">
+								<button id="nine" class="fs-1 w-100 btn m-1" type="button"><span>9</span></button>
+							</div>
+							<div class="col d-flex justify-content-center m-1">
+								<button class="fs-1 w-100 btn m-1" type="button"></button>
+							</div>
+						</div>
+						<div class="row d-flex justify-content-center">
+							<div class="col d-flex justify-content-center m-1">
+								<button id="minus" class="fs-1 w-100 btn m-1" type="button"><i
+										class="fa-solid fa-plus-minus"></i></button>
+							</div>
+							<div class="col d-flex justify-content-center m-1">
+								<button id="zero" class="fs-1 w-100 btn m-1" type="button"><span>0</span></button>
+							</div>
+							<div class="col d-flex justify-content-center m-1">
+								<button id="dot" class="w-100 btn m-1" type="button"><span>.</span></button>
+							</div>
+							<div class="col d-flex justify-content-center m-1">
+								<button id="enter" class="fs-1 w-100 btn m-1" type="button"><i
+										class="fa fa-solid fa-check"></i></button>
+							</div>
+						</div>
 
-			<!-- Знак равно -->
-			<div class="d-flex align-items-center justify-content-center col-xl-1 col-md-10 mt-3">
-				<h1 id="equal">=</h1>
-			</div>
-
-			<div class="temp-right col-xl-5 col-md-10" id="degrees-right-div">
-				<div class="col col-5">
-					<p class="span-right description-right form-select-lg m-0"></p>
-				</div>
-				<select class="form-select form-select-lg" name="degrees" id="degrees-right-select" title="degrees">
-					<option value="celsius">Celsius</option>
-					<option value="fahrenheit">Fahrenheit</option>
-					<option value="kelvin">Kelvin</option>
-				</select>
-				<div>
-					<input class="form-select form-select-lg mt-2" id="input-temp" placeholder="degrees" title="temp"
-						   inputmode="none">
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-
-</div>
-
-<!-- Start keyboard -->
-<div class="modal" id="keyboard" tabindex="-1" aria-labelledby="keyboard_label" aria-hidden="true">
-	<div class="modal-dialog modal-dialog-centered" id="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-body">
-				<div class="container-lg">
-
-					<div class="row d-flex justify-content-center">
-						<div class="col d-flex justify-content-center m-2">
-							<button id="keyboard_input" class="fs-1 w-100 btn" disabled><span></span></button>
-						</div>
-					</div>
-					<div class="row d-flex justify-content-center">
-						<div class="col d-flex justify-content-center m-1">
-							<button id="one" class="fs-1 w-100 btn m-1" type="button"><span>1</span></button>
-						</div>
-						<div class="col d-flex justify-content-center m-1">
-							<button id="two" class="fs-1 w-100 btn m-1" type="button"><span>2</span></button>
-						</div>
-						<div class="col d-flex justify-content-center m-1">
-							<button id="three" class="fs-1 w-100 btn m-1" type="button"><span>3</span></button>
-						</div>
-						<div class="col d-flex justify-content-center m-1">
-							<button id="backspace" class="fs-1 w-100 btn m-1" type="button"><i class="fa fa-solid fa-delete-left"></i></button>
-						</div>
-					</div>
-					<div class="row d-flex justify-content-center">
-						<div class="col d-flex justify-content-center m-1">
-							<button id="for" class="fs-1 w-100 btn m-1" type="button"><span>4</span></button>
-						</div>
-						<div class="col d-flex justify-content-center m-1">
-							<button id="fife" class="fs-1 w-100 btn m-1" type="button"><span>5</span></button>
-						</div>
-						<div class="col d-flex justify-content-center m-1">
-							<button id="six" class="fs-1 w-100 btn m-1" type="button"><span>6</span></button>
-						</div>
-						<div class="col d-flex justify-content-center m-1">
-							<button id="erase" class="fs-1 w-100 btn m-1" type="button"><i class="fa-solid fa-eraser"></i></button>
-						</div>
-					</div>
-					<div class="row d-flex justify-content-center">
-						<div class="col d-flex justify-content-center m-1">
-							<button id="seven" class="fs-1 w-100 btn m-1" type="button"><span>7</span></button>
-						</div>
-						<div class="col d-flex justify-content-center m-1">
-							<button id="eight" class="fs-1 w-100 btn m-1" type="button"><span>8</span></button>
-						</div>
-						<div class="col d-flex justify-content-center m-1">
-							<button id="nine" class="fs-1 w-100 btn m-1" type="button"><span>9</span></button>
-						</div>
-						<div class="col d-flex justify-content-center m-1">
-							<button class="fs-1 w-100 btn m-1" type="button"></button>
-						</div>
-					</div>
-					<div class="row d-flex justify-content-center">
-						<div class="col d-flex justify-content-center m-1">
-							<button id="minus" class="fs-1 w-100 btn m-1" type="button"><span>-</span></button>
-						</div>
-						<div class="col d-flex justify-content-center m-1">
-							<button id="zero" class="fs-1 w-100 btn m-1" type="button"><span>0</span></button>
-						</div>
-						<div class="col d-flex justify-content-center m-1">
-							<button id="dot" class="w-100 btn m-1" type="button"><span>.</span></button>
-						</div>
-						<div class="col d-flex justify-content-center m-1">
-							<button id="enter" class="fs-1 w-100 btn m-1" type="button"><i class="fa fa-solid fa-check"></i></button>
-						</div>
-					</div>
-
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-<!-- Stop keyboard -->
+	<!-- Stop keyboard -->
 
 </body>
 
