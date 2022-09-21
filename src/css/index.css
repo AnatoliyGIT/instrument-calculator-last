@@ -312,7 +312,7 @@ h3 {
 
 @media (min-device-width: 1200px) {
     .span-left, .span-right {
-        font-size: 1.5rem !important;
+        font-size: 1.2rem !important;
     }
 }
 
@@ -324,4 +324,8 @@ h3 {
 .modal-body button {
     font-weight: bold;
     height: 120px;
+}
+
+.density-ff {
+    display: none;
 }

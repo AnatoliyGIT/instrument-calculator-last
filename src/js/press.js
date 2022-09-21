@@ -96,15 +96,9 @@ $(function ($) {
         const width = window.screen.width
         const height = window.screen.height
         if (width <= 1200) {
-            if (width > height) {
-                $("#modal-dialog").css("max-width", function () {
-                    return "60vw"
-                })
-            } else {
-                $("#modal-dialog").css("max-width", function () {
-                    return "95vw"
-                })
-            }
+            let max_width_value = "95vw"
+            width > height ? max_width_value = "60vw" : max_width_value
+            $("#modal-dialog").css("max-width", max_width_value)
             html = i_html
             res = html.val()
             k_board.show()

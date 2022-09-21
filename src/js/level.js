@@ -24,6 +24,11 @@ $(function ($) {
 
     selector_liquid.on("change", function (i) {
         selector_liquid[0].options[selector_liquid[0].selectedIndex].foo()
+        if (liquid === "phase_separation") {
+            $(".density-ff").css("display", "block")
+        } else {
+            $(".density-ff").css("display", "none")
+        }
     })
 
     function calc_percents() {
@@ -97,15 +102,9 @@ $(function ($) {
         const width = window.screen.width
         const height = window.screen.height
         if (width <= 1200) {
-            if (width > height) {
-                $("#modal-dialog").css("max-width", function () {
-                    return "60vw"
-                })
-            } else {
-                $("#modal-dialog").css("max-width", function () {
-                    return "95vw"
-                })
-            }
+            let max_width_value = "95vw"
+            width > height ? max_width_value = "60vw" : max_width_value
+            $("#modal-dialog").css("max-width", max_width_value)
             html = i_html
             res = html.val()
             k_board.show()
