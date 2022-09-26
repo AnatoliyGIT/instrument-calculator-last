@@ -6,6 +6,10 @@ i {
     font-size: 50px;
 }
 
+#lang-selector {
+    height: 3rem;
+}
+
 .btn {
     background-color: rgba(153, 153, 153, 0.3);
     border-radius: 1rem;
@@ -280,6 +284,10 @@ h3 {
 
     #temp-ranges {
         padding: 11px;
+    }
+
+    #lang-selector {
+        height: auto;
     }
 }
 

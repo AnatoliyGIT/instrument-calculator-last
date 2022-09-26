@@ -281,6 +281,10 @@ h3 {
     #temp-ranges {
         padding: 11px;
     }
+
+    #lang-selector {
+        height: auto;
+    }
 }
 
 @media (min-device-width: 992px) {
