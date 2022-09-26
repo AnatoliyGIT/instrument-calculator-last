@@ -3,7 +3,9 @@ $(function ($) {
     const selector_calc = $("#selector-calc")
     const selector_liquid = $("#selector-liquid")
     const density_ff = $("#density-ff")
+    let density_ff_val = density_ff.val()
     const density_p = $("#density-p")
+    let density_p_val = density_p.val()
     const distance_1 = $("#distance-1")
     const distance_2 = $("#distance-2")
     const distance_curr = $("#distance-curr")
@@ -39,7 +41,14 @@ $(function ($) {
             $(".density-ff").css("display", "block")
         } else {
             $(".density-ff").css("display", "none")
+            if (liquid === "water") {
+                density_ff_val = "1"
+            } else if (liquid === "glycerine") {
+                density_ff_val = "1.26"
+            }
         }
+        calc_ma()
+        calc_percents()
     })
 
     selector_calc.on("change", function (i) {
@@ -114,6 +123,10 @@ $(function ($) {
         return Number(distance_2.val() * density_p.val())
     }
 
+    function calc_press_phase_2() {
+        return Number(distance_1.val() * density_ff.val())
+    }
+
     function calc_distance_1() {
         const res = Math.round(Number(distance_2.val()) + (Number(range_mmh2o.val()) / Number(density_p.val())))
         if (res) {
@@ -124,27 +137,31 @@ $(function ($) {
     }
 
     function calc_lrv() {
-        let res_l = 0
-        let res_h = 0
-        let res = 0
+        let res_l = Number(distance_1.val())
+        let res_h = Number(distance_2.val())
         if (calc !== "density") {
             if (liquid !== "gas") {
-                lrv.val(function () {
-                    res_l = Number(distance_1.val())
-                    res_h = Number(distance_2.val())
-                    if (density_ff.val() !== "") {
-                        res_l = res_l * Number(density_ff.val())
-                    }
-                    if (density_p.val() !== "") {
-                        res_h = res_h * Number(density_p.val())
-                    }
-                    res = res_l - res_h
-                    return Math.round(-res)
-                });
+                if (liquid !== "phase_separation") {
+                    lrv.val(function () {
+                        res_l = res_l * Number(density_ff_val)
+                        res_h = res_h * Number(density_p_val)
+                        return -Math.round(res_l - res_h)
+                    })
+                } else {
+                    lrv.val(function () {
+                        if (density_ff.val() !== "" || density_ff.val() !== "0") {
+                            res_l = res_l * Number(density_ff.val())
+                        }
+                        if (density_p.val() !== "" || density_p.val() !== "0") {
+                            res_h = res_h * Number(density_p.val())
+                        }
+                        return -Math.round(res_l - res_h)
+                    })
+                }
             } else {
                 lrv.val(function () {
-                    return Math.round(Number(distance_2.val()) * Number(density_p.val()))
-                });
+                    return Math.round(Number(distance_2.val()) * Number(density_p_val))
+                })
             }
         }
     }
@@ -158,9 +175,15 @@ $(function ($) {
     }
 
     function calc_range() {
-        range_mmh2o.val(function () {
-            return Math.round((calc_press_distance_1() - calc_press_distance_2()))
-        });
+        if (liquid !== "phase_separation") {
+            range_mmh2o.val(function () {
+                return Math.round((calc_press_distance_1() - calc_press_distance_2()))
+            })
+        } else {
+            range_mmh2o.val(function () {
+                return Math.round((calc_press_distance_1() - calc_press_distance_2()) - calc_press_phase_2())
+            })
+        }
     }
 
     result_percents.on("input", function () {
@@ -204,6 +227,10 @@ $(function ($) {
         calc_percents()
     })
     density_p.on("input", function () {
+        calc_ma()
+        calc_percents()
+    })
+    density_ff.on("input", function () {
         calc_ma()
         calc_percents()
     })
@@ -447,7 +474,8 @@ $(function ($) {
                 calc_percents()
                 break
             case "density_ff":
-                // todo
+                calc_ma()
+                calc_percents()
                 break
             case "distance_1":
                 if (calc === "density") {
