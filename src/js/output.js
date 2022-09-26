@@ -95,10 +95,19 @@ $(function ($) {
         const height = window.screen.height
         if (width <= 1200) {
             let max_width_value = "95vw"
-            width > height ? max_width_value = "60vw" : max_width_value
+            if (width > height) {
+                max_width_value = "50vw"
+                $("button")
+                    .css("height", "60px")
+                    .css("display", "flex")
+                    .css("justify-content", "center")
+                    .css("align-items", "center")
+                $("button span").css("font-size","2rem")
+                $("i").css("font-size","2rem")
+            }
             $("#modal-dialog").css("max-width", max_width_value)
             html = i_html
-            res = html.val()
+            html.val() === "0" ? res = "" : res = html.val()
             k_board.show()
         }
         return {

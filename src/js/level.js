@@ -1,20 +1,31 @@
 $(function ($) {
 
+    const selector_calc = $("#selector-calc")
     const selector_liquid = $("#selector-liquid")
     const density_ff = $("#density-ff")
     const density_p = $("#density-p")
     const distance_1 = $("#distance-1")
     const distance_2 = $("#distance-2")
     const distance_curr = $("#distance-curr")
-    const range = $("#range")
+    const class_distance_curr = $(".distance-curr")
+    const range_mmh2o = $("#range-mmh2o")
     const lrv = $("#lrv")
     const urv = $("#urv")
     const result_ma = $("#result-ma")
     const result_percents = $("#result-percents")
+    const result_ma_percents = $(".result-ma-percents")
     let liquid = "gas"
+    let calc = "range"
     let res_ma = 0
+    result_ma_percents.css("display", "none")
+    class_distance_curr.css("display", "none")
 
 
+    $.each(selector_calc[0], function (i) {
+        selector_calc[0].options[i].foo = function () {
+            calc = this.value
+        }
+    })
 
     $.each(selector_liquid[0], function (i) {
         selector_liquid[0].options[i].foo = function () {
@@ -31,6 +42,42 @@ $(function ($) {
         }
     })
 
+    selector_calc.on("change", function (i) {
+        selector_calc[0].options[selector_calc[0].selectedIndex].foo()
+        switch (calc) {
+            case "percents":
+                class_distance_curr.css("display", "block")
+                result_ma_percents.css("display", "block")
+                density_p.removeAttr("disabled")
+                range_mmh2o.prop("disabled", "true")
+                break
+            case "density":
+                class_distance_curr.css("display", "none")
+                result_ma_percents.css("display", "none")
+                density_p.prop("disabled", "true")
+                range_mmh2o.prop("disabled", "true")
+                calc_distance_1()
+                break
+            case "current":
+                class_distance_curr.css("display", "block")
+                result_ma_percents.css("display", "block")
+                density_p.removeAttr("disabled")
+                range_mmh2o.removeAttr("disabled")
+                break
+            default:
+                class_distance_curr.css("display", "none")
+                result_ma_percents.css("display", "none")
+                density_p.removeAttr("disabled")
+                range_mmh2o.removeAttr("disabled")
+        }
+    })
+
+    function calc_density_1() {
+        density_p.val(function () {
+            return Math.round(Number(range_mmh2o.val()) / (Number(distance_1.val()) - Number(distance_2.val())) * 100) / 100
+        })
+    }
+
     function calc_percents() {
         let res = (res_ma * 100 / 16) - 25
         result_percents.val(function () {
@@ -42,52 +89,126 @@ $(function ($) {
     }
 
     function calc_ma() {
+        calc_range()
+        const range = Number(range_mmh2o.val())
+        calc_lrv()
+        calc_urv()
+        const curr_distance = Number(distance_curr.val()) // %
+        const press_current = curr_distance * density_p.val() // mmH20
+        const ma = 16 / range // ma/mmH2O
+        res_ma = 4 + ma * press_current
+        result_ma.val(function () {
+            if (res_ma >= 3.6 && res_ma <= 21.6) {
+                return Math.round(res_ma * 100) / 100
+            }
+            return ""
+        })
 
+    }
+
+    function calc_press_distance_1() {
+        return Number(distance_1.val() * density_p.val())
+    }
+
+    function calc_press_distance_2() {
+        return Number(distance_2.val() * density_p.val())
     }
 
     function calc_distance_1() {
-
-    }
-
-    function calc_distance_2() {
-
+        const res = Math.round(Number(distance_2.val()) + (Number(range_mmh2o.val()) / Number(density_p.val())))
+        if (res) {
+            distance_1.val(res);
+        } else {
+            distance_1.val("0")
+        }
     }
 
     function calc_lrv() {
         let res_l = 0
         let res_h = 0
         let res = 0
-        if (liquid !== "gas") {
-            lrv.val(function () {
-                res_l = Number(distance_1.val())
-                res_h = Number(distance_2.val())
-                if (density_ff.val() !== "") {
-                    res_l = res_l * Number(density_ff.val())
-                }
-                if (density_p.val() !== "") {
-                    res_h = res_h * Number(density_p.val())
-                }
-                res = res_l - res_h
-                console.log(res_l, res_h, res)
-                return -res;
-            });
-        } else {
-            lrv.val(function () {
-                console.log(distance_2.val(), density_p.val())
-                return -Number(distance_2.val()) * Number(density_p.val())
-            });
+        if (calc !== "density") {
+            if (liquid !== "gas") {
+                lrv.val(function () {
+                    res_l = Number(distance_1.val())
+                    res_h = Number(distance_2.val())
+                    if (density_ff.val() !== "") {
+                        res_l = res_l * Number(density_ff.val())
+                    }
+                    if (density_p.val() !== "") {
+                        res_h = res_h * Number(density_p.val())
+                    }
+                    res = res_l - res_h
+                    return Math.round(-res)
+                });
+            } else {
+                lrv.val(function () {
+                    return Math.round(Number(distance_2.val()) * Number(density_p.val()))
+                });
+            }
         }
     }
 
     function calc_urv() {
-        urv.val(function () {
-            return Number(lrv.val()) + Number(range.val())
+        if (calc !== "density") {
+            urv.val(function () {
+                return Math.round((Number(lrv.val()) + Number(range_mmh2o.val())))
+            })
+        }
+    }
+
+    function calc_range() {
+        range_mmh2o.val(function () {
+            return Math.round((calc_press_distance_1() - calc_press_distance_2()))
         });
     }
 
     result_percents.on("input", function () {
-        calc_lrv()
-        calc_urv()
+        //todo
+    })
+
+    lrv.on("input", function () {
+        range_mmh2o.val(function () {
+            return Number(urv.val()) - Number(lrv.val())
+        })
+        if (calc === "density") {
+            calc_density_1()
+        }
+    })
+    urv.on("input", function () {
+        range_mmh2o.val(function () {
+            return Number(urv.val()) - Number(lrv.val())
+        })
+        if (calc === "density") {
+            calc_density_1()
+        }
+    })
+    distance_1.on("input", function () {
+        if (calc === "density") {
+            calc_density_1()
+        } else {
+            calc_ma();
+            calc_percents()
+        }
+    })
+    distance_2.on("input", function () {
+        if (calc === "density") {
+            calc_density_1()
+        } else {
+            calc_ma();
+            calc_percents()
+        }
+    })
+    distance_curr.on("input", function () {
+        calc_ma()
+        calc_percents()
+    })
+    density_p.on("input", function () {
+        calc_ma()
+        calc_percents()
+    })
+    range_mmh2o.on("input", function () {
+        calc_distance_1()
     })
 
     // Start KEYBOARD
@@ -103,10 +224,19 @@ $(function ($) {
         const height = window.screen.height
         if (width <= 1200) {
             let max_width_value = "95vw"
-            width > height ? max_width_value = "60vw" : max_width_value
+            if (width > height) {
+                max_width_value = "50vw"
+                $("button")
+                    .css("height", "60px")
+                    .css("display", "flex")
+                    .css("justify-content", "center")
+                    .css("align-items", "center")
+                $("button span").css("font-size","2rem")
+                $("i").css("font-size","2rem")
+            }
             $("#modal-dialog").css("max-width", max_width_value)
             html = i_html
-            res = html.val()
+            html.val() === "0" ? res = "" : res = html.val()
             k_board.show()
         }
         return {
@@ -116,8 +246,71 @@ $(function ($) {
         }
     }
 
+    density_p.on("focus", function () {
+        data = get_focus(density_p, "density_p", keyboard)
+        html = data.html
+        res = data.result
+        focus = data.focus
+    })
+
+    density_ff.on("focus", function () {
+        data = get_focus(density_ff, "density_ff", keyboard)
+        html = data.html
+        res = data.result
+        focus = data.focus
+    })
+
+    distance_1.on("focus", function () {
+        data = get_focus(distance_1, "distance_1", keyboard)
+        html = data.html
+        res = data.result
+        focus = data.focus
+    })
+
+    distance_2.on("focus", function () {
+        data = get_focus(distance_2, "distance_2", keyboard)
+        html = data.html
+        res = data.result
+        focus = data.focus
+    })
+
+    distance_curr.on("focus", function () {
+        data = get_focus(distance_curr, "distance_curr", keyboard)
+        html = data.html
+        res = data.result
+        focus = data.focus
+    })
+
+    range_mmh2o.on("focus", function () {
+        data = get_focus(range_mmh2o, "range_mmh2o", keyboard)
+        html = data.html
+        res = data.result
+        focus = data.focus
+    })
+
+    lrv.on("focus", function () {
+        data = get_focus(lrv, "lrv", keyboard)
+        html = data.html
+        res = data.result
+        focus = data.focus
+    })
+
+    urv.on("focus", function () {
+        data = get_focus(urv, "urv", keyboard)
+        html = data.html
+        res = data.result
+        focus = data.focus
+    })
+
     result_percents.on("focus", function () {
         data = get_focus(result_percents, "result_percent", keyboard)
+        html = data.html
+        res = data.result
+        focus = data.focus
+    })
+
+    result_ma.on("focus", function () {
+        data = get_focus(result_ma, "result_ma", keyboard)
         html = data.html
         res = data.result
         focus = data.focus
@@ -249,9 +442,58 @@ $(function ($) {
         })
         keyboard.hide()
         switch (focus) {
+            case "density_p":
+                calc_ma()
+                calc_percents()
+                break
+            case "density_ff":
+                // todo
+                break
+            case "distance_1":
+                if (calc === "density") {
+                    calc_density_1()
+                } else {
+                    calc_ma()
+                    calc_percents()
+                }
+                break
+            case "distance_2":
+                if (calc === "density") {
+                    calc_density_1()
+                } else {
+                    calc_ma();
+                    calc_percents()
+                }
+                break
+            case "distance_curr":
+                calc_ma()
+                calc_percents()
+                break
+            case "range_mmh2o":
+                calc_distance_1()
+                break
+            case "lrv":
+                range_mmh2o.val(function () {
+                    return Number(urv.val()) - Number(lrv.val())
+                })
+                if (calc === "density") {
+                    calc_density_1()
+                }
+                break
+            case "urv":
+                range_mmh2o.val(function () {
+                    return Number(urv.val()) - Number(lrv.val())
+                })
+                if (calc === "density") {
+                    calc_density_1()
+                }
+                break
             case "result_percent":
-                calc_lrv()
-                calc_urv()
+                // todo
+                break
+            case "result_ma":
+                // todo
+                break
         }
     })
     // End KEYBOARD

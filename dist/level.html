@@ -48,6 +48,21 @@
 	<!-- Калькулятор ... -->
 	<div class="level m-0-auto">
 
+		<div class="calculation-selector p-4 d-flex flex-wrap justify-content-center">
+			<div class="col-10 col-xl-3">
+				<div class="col-12">
+					<p class="fs-5 span-left description-left form-select-lg m-0">What's to be calculated?</p>
+				</div>
+				<label class="col-12">
+					<select class="form-select form-select-lg" id="selector-calc">
+						<option value="range">Instruments range</option>
+						<option value="percents">Percents and mAmps</option>
+						<option value="density">Density</option>
+					</select>
+				</label>
+			</div>
+		</div>
+
 		<div class="level-selector p-4 d-flex flex-wrap justify-content-center">
 			<div class="col-10 col-xl-3">
 				<div class="col-12">
@@ -62,7 +77,7 @@
 					</select>
 				</label>
 			</div>
-			<div class="col-xl-1 col-lg-10 mt-md-2"></div>
+			<div class="density-ff col-xl-1 col-lg-10 mt-md-2"></div>
 			<div class="density-ff col-10 col-xl-3">
 				<div class="col-12">
 					<p class="fs-5 span-left description-left form-select-lg m-0">Density (SG<sub>FF</sub>)</p>
@@ -102,14 +117,14 @@
 					<input class="form-select form-select-lg" id="distance-2" placeholder="mm" title="h1" type="number">
 				</label>
 			</div>
-			<div class="col-xl-1 col-lg-10 mt-md-2"></div>
-			<div class="col-xl-3 col-10 mt-md-2">
+			<div class="distance-curr col-xl-1 col-lg-10 mt-md-2"></div>
+			<div class="distance-curr col-xl-3 col-10 mt-md-2">
 				<div class="col-12">
 					<p class="fs-5 span-left description-left form-select-lg m-0">Distance H<sub>curr</sub> (mm)</p>
 				</div>
 				<label class="col-12">
 					<input class="form-select form-select-lg" id="distance-curr" placeholder="mm" title="h1"
-						   type="number">
+						   type="number" value="0">
 				</label>
 			</div>
 
@@ -146,7 +161,7 @@
 		</div>
 
 		<div class="level-selector p-4 d-flex flex-wrap justify-content-center">
-			<div class="col-xl-3 col-10 mt-md-2">
+			<div class="result-ma-percents col-xl-3 col-10 mt-md-2">
 				<div class="col">
 					<p class="fs-5 span-left description-left form-select-lg m-0">Result of mA</p>
 				</div>
@@ -154,8 +169,8 @@
 					<input class="form-select form-select-lg mt-2 mb-2" type="number" id="result-ma" placeholder="mA">
 				</label>
 			</div>
-			<div class="col-xl-1 col-lg-10 mt-md-2"></div>
-			<div class="col-xl-3 col-10 mt-md-2">
+			<div class="result-ma-percents col-xl-1 col-lg-10 mt-md-2"></div>
+			<div class="result-ma-percents col-xl-3 col-10 mt-md-2">
 				<div class="col">
 					<p class="fs-5 span-left description-left form-select-lg m-0">Percents result</p>
 				</div>
