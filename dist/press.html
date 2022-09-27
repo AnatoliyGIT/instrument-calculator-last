@@ -10,9 +10,9 @@
 
 	<title>Instrument-calculator</title>
 
-		<script defer src="press.js"></script>
-		<script defer src="keyboard.js"></script>
-		<link href="images/favicon.ico" rel="shortcut icon"/>
+	<script defer src="keyboard.js"></script>
+	<script defer src="press.js"></script>
+	<link href="images/favicon.ico" rel="shortcut icon"/>
 
 	<link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
@@ -32,173 +32,94 @@
 </head>
 
 <body>
-<div class="container-fluid col-sm-12 col-lg-8 pt-4">
+	<div class="container-fluid col-sm-12 col-lg-8 pt-4">
 
-	<div class="d-flex flex-nowrap align-items-center mb-4">
-		<a class="d-flex justify-content-center col-1 m-0" href="index.html">
-			<i class="col-1 fa fa-solid fa-angle-left" style="color: rgba(13,110,253,0.5)!important;"></i>
-		</a>
-		<h1 class="col-8 fs-1">Instrumentation calculator (Pressure)</h1>
-		<div class="selector-right d-flex justify-content-end col-2">
-			<select class="form-select form-select-lg" name="lang-selector" id="lang-selector" title="temp">
-				<option value="en">EN</option>
-				<option value="he">HE</option>
-				<option value="ru">RU</option>
-			</select>
+		<div class="d-flex flex-nowrap align-items-center mb-4">
+			<a class="d-flex justify-content-center col-1 m-0" href="index.html">
+				<i class="col-1 fa fa-solid fa-angle-left" style="color: rgba(13,110,253,0.5)!important;"></i>
+			</a>
+			<h1 class="col-8 fs-1">Instrumentation calculator (Pressure)</h1>
+			<div class="selector-right d-flex justify-content-end col-2">
+				<select class="form-select form-select-lg" name="lang-selector" id="lang-selector" title="temp">
+					<option value="en">EN</option>
+					<option value="he">HE</option>
+					<option value="ru">RU</option>
+				</select>
+			</div>
 		</div>
-	</div>
-	<div class="image-top" id="image-top-press"></div>
+		<div class="image-top" id="image-top-press"></div>
 
-	<!-- Калькулятор единиц давления -->
-	<div class="press m-0-auto">
-		<div class="press-selector p-4 d-flex flex-wrap justify-content-center">
+		<!-- Калькулятор единиц давления -->
+		<div class="press m-0-auto">
+			<div class="press-selector p-4 d-flex flex-wrap justify-content-center">
 
-			<!-- Выбор единиц давления слева -->
-			<div class="press-left col-xl-5 col-md-10">
-				<select class="form-select form-select-lg mt-2" name="press-type-left" id="press-type-left">
-					<option value=gauge>Gauge</option>
-					<option value=absolute>Absolute</option>
-				</select>
-				<select class="form-select form-select-lg mt-2" name="units-left" id="press-units-left">
-					<option value=1021500>mm H2O</option>
-					<option value=40146.32>In H2O (4 grad.C)</option>
-					<option value=40218>In H2O (68 grad.F)</option>
-					<option value=1450>PSI</option>
-					<option value=100000>mBAR</option>
-					<option value=100>BAR</option>
-					<option value=10000000>Pa</option>
-					<option value=10000>kPa</option>
-					<option value=10>MPA</option>
-					<option value=2952>In Hg</option>
-					<option value=75000>mm Hg</option>
-					<option value=101.97>kg/cm2</option>
-					<option value=1019700>kg/m2</option>
-					<option value=101970>gm/cm2</option>
-					<option value=98.6923>ATM</option>
-				</select>
-				<div class="inputs" id="inputs-left">
-					<input class="form-select form-select-lg mt-2 mb-2" id=input-press placeholder="press"
-						   unputmode="none">
+				<!-- Выбор единиц давления слева -->
+				<div class="press-left col-xl-5 col-md-10">
+					<select class="form-select form-select-lg mt-2" name="press-type-left" id="press-type-left">
+						<option value=gauge>Gauge</option>
+						<option value=absolute>Absolute</option>
+					</select>
+					<select class="form-select form-select-lg mt-2" name="units-left" id="press-units-left">
+						<option value=1021500>mm H2O</option>
+						<option value=40146.32>In H2O (4 grad.C)</option>
+						<option value=40218>In H2O (68 grad.F)</option>
+						<option value=1450>PSI</option>
+						<option value=100000>mBAR</option>
+						<option value=100>BAR</option>
+						<option value=10000000>Pa</option>
+						<option value=10000>kPa</option>
+						<option value=10>MPA</option>
+						<option value=2952>In Hg</option>
+						<option value=75000>mm Hg</option>
+						<option value=101.97>kg/cm2</option>
+						<option value=1019700>kg/m2</option>
+						<option value=101970>gm/cm2</option>
+						<option value=98.6923>ATM</option>
+					</select>
+					<div class="inputs" id="inputs-left">
+						<input class="form-select form-select-lg mt-2 mb-2" id=input-press placeholder="press"
+							   unputmode="none">
+					</div>
+				</div>
+
+				<!-- Знак равно -->
+				<div class="d-flex align-items-center justify-content-center col-xl-1 col-md-10">
+					<h1 id="equal">=</h1>
+				</div>
+
+				<!-- Выбор единиц давления справа -->
+				<div class="press-right col-xl-5 col-md-10">
+					<select class="form-select form-select-lg mt-2" name="press-type-right" id="press-type-right">
+						<option value=gauge>Gauge</option>
+						<option value=absolute>Absolute</option>
+					</select>
+					<select class="form-select form-select-lg mt-2" name="units-right" id="press-units-right">
+						<option value=1021500>mm H2O</option>
+						<option value=40146.32>In H2O (4 grad.C)</option>
+						<option value=40218>In H2O (68 grad.F)</option>
+						<option value=1450>PSI</option>
+						<option value=100000>mBAR</option>
+						<option value=100>BAR</option>
+						<option value=10000000>Pa</option>
+						<option value=10000>kPa</option>
+						<option value=10>MPA</option>
+						<option value=2952>In Hg</option>
+						<option value=75000>mm Hg</option>
+						<option value=101.97>kg/cm2</option>
+						<option value=1019700>kg/m2</option>
+						<option value=101970>gm/cm2</option>
+						<option value=98.6923>ATM</option>
+					</select>
+					<div class="inputs" id="inputs-right">
+						<input class="form-select form-select-lg mt-2 mb-2" id=output-press type="number"
+							   placeholder="press" disabled>
+					</div>
 				</div>
 			</div>
 
-			<!-- Знак равно -->
-			<div class="d-flex align-items-center justify-content-center col-xl-1 col-md-10">
-				<h1 id="equal">=</h1>
-			</div>
-
-			<!-- Выбор единиц давления справа -->
-			<div class="press-right col-xl-5 col-md-10">
-				<select class="form-select form-select-lg mt-2" name="press-type-right" id="press-type-right">
-					<option value=gauge>Gauge</option>
-					<option value=absolute>Absolute</option>
-				</select>
-				<select class="form-select form-select-lg mt-2" name="units-right" id="press-units-right">
-					<option value=1021500>mm H2O</option>
-					<option value=40146.32>In H2O (4 grad.C)</option>
-					<option value=40218>In H2O (68 grad.F)</option>
-					<option value=1450>PSI</option>
-					<option value=100000>mBAR</option>
-					<option value=100>BAR</option>
-					<option value=10000000>Pa</option>
-					<option value=10000>kPa</option>
-					<option value=10>MPA</option>
-					<option value=2952>In Hg</option>
-					<option value=75000>mm Hg</option>
-					<option value=101.97>kg/cm2</option>
-					<option value=1019700>kg/m2</option>
-					<option value=101970>gm/cm2</option>
-					<option value=98.6923>ATM</option>
-				</select>
-				<div class="inputs" id="inputs-right">
-					<input class="form-select form-select-lg mt-2 mb-2" id=output-press type="number"
-						   placeholder="press" disabled>
-				</div>
-			</div>
 		</div>
 
 	</div>
-
-</div>
-<!-- Start keyboard -->
-<div class="modal" id="keyboard" tabindex="-1" aria-labelledby="keyboard_label" aria-hidden="true">
-	<div class="modal-dialog modal-dialog-centered" id="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-body">
-				<div class="container-lg">
-
-					<div class="row d-flex justify-content-center">
-						<div class="col d-flex justify-content-center m-2">
-							<button id="keyboard_input" class="fs-1 w-100 btn" disabled><span></span></button>
-						</div>
-					</div>
-					<div class="row d-flex justify-content-center">
-						<div class="col d-flex justify-content-center m-1">
-							<button id="one" class="fs-1 w-100 btn m-1 clickable" type="button"><span>1</span></button>
-						</div>
-						<div class="col d-flex justify-content-center m-1">
-							<button id="two" class="fs-1 w-100 btn m-1 clickable" type="button"><span>2</span></button>
-						</div>
-						<div class="col d-flex justify-content-center m-1">
-							<button id="three" class="fs-1 w-100 btn m-1 clickable" type="button"><span>3</span></button>
-						</div>
-						<div class="col d-flex justify-content-center m-1">
-							<button id="backspace" class="fs-1 w-100 btn m-1 clickable" type="button"><i
-									class="fa fa-solid fa-delete-left"></i></button>
-						</div>
-					</div>
-					<div class="row d-flex justify-content-center">
-						<div class="col d-flex justify-content-center m-1">
-							<button id="four" class="fs-1 w-100 btn m-1 clickable" type="button"><span>4</span></button>
-						</div>
-						<div class="col d-flex justify-content-center m-1">
-							<button id="five" class="fs-1 w-100 btn m-1 clickable" type="button"><span>5</span></button>
-						</div>
-						<div class="col d-flex justify-content-center m-1">
-							<button id="six" class="fs-1 w-100 btn m-1 clickable" type="button"><span>6</span></button>
-						</div>
-						<div class="col d-flex justify-content-center m-1">
-							<button id="erase" class="fs-1 w-100 btn m-1 clickable" type="button"><i
-									class="fa-solid fa-eraser"></i></button>
-						</div>
-					</div>
-					<div class="row d-flex justify-content-center">
-						<div class="col d-flex justify-content-center m-1">
-							<button id="seven" class="fs-1 w-100 btn m-1 clickable" type="button"><span>7</span></button>
-						</div>
-						<div class="col d-flex justify-content-center m-1">
-							<button id="eight" class="fs-1 w-100 btn m-1 clickable" type="button"><span>8</span></button>
-						</div>
-						<div class="col d-flex justify-content-center m-1">
-							<button id="nine" class="fs-1 w-100 btn m-1 clickable" type="button"><span>9</span></button>
-						</div>
-						<div class="col d-flex justify-content-center m-1">
-							<button class="fs-1 w-100 btn m-1 clickable" type="button"></button>
-						</div>
-					</div>
-					<div class="row d-flex justify-content-center">
-						<div class="col d-flex justify-content-center m-1">
-							<button id="minus" class="fs-1 w-100 btn m-1 clickable" type="button"><i
-									class="fa-solid fa-plus-minus"></i></button>
-						</div>
-						<div class="col d-flex justify-content-center m-1">
-							<button id="zero" class="fs-1 w-100 btn m-1 clickable" type="button"><span>0</span></button>
-						</div>
-						<div class="col d-flex justify-content-center m-1">
-							<button id="dot" class="w-100 btn m-1 clickable" type="button"><span>.</span></button>
-						</div>
-						<div class="col d-flex justify-content-center m-1">
-							<button id="enter" class="fs-1 w-100 btn m-1 clickable" type="button"><i
-									class="fa fa-solid fa-check"></i></button>
-						</div>
-					</div>
-
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-<!-- Stop keyboard -->
 </body>
 
 </html>
