@@ -126,87 +126,103 @@ $(function ($) {
         focus = data.focus
     })
 
-    $("#one").on("click", function () {
+    const one = document.getElementById("one")
+    const two = document.getElementById("two")
+    const three = document.getElementById("three")
+    const four = document.getElementById("four")
+    const five = document.getElementById("five")
+    const six = document.getElementById("six")
+    const seven = document.getElementById("seven")
+    const eight = document.getElementById("eight")
+    const nine = document.getElementById("nine")
+    const zero = document.getElementById("zero")
+    const dot = document.getElementById("dot")
+    const minus = document.getElementById("minus")
+    const backspace = document.getElementById("backspace")
+    const erase = document.getElementById("erase")
+    const enter = document.getElementById("enter")
+
+    one.onclick = function () {
         window.navigator.vibrate(10)
         res = res + "1"
         $("#keyboard_input").children("span").html(res)
         html.val(() => {
             return res
         })
-    })
-    $("#two").on("click", function () {
+    }
+    two.onclick = function () {
         window.navigator.vibrate(10)
         res = res + "2"
         $("#keyboard_input").children("span").html(res)
         html.val(() => {
             return res
         })
-    })
-    $("#three").on("click", function () {
+    }
+    three.onclick = function () {
         window.navigator.vibrate(10)
         res = res + "3"
         $("#keyboard_input").children("span").html(res)
         html.val(() => {
             return res
         })
-    })
-    $("#for").on("click", function () {
+    }
+    four.onclick = function () {
         window.navigator.vibrate(10)
         res = res + "4"
         $("#keyboard_input").children("span").html(res)
         html.val(() => {
             return res
         })
-    })
-    $("#fife").on("click", function () {
+    }
+    five.onclick = function () {
         window.navigator.vibrate(10)
         res = res + "5"
         $("#keyboard_input").children("span").html(res)
         html.val(() => {
             return res
         })
-    })
-    $("#six").on("click", function () {
+    }
+    six.onclick = function () {
         window.navigator.vibrate(10)
         res = res + "6"
         $("#keyboard_input").children("span").html(res)
         html.val(() => {
             return res
         })
-    })
-    $("#seven").on("click", function () {
+    }
+    seven.onclick = function () {
         window.navigator.vibrate(10)
         res = res + "7"
         $("#keyboard_input").children("span").html(res)
         html.val(() => {
             return res
         })
-    })
-    $("#eight").on("click", function () {
+    }
+    eight.onclick = function () {
         window.navigator.vibrate(10)
         res = res + "8"
         $("#keyboard_input").children("span").html(res)
         html.val(() => {
             return res
         })
-    })
-    $("#nine").on("click", function () {
+    }
+    nine.onclick = function () {
         window.navigator.vibrate(10)
         res = res + "9"
         $("#keyboard_input").children("span").html(res)
         html.val(() => {
             return res
         })
-    })
-    $("#zero").on("click", function () {
+    }
+    zero.onclick = function () {
         window.navigator.vibrate(10)
         res = res + "0"
         $("#keyboard_input").children("span").html(res)
         html.val(() => {
             return res
         })
-    })
-    $("#dot").on("click", function () {
+    }
+    dot.onclick = function () {
         window.navigator.vibrate(10)
         if (!res.includes(".")) {
             res = res + ".";
@@ -215,8 +231,8 @@ $(function ($) {
         html.val(() => {
             return res
         })
-    })
-    $("#minus").on("click", function () {
+    }
+    minus.onclick = function () {
         window.navigator.vibrate(10)
         if (res[0] !== '-') {
             res = "-" + res
@@ -227,24 +243,24 @@ $(function ($) {
         html.val(() => {
             return res
         })
-    })
-    $("#backspace").on("click", function () {
+    }
+    backspace.onclick = function () {
         window.navigator.vibrate(10)
         res = res.substring(0, res.length - 1)
         $("#keyboard_input").children("span").html(res)
         html.val(() => {
             return res
         })
-    })
-    $("#erase").on("click", function () {
+    }
+    erase.onclick = function () {
         window.navigator.vibrate(10)
         $("#keyboard_input").children("span").html("")
         res = ""
         html.val(() => {
             return res
         })
-    })
-    $("#enter").on("click", function () {
+    }
+    enter.onclick = function () {
         window.navigator.vibrate(10)
         $("#keyboard_input").children("span").html("")
         html.val(() => {
@@ -255,6 +271,6 @@ $(function ($) {
             case "inp_press":
                 result()
         }
-    })
+    }
     // End KEYBOARD
 })

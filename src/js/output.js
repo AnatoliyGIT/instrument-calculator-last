@@ -166,7 +166,7 @@ $(function ($) {
             return res
         })
     })
-    $("#for").on("click", function () {
+    $("#four").on("click", function () {
         window.navigator.vibrate(10)
         res = res + "4"
         $("#keyboard_input").children("span").html(res)
@@ -174,7 +174,7 @@ $(function ($) {
             return res
         })
     })
-    $("#fife").on("click", function () {
+    $("#five").on("click", function () {
         window.navigator.vibrate(10)
         res = res + "5"
         $("#keyboard_input").children("span").html(res)

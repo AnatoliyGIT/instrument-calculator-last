@@ -337,3 +337,7 @@ h3 {
 .density-ff {
     display: none;
 }
+
+.clickable {
+    cursor: pointer;
+}
