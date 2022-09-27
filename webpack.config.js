@@ -10,7 +10,7 @@ module.exports = {
         press: './src/js/press.js',
         temp: './src/js/temp.js',
         calibration: './src/js/calibration.js',
-        // registration: './src/registration.js',
+        keyboard: './src/js/keyboard.js',
         // activation: './src/activation.js',
         // about: './src/about.js',
         // error: './src/error.js'
