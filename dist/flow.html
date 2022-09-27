@@ -11,11 +11,8 @@
     <title>Instrument-calculator</title>
 
     <script defer src="flow.js"></script>
-    <link rel="stylesheet" href="index.css"/>
+    <script defer src="keyboard.js"></script>
     <link href="images/favicon.ico" rel="shortcut icon"/>
-    <!--	<script defer src="src/js/flow.js"></script>-->
-    <!--	<link rel="stylesheet" href="src/css/index.css"/>-->
-    <!--	<link href="src/images/favicon.ico" rel="shortcut icon"/>-->
 
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
@@ -30,125 +27,118 @@
     <script src="https://kit.fontawesome.com/e87fbb1bab.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-    <style>
-        a {
-            text-decoration: auto;
-        }
+    <link rel="stylesheet" href="index.css"/>
 
-        i {
-            font-size: 50px;
-        }
-    </style>
 </head>
 
 <body>
 
-<div class="container-fluid col-sm-12 col-lg-8 pt-4">
+    <div class="container-fluid col-sm-12 col-lg-8 pt-4">
 
-    <div class="d-flex flex-nowrap align-items-center mb-4">
-        <a class="d-flex justify-content-center col-1 m-0" href="index.html" title="arrow">
-            <i class="col-1 fa fa-solid fa-angle-left" style="color: rgba(25,135,84,0.5)!important;"></i>
-        </a>
-        <h1 class="col-8 fs-1">Instrumentation calculator (Flow meter)</h1>
-        <div class="selector-right d-flex justify-content-end col-2">
-            <select class="form-select form-select-lg" name="lang-selector" id="lang-selector" title="temp">
-                <option value="en">EN</option>
-                <option value="he">HE</option>
-                <option value="ru">RU</option>
-            </select>
+        <div class="d-flex flex-nowrap align-items-center mb-4">
+            <a class="d-flex justify-content-center col-1 m-0" href="index.html" title="arrow">
+                <i class="col-1 fa fa-solid fa-angle-left" style="color: rgba(25,135,84,0.5)!important;"></i>
+            </a>
+            <h1 class="col-8 fs-1">Instrumentation calculator (Flow meter)</h1>
+            <div class="selector-right d-flex justify-content-end col-2">
+                <select class="form-select form-select-lg" name="lang-selector" id="lang-selector" title="temp">
+                    <option value="en">EN</option>
+                    <option value="he">HE</option>
+                    <option value="ru">RU</option>
+                </select>
+            </div>
+        </div>
+        <div class="image-top" id="image-top-flow"></div>
+
+        <!-- Калькулятор выходного сигнала -->
+        <div class="flow m-0-auto">
+
+            <div class="flow-selector p-4 d-flex flex-wrap justify-content-center">
+                <div class="col-xl-3 col-md-10">
+                    <label class="col-12">
+                        <select class="form-select form-select-lg mt-2" id="selector-flow-left">
+                            <option value="gas">GAS</option>
+                            <option value="liquid">LIQUID</option>
+                        </select>
+                    </label>
+                </div>
+                <div class="col-xl-5 col-md-10"></div>
+                <div class="col-xl-3 col-md-10">
+                    <label class="col-12">
+                        <select class="form-select form-select-lg mt-2" id="selector-flow-right">
+                            <option value="mass">MASS</option>
+                            <option value="volume">VOLUME</option>
+                        </select>
+                    </label>
+                </div>
+            </div>
+            <div class="flow-selector p-4 d-flex flex-wrap justify-content-center">
+                <div class="col-xl-3 col-md-10 mt-md-2">
+                    <div class="col col-12">
+                        <p class="fs-5 span-left description-left form-select-lg m-0">?????</p>
+                    </div>
+                    <label class="col-12">
+                        <input class="form-select form-select-lg" id="input-lover-range" placeholder="LRV"
+                               title="lover-range" inputmode="numeric">
+                    </label>
+                </div>
+                <div class="col-xl-1 col-lg-10 mt-md-2"></div>
+                <div class="col-xl-3 col-md-10 mt-md-2">
+                    <div class="col">
+                        <p class="fs-5 span-left description-left form-select-lg m-0">?????</p>
+                    </div>
+                    <label class="col-12">
+                        <input class="form-select form-select-lg" id="input-current-range-value" placeholder="Current value"
+                               title="current-value" inputmode="numeric">
+                    </label>
+                </div>
+                <div class="col-xl-1 col-lg-10 mt-md-2"></div>
+                <div class="col-xl-3 col-md-10 mt-md-2">
+                    <div class="col">
+                        <p class="fs-5 span-left description-left form-select-lg m-0">?????</p>
+                    </div>
+                    <label class="col-12">
+                        <input class="form-select form-select-lg" id="input-upper-range" placeholder="URV"
+                               title="upper-range" inputmode="numeric">
+                    </label>
+                </div>
+
+            </div>
+
+
+            <div class="flow-selector p-4 d-flex flex-wrap justify-content-center">
+                <div class="col-xl-3 col-md-10 mt-md-2">
+                    <div class="col">
+                        <p class="fs-5 span-left description-left form-select-lg m-0">?????</p>
+                    </div>
+                    <label class="col-12">
+                        <input class="form-select form-select-lg mt-2 mb-2" id="input-flow-range" type="number"
+                               placeholder="Range">
+                    </label>
+                </div>
+                <div class="col-xl-1 col-lg-10 mt-md-2"></div>
+                <div class="col-xl-3 col-md-10 mt-md-2">
+                    <div class="col">
+                        <p class="fs-5 span-left description-left form-select-lg m-0">Result of mA</p>
+                    </div>
+                    <label class="col-12">
+                        <input class="form-select form-select-lg mt-2 mb-2" type="number" id="flow-ma" placeholder="mA"
+                               disabled>
+                    </label>
+                </div>
+                <div class="col-xl-1 col-lg-10 mt-md-2"></div>
+                <div class="col-xl-3 col-md-10 mt-md-2">
+                    <div class="col">
+                        <p class="fs-5 span-left description-left form-select-lg m-0">Result of percents</p>
+                    </div>
+                    <label class="col-12">
+                        <input class="form-select form-select-lg mt-2 mb-2" type="number" id="flow-percents" placeholder="%"
+                               disabled>
+                    </label>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="image-top" id="image-top-flow"></div>
-
-    <!-- Калькулятор выходного сигнала -->
-    <div class="flow m-0-auto">
-
-        <div class="flow-selector p-4 d-flex flex-wrap justify-content-center">
-            <div class="col-xl-3 col-md-10">
-                <label class="col-12">
-                    <select class="form-select form-select-lg mt-2" id="selector-flow-left">
-                        <option value="gas">GAS</option>
-                        <option value="liquid">LIQUID</option>
-                    </select>
-                </label>
-            </div>
-            <div class="col-xl-5 col-md-10"></div>
-            <div class="col-xl-3 col-md-10">
-                <label class="col-12">
-                    <select class="form-select form-select-lg mt-2" id="selector-flow-right">
-                        <option value="mass">MASS</option>
-                        <option value="volume">VOLUME</option>
-                    </select>
-                </label>
-            </div>
-        </div>
-        <div class="flow-selector p-4 d-flex flex-wrap justify-content-center">
-            <div class="col-xl-3 col-md-10 mt-md-2">
-                <div class="col col-12">
-                    <p class="fs-5 span-left description-left form-select-lg m-0">?????</p>
-                </div>
-                <label class="col-12">
-                    <input class="form-select form-select-lg" id="input-lover-range" placeholder="LRV"
-                           title="lover-range" inputmode="numeric">
-                </label>
-            </div>
-            <div class="col-xl-1 col-lg-10 mt-md-2"></div>
-            <div class="col-xl-3 col-md-10 mt-md-2">
-                <div class="col">
-                    <p class="fs-5 span-left description-left form-select-lg m-0">?????</p>
-                </div>
-                <label class="col-12">
-                    <input class="form-select form-select-lg" id="input-current-range-value" placeholder="Current value"
-                           title="current-value" inputmode="numeric">
-                </label>
-            </div>
-            <div class="col-xl-1 col-lg-10 mt-md-2"></div>
-            <div class="col-xl-3 col-md-10 mt-md-2">
-                <div class="col">
-                    <p class="fs-5 span-left description-left form-select-lg m-0">?????</p>
-                </div>
-                <label class="col-12">
-                    <input class="form-select form-select-lg" id="input-upper-range" placeholder="URV"
-                           title="upper-range" inputmode="numeric">
-                </label>
-            </div>
-
-        </div>
-
-
-        <div class="flow-selector p-4 d-flex flex-wrap justify-content-center">
-            <div class="col-xl-3 col-md-10 mt-md-2">
-                <div class="col">
-                    <p class="fs-5 span-left description-left form-select-lg m-0">?????</p>
-                </div>
-                <label class="col-12">
-                    <input class="form-select form-select-lg mt-2 mb-2" id="input-flow-range" type="number"
-                           placeholder="Range">
-                </label>
-            </div>
-            <div class="col-xl-1 col-lg-10 mt-md-2"></div>
-            <div class="col-xl-3 col-md-10 mt-md-2">
-                <div class="col">
-                    <p class="fs-5 span-left description-left form-select-lg m-0">Result of mA</p>
-                </div>
-                <label class="col-12">
-                    <input class="form-select form-select-lg mt-2 mb-2" type="number" id="flow-ma" placeholder="mA"
-                           disabled>
-                </label>
-            </div>
-            <div class="col-xl-1 col-lg-10 mt-md-2"></div>
-            <div class="col-xl-3 col-md-10 mt-md-2">
-                <div class="col">
-                    <p class="fs-5 span-left description-left form-select-lg m-0">Result of percents</p>
-                </div>
-                <label class="col-12">
-                    <input class="form-select form-select-lg mt-2 mb-2" type="number" id="flow-percents" placeholder="%"
-                           disabled>
-                </label>
-            </div>
-        </div>
-    </div>
-</div>
 
 </body>
 
