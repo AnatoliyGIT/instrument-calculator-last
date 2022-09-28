@@ -5,7 +5,6 @@ $(function ($) {
     const density_ff = $("#density-ff")
     let density_ff_val = density_ff.val()
     const density_p = $("#density-p")
-    let density_p_val = density_p.val()
     const distance_1 = $("#distance-1")
     const distance_2 = $("#distance-2")
     const distance_curr = $("#distance-curr")
@@ -37,7 +36,10 @@ $(function ($) {
 
     selector_liquid.on("change", function (i) {
         selector_liquid[0].options[selector_liquid[0].selectedIndex].foo()
-        if (liquid === "phase_separation") {
+        if (liquid === "phase_separation" || liquid === "phase_separation_glicerine") {
+            if (liquid === "phase_separation_glicerine"){
+                density_ff_val = "1.26"
+            }
             $(".density-ff").css("display", "block")
         } else {
             $(".density-ff").css("display", "none")
@@ -116,15 +118,33 @@ $(function ($) {
     }
 
     function calc_press_distance_1() {
-        return Number(distance_1.val() * density_p.val())
+        return Number(distance_1.val()) * Number(density_p.val())
     }
 
-    function calc_press_distance_2() {
-        return Number(distance_2.val() * density_p.val())
+    function calc_press_phase_l_pipe() {
+        if (liquid === "phase_separation") {
+            return (Number(distance_1.val()) + (Number(distance_2.val())) * Number(density_ff.val()))
+        }
+        if (liquid === "phase_separation_glicerine") {
+            return (Number(distance_1.val()) + (Number(distance_2.val())) * Number(density_ff_val))
+        }
     }
 
-    function calc_press_phase_2() {
-        return Number(distance_1.val() * density_ff.val())
+    function calc_press_phase_h_pipe() {
+        if (liquid === "phase_separation") {
+            return (Number(distance_2.val()) * Number(density_p.val()))
+        }
+        if (liquid === "phase_separation_glicerine") {
+            return (Number(distance_2.val()) * Number(density_ff_val))
+        }
+    }
+
+    function calc_press_phase_h_tank() {
+        return (Number(distance_1.val()) * Number(density_p.val()))
+    }
+
+    function calc_press_phase_l_tank() {
+        return (Number(distance_1.val()) * Number(density_ff.val()))
     }
 
     function calc_distance_1() {
@@ -138,29 +158,29 @@ $(function ($) {
 
     function calc_lrv() {
         let res_l = Number(distance_1.val())
-        let res_h = Number(distance_2.val())
+        let res_h_p = Number(distance_2.val())
+        let res_h_ff = Number(distance_2.val())
+        let res_x = Number(distance_1.val())
         if (calc !== "density") {
-            if (liquid !== "gas") {
-                if (liquid !== "phase_separation") {
-                    lrv.val(function () {
-                        res_l = res_l * Number(density_ff_val)
-                        res_h = res_h * Number(density_p_val)
-                        return -Math.round(res_l - res_h)
-                    })
-                } else {
-                    lrv.val(function () {
-                        if (density_ff.val() !== "" || density_ff.val() !== "0") {
-                            res_l = res_l * Number(density_ff.val())
-                        }
-                        if (density_p.val() !== "" || density_p.val() !== "0") {
-                            res_h = res_h * Number(density_p.val())
-                        }
-                        return -Math.round(res_l - res_h)
-                    })
-                }
-            } else {
+            if (liquid === "gas") {
+                lrv.val(Math.round(Number(distance_2.val()) * Number(density_p.val())))
+            }
+            if (liquid === "water" || liquid === "glycerine") {
                 lrv.val(function () {
-                    return Math.round(Number(distance_2.val()) * Number(density_p_val))
+                    res_l = res_l * Number(density_ff_val)
+                    return -Math.round(res_l)
+                })
+            }
+            if (liquid === "phase_separation") {
+                res_h_p = res_h_p * Number(density_p.val())
+                res_h_ff = res_h_ff * Number(density_ff.val())
+                lrv.val(res_h_p - res_h_ff)
+            }
+            if (liquid === "phase_separation_glicerine") {
+                lrv.val(function () {
+                    res_l = res_l * Number(density_ff_val)
+                    res_x = res_x * Number(density_ff.val())
+                    return -Math.round(res_l - res_x)
                 })
             }
         }
@@ -175,13 +195,13 @@ $(function ($) {
     }
 
     function calc_range() {
-        if (liquid !== "phase_separation") {
+        if (liquid === "gas" || liquid === "water" || liquid === "glycerine") {
             range_mmh2o.val(function () {
-                return Math.round((calc_press_distance_1() - calc_press_distance_2()))
+                return Math.round((calc_press_distance_1()))
             })
         } else {
             range_mmh2o.val(function () {
-                return Math.round((calc_press_distance_1() - calc_press_distance_2()) - calc_press_phase_2())
+                return Math.round(calc_press_phase_h_tank() - calc_press_phase_l_tank())
             })
         }
     }
@@ -245,7 +265,7 @@ $(function ($) {
     let res = ""
     let data = {}
 
-    let get_focus = function (i_html, focus, k_board) {
+    const get_focus = function (i_html, focus, k_board) {
         $("#keyboard_input").children("span").html(i_html.val())
         const width = window.screen.width
         const height = window.screen.height
@@ -347,81 +367,61 @@ $(function ($) {
         window.navigator.vibrate(10)
         res = res + "1"
         $("#keyboard_input").children("span").html(res)
-        html.val(() => {
-            return res
-        })
+        html.val(res)
     })
     $("#two").on("click", function () {
         window.navigator.vibrate(10)
         res = res + "2"
         $("#keyboard_input").children("span").html(res)
-        html.val(() => {
-            return res
-        })
+        html.val(res)
     })
     $("#three").on("click", function () {
         window.navigator.vibrate(10)
         res = res + "3"
         $("#keyboard_input").children("span").html(res)
-        html.val(() => {
-            return res
-        })
+        html.val(res)
     })
     $("#four").on("click", function () {
         window.navigator.vibrate(10)
         res = res + "4"
         $("#keyboard_input").children("span").html(res)
-        html.val(() => {
-            return res
-        })
+        html.val(res)
     })
     $("#five").on("click", function () {
         window.navigator.vibrate(10)
         res = res + "5"
         $("#keyboard_input").children("span").html(res)
-        html.val(() => {
-            return res
-        })
+        html.val(res)
     })
     $("#six").on("click", function () {
         window.navigator.vibrate(10)
         res = res + "6"
         $("#keyboard_input").children("span").html(res)
-        html.val(() => {
-            return res
-        })
+        html.val(res)
     })
     $("#seven").on("click", function () {
         window.navigator.vibrate(10)
         res = res + "7"
         $("#keyboard_input").children("span").html(res)
-        html.val(() => {
-            return res
-        })
+        html.val(res)
     })
     $("#eight").on("click", function () {
         window.navigator.vibrate(10)
         res = res + "8"
         $("#keyboard_input").children("span").html(res)
-        html.val(() => {
-            return res
-        })
+        html.val(res)
     })
     $("#nine").on("click", function () {
         window.navigator.vibrate(10)
         res = res + "9"
         $("#keyboard_input").children("span").html(res)
-        html.val(() => {
-            return res
-        })
+        html.val(res)
     })
     $("#zero").on("click", function () {
         window.navigator.vibrate(10)
         res = res + "0"
         $("#keyboard_input").children("span").html(res)
-        html.val(() => {
-            return res
-        })
+        html.val(res)
     })
     $("#dot").on("click", function () {
         window.navigator.vibrate(10)
@@ -429,9 +429,9 @@ $(function ($) {
             res = res + ".";
         }
         $("#keyboard_input").children("span").html(res)
-        html.val(() => {
-            return res
-        })
+        if (res.slice(-1) !== ".") {
+            html.val(res)
+        }
     })
     $("#minus").on("click", function () {
         window.navigator.vibrate(10)
@@ -441,32 +441,30 @@ $(function ($) {
             res = res.slice(1)
         }
         $("#keyboard_input").children("span").html(res);
-        html.val(() => {
-            return res
-        })
+        html.val(res)
     })
     $("#backspace").on("click", function () {
         window.navigator.vibrate(10)
         res = res.substring(0, res.length - 1)
         $("#keyboard_input").children("span").html(res)
-        html.val(() => {
-            return res
-        })
+        if (res.slice(-1) !== ".") {
+            html.val(res)
+        }
     })
     $("#erase").on("click", function () {
         window.navigator.vibrate(10)
         $("#keyboard_input").children("span").html("")
         res = ""
-        html.val(() => {
-            return res
-        })
+        html.val(res)
     })
     $("#enter").on("click", function () {
         window.navigator.vibrate(10)
         $("#keyboard_input").children("span").html("")
-        html.val(() => {
-            return res
-        })
+        if (res.slice(-1) !== ".") {
+            html.val(res)
+        } else {
+            html.val(res.substring(0, res.length - 1))
+        }
         keyboard.hide()
         switch (focus) {
             case "density_p":
