@@ -329,15 +329,16 @@ h3 {
     align-items: end;
 }
 
-.modal-body button {
-    font-weight: bold;
+.modal-body a {
+    font-weight: inherit;
+    font-size: 5rem;
     height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: sans-serif;
 }
 
 .density-ff {
     display: none;
-}
-
-.clickable {
-    cursor: pointer;
 }
