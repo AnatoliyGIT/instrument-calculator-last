@@ -47,7 +47,7 @@
 	<!-- Title -->
 	<div class="row flex-nowrap justify-content-center align-items-center col-11 mb-3">
 		<div class="col-2"></div>
-		<h1 class="col-8 d-flex align-items-center justify-content-center mt-2">Instrumentation calculator</h1>
+		<h1 class="col-8 d-flex align-items-center justify-content-center mt-2" id="title-main">Instrumentation calculator</h1>
 		<div class="selector-right d-flex justify-content-end col-2">
 			<select class="form-select form-select" name="lang-selector" id="lang-selector" title="temp">
 				<option value="en">EN</option>
@@ -81,7 +81,7 @@
 	<!-- Cards -->
 	<div class="cards m-0-auto">
 		<div class="row d-flex flex-wrap justify-content-center ps-3 pe-3 mb-3">
-			<a class="card text-white bg-primary m-2" href="press.html">
+			<a class="card text-white bg-primary m-2" id="link-press" href="press.html">
 				<div id="card-press">
 					<div class="card-body">
 						<h5 class="card-title">Pressure</h5>
@@ -89,7 +89,7 @@
 					<div class="card-image" id="press-image"></div>
 				</div>
 			</a>
-			<a class="card text-white bg-danger m-2" href="temp.html">
+			<a class="card text-white bg-danger m-2" id="link-temp" href="temp.html">
 				<div id="card-temp">
 					<div class="card-body">
 						<h5 class="card-title">Temperature</h5>
@@ -97,15 +97,15 @@
 					<div class="card-image" id="temp-image"></div>
 				</div>
 			</a>
-<!--			<a class="card text-white bg-success m-2" href="flow.html">-->
-<!--				<div id="card-flow">-->
-<!--					<div class="card-body">-->
-<!--						<h5 class="card-title">Flow</h5>-->
-<!--					</div>-->
-<!--					<div class="card-image" id="flow-image"></div>-->
-<!--				</div>-->
-<!--			</a>-->
-			<a class="card text-white bg-warning m-2" href="level.html">
+			<!-- <a class="card text-white bg-success m-2" id="link-flow" href="flow.html">
+				<div id="card-flow">
+					<div class="card-body">
+						<h5 class="card-title">Flow</h5>
+					</div>
+					<div class="card-image" id="flow-image"></div>
+				</div>
+			</a> -->
+			<a class="card text-white bg-warning m-2" id="link-level" href="level.html">
 				<div id="card-level">
 					<div class="card-body">
 						<h5 class="card-title">Level</h5>
@@ -113,20 +113,28 @@
 					<div class="card-image" id="level-image"></div>
 				</div>
 			</a>
-<!--			<a class="card text-white bg-violet m-2" href="calibration.html">-->
-<!--				<div id="card-calibration">-->
-<!--					<div class="card-body">-->
-<!--						<h5 class="card-title">Calibration</h5>-->
-<!--					</div>-->
-<!--					<div class="card-image" id="calibration-image"></div>-->
-<!--				</div>-->
-<!--			</a>-->
-			<a class="card text-white bg-info m-2" href="output.html">
+			<!-- <a class="card text-white bg-violet m-2" id="link-calibration" href="calibration.html">
+				<div id="card-calibration">
+					<div class="card-body">
+						<h5 class="card-title">Calibration</h5>
+					</div>
+					<div class="card-image" id="calibration-image"></div>
+				</div>
+			</a> -->
+			<a class="card text-white bg-info m-2" id="link-output" href="output.html">
 				<div id="card-output">
 					<div class="card-body">
 						<h5 class="card-title">Output</h5>
 					</div>
 					<div class="card-image" id="output-image"></div>
+				</div>
+			</a>
+			<a class="card text-white bg-success m-2" id="link-manuals" href="manuals.html">
+				<div id="card-manuals">
+					<div class="card-body">
+						<h5 class="card-title">Manuals</h5>
+					</div>
+					<div class="card-image" id="manuals-image"></div>
 				</div>
 			</a>
 		</div>
