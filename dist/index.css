@@ -339,6 +339,16 @@ h3 {
     height: 120px;
 }
 
+/* .modal-body a {
+    font-weight: inherit;
+    font-size: 5rem;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: sans-serif;
+} */
+
 .modal-body a {
     font-weight: bold;
     height: 120px;
