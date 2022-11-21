@@ -11,6 +11,7 @@ module.exports = {
         temp: './src/js/temp.js',
         calibration: './src/js/calibration.js',
         keyboard: './src/js/keyboard.js',
+        manuals: './src/js/manuals.js',
         // activation: './src/activation.js',
         // about: './src/about.js',
         // error: './src/error.js'
