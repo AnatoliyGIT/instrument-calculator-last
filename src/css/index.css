@@ -234,6 +234,10 @@ h3 {
     background-image: url("../images/output.gif");
 }
 
+#manuals-image, #image-top-manuals {
+    background-image: url("../images/user-manual.jpg");
+}
+
 .image-top {
     height: 650px;
     width: auto;

@@ -33,92 +33,94 @@
 </head>
 
 <body>
-    <div class="container-fluid col-sm-12 col-lg-8 pt-4">
+<div class="container-fluid col-sm-12 col-lg-8 pt-4">
 
-        <div class="d-flex flex-nowrap align-items-center mb-4">
-            <a class="d-flex justify-content-center col-1 m-0" href="index.html">
-                <i class="col-1 fa fa-solid fa-angle-left" style="color: rgba(13,110,253,0.5)!important;"></i>
-            </a>
-            <h1 class="col-8 fs-1">Instrumentation calculator (Pressure)</h1>
-            <div class="selector-right d-flex justify-content-end col-2">
-                <select class="form-select form-select-lg" name="lang-selector" id="lang-selector" title="temp">
-                    <option value="en">EN</option>
-                    <option value="he">HE</option>
-                    <option value="ru">RU</option>
-                </select>
-            </div>
-        </div>
-        <div class="image-top" id="image-top-press"></div>
-
-        <!-- Калькулятор единиц давления -->
-        <div class="press m-0-auto">
-            <div class="press-selector p-4 d-flex flex-wrap justify-content-center">
-
-                <!-- Выбор единиц давления слева -->
-                <div class="press-left col-xl-5 col-md-10">
-                    <select class="form-select form-select-lg mt-2" name="press-type-left" id="press-type-left">
-                        <option value=gauge>Gauge</option>
-                        <option value=absolute>Absolute</option>
-                    </select>
-                    <select class="form-select form-select-lg mt-2" name="units-left" id="press-units-left">
-                        <option value=1021500>mm H2O</option>
-                        <option value=40146.32>In H2O (4 grad.C)</option>
-                        <option value=40218>In H2O (68 grad.F)</option>
-                        <option value=1450>PSI</option>
-                        <option value=100000>mBAR</option>
-                        <option value=100>BAR</option>
-                        <option value=10000000>Pa</option>
-                        <option value=10000>kPa</option>
-                        <option value=10>MPA</option>
-                        <option value=2952>In Hg</option>
-                        <option value=75000>mm Hg</option>
-                        <option value=101.97>kg/cm2</option>
-                        <option value=1019700>kg/m2</option>
-                        <option value=101970>gm/cm2</option>
-                        <option value=98.6923>ATM</option>
-                    </select>
-                    <div class="inputs" id="inputs-left">
-                        <input class="form-select form-select-lg mt-2 mb-2" id=input-press placeholder="press"
-                               unputmode="none">
-                    </div>
-                </div>
-
-                <!-- Знак равно -->
-                <div class="d-flex align-items-center justify-content-center col-xl-1 col-md-10">
-                    <h1 id="equal">=</h1>
-                </div>
-
-                <!-- Выбор единиц давления справа -->
-                <div class="press-right col-xl-5 col-md-10">
-                    <select class="form-select form-select-lg mt-2" name="press-type-right" id="press-type-right">
-                        <option value=gauge>Gauge</option>
-                        <option value=absolute>Absolute</option>
-                    </select>
-                    <select class="form-select form-select-lg mt-2" name="units-right" id="press-units-right">
-                        <option value=1021500>mm H2O</option>
-                        <option value=40146.32>In H2O (4 grad.C)</option>
-                        <option value=40218>In H2O (68 grad.F)</option>
-                        <option value=1450>PSI</option>
-                        <option value=100000>mBAR</option>
-                        <option value=100>BAR</option>
-                        <option value=10000000>Pa</option>
-                        <option value=10000>kPa</option>
-                        <option value=10>MPA</option>
-                        <option value=2952>In Hg</option>
-                        <option value=75000>mm Hg</option>
-                        <option value=101.97>kg/cm2</option>
-                        <option value=1019700>kg/m2</option>
-                        <option value=101970>gm/cm2</option>
-                        <option value=98.6923>ATM</option>
-                    </select>
-                    <div class="inputs" id="inputs-right">
-                        <input class="form-select form-select-lg mt-2 mb-2" id=output-press type="number"
-                               placeholder="press" disabled>
-                    </div>
-                </div>
-            </div>
+    <div class="d-flex flex-nowrap align-items-center mb-4">
+        <a class="d-flex justify-content-center col-1 m-0" id="link-back" href="index.html">
+            <i class="col-1 fa fa-solid fa-angle-left" style="color: rgba(13,110,253,0.5)!important;"></i>
+        </a>
+        <h1 id="title-main" class="col-8 fs-1">Instrumentation calculator (Pressure)</h1>
+        <div class="selector-right d-flex justify-content-end col-2">
+            <select class="form-select form-select-lg" name="lang-selector" id="lang-selector" title="temp">
+                <option value="en">EN</option>
+                <option value="he">HE</option>
+                <option value="ru">RU</option>
+            </select>
         </div>
     </div>
+    <div class="image-top" id="image-top-press"></div>
+
+    <!-- Калькулятор единиц давления -->
+    <div class="press m-0-auto">
+        <div class="press-selector p-4 d-flex flex-wrap justify-content-center">
+
+            <!-- Выбор единиц давления слева -->
+            <div class="press-left col-xl-5 col-md-10">
+                <select class="form-select form-select-lg mt-2" name="press-type-left" id="press-type-left">
+                    <option value=gauge>Gauge</option>
+                    <option value=absolute>Absolute</option>
+                </select>
+                <select class="form-select form-select-lg mt-2" name="units-left" id="press-units-left">
+                    <option value=1021500>mm H2O</option>
+                    <option value=40146.32>In H2O (4 grad.C)</option>
+                    <option value=40218>In H2O (68 grad.F)</option>
+                    <option value=1450>PSI</option>
+                    <option value=100000>mBAR</option>
+                    <option value=100>BAR</option>
+                    <option value=10000000>Pa</option>
+                    <option value=10000>kPa</option>
+                    <option value=10>MPA</option>
+                    <option value=2952>In Hg</option>
+                    <option value=75000>mm Hg</option>
+                    <option value=101.97>kg/cm2</option>
+                    <option value=1019700>kg/m2</option>
+                    <option value=101970>gm/cm2</option>
+                    <option value=98.6923>ATM</option>
+                </select>
+                <div class="inputs" id="inputs-left">
+                    <input class="form-select form-select-lg mt-2 mb-2" id=input-press placeholder="press"
+                           unputmode="none">
+                </div>
+            </div>
+
+            <!-- Знак равно -->
+            <div class="d-flex align-items-center justify-content-center col-xl-1 col-md-10">
+                <h1 id="equal">=</h1>
+            </div>
+
+            <!-- Выбор единиц давления справа -->
+            <div class="press-right col-xl-5 col-md-10">
+                <select class="form-select form-select-lg mt-2" name="press-type-right" id="press-type-right">
+                    <option value=gauge>Gauge</option>
+                    <option value=absolute>Absolute</option>
+                </select>
+                <select class="form-select form-select-lg mt-2" name="units-right" id="press-units-right">
+                    <option value=1021500>mm H2O</option>
+                    <option value=40146.32>In H2O (4 grad.C)</option>
+                    <option value=40218>In H2O (68 grad.F)</option>
+                    <option value=1450>PSI</option>
+                    <option value=100000>mBAR</option>
+                    <option value=100>BAR</option>
+                    <option value=10000000>Pa</option>
+                    <option value=10000>kPa</option>
+                    <option value=10>MPA</option>
+                    <option value=2952>In Hg</option>
+                    <option value=75000>mm Hg</option>
+                    <option value=101.97>kg/cm2</option>
+                    <option value=1019700>kg/m2</option>
+                    <option value=101970>gm/cm2</option>
+                    <option value=98.6923>ATM</option>
+                </select>
+                <div class="inputs" id="inputs-right">
+                    <input class="form-select form-select-lg mt-2 mb-2" id=output-press type="number"
+                           placeholder="press" disabled>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
 </body>
 
 </html>
