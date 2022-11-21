@@ -110,7 +110,7 @@ h3 {
     background-color: #FAF7F4;
 }
 
-.press, .temp, .flow, .output, .calibration, .level {
+.press, .temp, .flow, .output, .calibration, .level, .manuals {
     min-height: 20%;
     border: 1px solid #e3e3e3;
     border-top: 0;
@@ -146,6 +146,11 @@ h3 {
 .output {
     background-color: rgba(13, 202, 240, 0.5) !important;
     border-color: rgba(13, 202, 240, 0.5) !important;
+}
+
+.manuals {
+    background-color: rgba(25, 135, 84, 0.5) !important;
+    border-color: rgba(25, 135, 84, 0.5) !important;
 }
 
 .active {
@@ -228,6 +233,10 @@ h3 {
 
 #output-image, #image-top-output {
     background-image: url("images/output.gif");
+}
+
+#manuals-image, #image-top-manuals {
+    background-image: url("images/user-manual.jpg");
 }
 
 .image-top {
@@ -325,6 +334,11 @@ h3 {
     align-items: end;
 }
 
+.modal-body button {
+    font-weight: bold;
+    height: 120px;
+}
+
 /* .modal-body a {
     font-weight: inherit;
     font-size: 5rem;
@@ -344,6 +358,14 @@ h3 {
     align-items: center;
 }
 
+.modal-body a span {
+    font-size: 4rem;
+}
+
 .density-ff {
     display: none;
+}
+
+.clickable {
+    cursor: pointer;
 }
