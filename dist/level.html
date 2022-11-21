@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<meta name="description" content="Instrumentation calculator of temperature">
+	<meta name="description" content="Instrumentation calculator of level">
 	<meta name="keywords" content="HTML,CSS,JavaScript">
 	<meta name="author" content="Anatoly Kovrigin">
 	<meta name="viewport" content="user-scalable=0"/>
@@ -35,10 +35,10 @@
 	<div class="container-fluid col-sm-12 col-lg-8 pt-4">
 
 		<div class="d-flex flex-nowrap align-items-center mb-4">
-			<a class="d-flex justify-content-center col-1 m-0" href="index.html" title="arrow">
+			<a class="d-flex justify-content-center col-1 m-0" id="link-back" href="index.html" title="arrow">
 				<i class="col-1 fa fa-solid fa-angle-left" style="color: rgba(255,193,7,0.5)!important;"></i>
 			</a>
-			<h1 class="col-8 fs-1">Instrumentation calculator (Level)</h1>
+			<h1 id="title-main" class="col-8 fs-1">Instrumentation calculator (Level)</h1>
 			<div class="selector-right d-flex justify-content-end col-2">
 				<select class="form-select form-select-lg" name="lang-selector" id="lang-selector" title="temp">
 					<option value="en">EN</option>
@@ -120,7 +120,7 @@
 						<p class="fs-5 span-left description-left form-select-lg m-0">Distance H<sub>2</sub> (mm)</p>
 					</div>
 					<label class="col-12">
-						<input class="form-select form-select-lg" id="distance-2" placeholder="mm" title="h1" type="number"
+						<input class="form-select form-select-lg" id="distance-2" placeholder="mm" title="h2" type="number"
 							   value="0">
 					</label>
 				</div>
@@ -134,7 +134,28 @@
 							   type="number" value="0">
 					</label>
 				</div>
+			</div>
 
+			<div  class="level-selector p-4 d-flex flex-wrap justify-content-center">
+				<div class="col-xl-3 col-10 mt-md-2">
+					<div class="col-12">
+						<p class="fs-5 span-left description-left form-select-lg m-0">Meas range start (mm)</p>
+					</div>
+					<label class="col-12">
+						<input class="form-select form-select-lg" id="measurement-range-start" placeholder="mm" title="measurement-start" type="number"
+							   value="0">
+					</label>
+				</div>
+				<div class="col-xl-1 col-lg-10 mt-md-2"></div>
+				<div class="col-xl-3 col-10 mt-md-2">
+					<div class="col-12">
+						<p class="fs-5 span-left description-left form-select-lg m-0">Meas range end (mm)</p>
+					</div>
+					<label class="col-12">
+						<input class="form-select form-select-lg" id="measurement-range-end" placeholder="mm" title="measurement-end" type="number"
+							   value="0">
+					</label>
+				</div>
 			</div>
 
 			<div class="level-selector p-4 d-flex flex-wrap justify-content-center">
