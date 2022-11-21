@@ -1,5 +1,79 @@
 $(function ($) {
 
+    // Устанавливаем язык страницы в селекторе из адресной строки и наоборот
+    const lang = $("#lang-selector")
+    const link_back = $("#link-back")
+    const title_main = $("#title-main")
+
+    let set_select_by_value = function(select_id, option_val) {
+        document.getElementById(select_id).value = option_val
+    }
+
+    let getURLVarArr = function() {
+        var data = []
+        var query = String(document.location.href).split('?')
+        if (query[1]) {
+            var part = query[1].split('&')
+            for (i = 0; i < part.length; i++) {
+                var dat = part[i].split('=')
+                data[dat[0]] = dat[1]
+            }
+        }
+        return data
+    }
+
+    let get_value_of_change_select = function(select) {
+        let result
+        $.each(select, function (i) {
+            select.options[i].foo = function () {
+                result = this.value
+            }
+        })
+        select.options[select.selectedIndex].foo()
+        return result
+    }
+
+    let setLocation = function(curLoc){
+        try {
+            history.pushState(null, null, curLoc)
+            return
+        } catch(e) {}
+        location.hash = '#' + curLoc
+    }
+
+    let translate = function() {
+        if (lang_val === "en") {
+            title_main.html("Level")
+        }
+        if (lang_val === "he") {
+            title_main.html("מפלס")
+        }
+        if (lang_val === "ru") {
+            title_main.html("Уровень")
+        }
+    }
+
+    let lang_val = getURLVarArr().lang
+
+    set_select_by_value("lang-selector", lang_val)
+
+    let language = get_value_of_change_select(lang[0])
+
+    lang.on("change", function() {
+        language = get_value_of_change_select(lang[0])
+        lang_val = getURLVarArr().lang
+        if (lang_val !== language) {
+            setLocation("?lang=" + language)
+            lang_val = getURLVarArr().lang
+            link_back.attr("href", "index.html?lang=" + lang_val)
+        }
+        translate()
+    })
+    translate()
+
+    link_back.attr("href", "index.html?lang=" + lang_val)
+// End
+
     const selector_calc = $("#selector-calc")
     const selector_liquid = $("#selector-liquid")
     const density_ff = $("#density-ff")
@@ -15,6 +89,8 @@ $(function ($) {
     const result_ma = $("#result-ma")
     const result_percents = $("#result-percents")
     const result_ma_percents = $(".result-ma-percents")
+    const meas_range_start = $("#measurement-range-start")
+    const meas_range_end = $("#measurement-range-end")
     let liquid = "gas"
     let calc = "range"
     let res_ma = 0
@@ -121,6 +197,10 @@ $(function ($) {
         return Number(distance_1.val()) * Number(density_p.val())
     }
 
+    function calc_press_meas_range() {
+        return (Number(meas_range_end.val()) - Number(meas_range_start.val())) * Number(density_p.val())
+    }
+
     function calc_press_phase_l_pipe() {
         if (liquid === "phase_separation") {
             return (Number(distance_1.val()) + (Number(distance_2.val())) * Number(density_ff.val()))
@@ -163,7 +243,7 @@ $(function ($) {
         let res_x = Number(distance_1.val())
         if (calc !== "density") {
             if (liquid === "gas") {
-                lrv.val(Math.round(Number(distance_2.val()) * Number(density_p.val())))
+                lrv.val(Math.round(Number(distance_2.val()) * Number(density_p.val())) + Number(meas_range_start.val()))
             }
             if (liquid === "water" || liquid === "glycerine") {
                 lrv.val(function () {
@@ -197,7 +277,7 @@ $(function ($) {
     function calc_range() {
         if (liquid === "gas" || liquid === "water" || liquid === "glycerine") {
             range_mmh2o.val(function () {
-                return Math.round((calc_press_distance_1()))
+                return Math.round(calc_press_meas_range())
             })
         } else {
             range_mmh2o.val(function () {
@@ -251,6 +331,14 @@ $(function ($) {
         calc_percents()
     })
     density_ff.on("input", function () {
+        calc_ma()
+        calc_percents()
+    })
+    meas_range_start.on("input", function () {
+        calc_ma()
+        calc_percents()
+    })
+    meas_range_end.on("input", function () {
         calc_ma()
         calc_percents()
     })
@@ -330,6 +418,20 @@ $(function ($) {
 
     range_mmh2o.on("focus", function () {
         data = get_focus(range_mmh2o, "range_mmh2o", keyboard)
+        html = data.html
+        res = data.result
+        focus = data.focus
+    })
+
+    meas_range_start.on("focus", function () {
+        data = get_focus(meas_range_start, "range_start", keyboard)
+        html = data.html
+        res = data.result
+        focus = data.focus
+    })
+
+    meas_range_end.on("focus", function () {
+        data = get_focus(meas_range_end, "range_end", keyboard)
         html = data.html
         res = data.result
         focus = data.focus
@@ -519,6 +621,14 @@ $(function ($) {
                 break
             case "result_ma":
                 // todo
+                break
+            case "range_start":
+                calc_ma()
+                calc_percents()
+                break
+            case "range_end":
+                calc_ma()
+                calc_percents()
                 break
         }
     })
