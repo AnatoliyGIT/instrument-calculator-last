@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="description" content="Instrumentation calculator">
+	<meta name="keywords" content="HTML,CSS,JavaScript">
+	<meta name="author" content="Anatoly Kovrigin">
+	<meta name="viewport" content="user-scalable=0"/>
+<!--	<meta name="viewport" content="width=device-width, initial-scale=0.5, maximum-scale=0.5, user-scalable=0"/>-->
+
+	<title>Instrument-calculator</title>
+
+	<script defer src="manuals.js"></script>
+	<link href="images/favicon.ico" rel="shortcut icon"/>
+
+	<link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Marmelad&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+			integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+
+    <script src="https://kit.fontawesome.com/e87fbb1bab.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+	<link rel="stylesheet" href="index.css"/>
+
+</head>
+
+<body>
+	<div class="container-fluid col-sm-12 col-lg-8 pt-4">
+		<div class="d-flex flex-nowrap align-items-center mb-4">
+            <a class="d-flex justify-content-center col-1 m-0" id="link-back" href="index.html" title="arrow">
+                <i class="col-1 fa fa-solid fa-angle-left" style="color: rgba(25,135,84,0.5)!important;"></i>
+            </a>
+            <h1 id="title-manual-instrument" class="col-8 fs-1">Emerson-fisher</h1>
+            <div class="selector-right d-flex justify-content-end col-2">
+                <select class="form-select form-select-lg" name="lang-selector" id="lang-selector" title="temp">
+                    <option value="en">EN</option>
+                    <option value="he">HE</option>
+                    <option value="ru">RU</option>
+                </select>
+            </div>
+        </div>
+        <div class="d-flex flex-wrap justify-content-center ps-3 pe-3 mb-3" id="links">
+            <!-- working manuals.js -->
+        </div>
+	</div>
+</body>
+
+</html>
