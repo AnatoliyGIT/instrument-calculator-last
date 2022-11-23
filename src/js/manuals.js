@@ -86,11 +86,12 @@ $(function ($) {
         const manufacture = elem.charAt(0).toUpperCase() + elem.slice(1)
         title_manual_instrument.html() === manufacture ? link_back.attr("href", "manuals.html?lang=" + lang_val) : link_back
         
-        const tag_a = $('<a class="col col-4 card text-white bg-primary m-2" id="link-' + i + '" href="' + elem + '.html?lang=' + lang_val + '">')
+        const div_main = $('<div class="link-manual">')
+        const tag_a = $('<a class="card text-white bg-primary m-2" id="link-' + i + '" href="' + elem + '.html?lang=' + lang_val + '">')
         const class_card_manuals = $('<div class="card-manuals">')
         const class_card_body = $('<div class="card-body">')
         const class_card_title = $('<h5 class="card-title_manuals">' + manufacture + '</h5>')
-        id_cards_manuals.append(tag_a.append(class_card_manuals.append(class_card_body.append(class_card_title))))
+        id_cards_manuals.append(div_main.append(tag_a.append(class_card_manuals.append(class_card_body.append(class_card_title)))))
     })
 
     // Создаем кнопки со ссылками на инструкции
@@ -120,11 +121,12 @@ $(function ($) {
         for (const [key, link] of Object.entries(value)) {
             console.log(title_manual_instrument.html(), title)
             if (title_manual_instrument.html() === title) {
-                const tag_a = $('<a class="col col-4 card text-white bg-info m-2 pt-2 fs-1" href="' + link + '">')
+                const div_main = $('<div class="link-manual">')
+                const tag_a = $('<a class="card text-white bg-info m-2 pt-2" href="' + link + '">')
                 const class_link_manuals = $('<div class="link-manuals">')
                 const class_link_body = $('<div class="link-body">')
-                const class_link_title = $('<h5 class="link-title_manuals">' + key + '</h5>')
-                div_links.append(tag_a.append(class_link_manuals.append(class_link_body.append(class_link_title))))
+                const class_link_title = $('<h5 class="link-title_manuals text-white">' + key + '</h5>')
+                div_links.append(div_main.append(tag_a.append(class_link_manuals.append(class_link_body.append(class_link_title)))))
             }
         }
     }
