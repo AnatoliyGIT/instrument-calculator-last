@@ -249,6 +249,10 @@ h3 {
     font-size: 2rem !important;
 }
 
+.link-manual {
+    width: 30%
+}
+
 @media (min-device-width: 650px) and (max-device-width: 980px) {
     .card-title {
         font-size: x-large;
@@ -256,6 +260,14 @@ h3 {
 
     .card-image {
         height: 170px;
+    }
+
+    .link-manual h5 {
+        font-size: 2rem
+    }
+
+    .link-manual {
+        width: 45%
     }
 }
 
@@ -315,11 +327,23 @@ h3 {
     #carousel-top {
         display: none;
     }
+
+    .link-manual h5 {
+        font-size: 3.5rem
+    }
+
+    .link-manual {
+        width: 80%
+    }
 }
 
 @media (max-device-width: 300px) {
     .card-image {
         height: 750px;
+    }
+
+    .link-manual h5 {
+        font-size: 3rem
     }
 }
 
