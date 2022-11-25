@@ -185,10 +185,17 @@ $(function ($) {
             "PS2.video": "https://www.youtube.com/watch?v=nXSO6290P6w",
         },
         "Others": {
-            "": "",
-            "": "",
-            "": "",
-            "": "",
+            "Orifice-Flow-Meter.video": "https://www.youtube.com/watch?v=94113fz1j84&list=RDCMUCCfcObpcllzM8b9oc0PD5JA&index=11",
+            "Level-Meter-DP.video": "https://www.youtube.com/watch?v=XWfwg9WcWfo",
+            "I/P-converter.video": "https://www.youtube.com/watch?v=_afkPYymJl0",
+            "RTD.video": "https://www.youtube.com/watch?v=yNryBIe5kEg",
+            "Venturimeter.video": "https://www.youtube.com/watch?v=WzPQuOilmCM",
+            "Pressure.video": "https://www.youtube.com/watch?v=Gd648AoNcYk",
+            "Pressure-switch.video": "https://www.youtube.com/watch?v=ktYFDe1qNp8",
+            "CV-actuator.video": "https://www.youtube.com/watch?v=PsZOtcdVG6o",
+            "Proximity-sensor.video": "https://www.youtube.com/watch?v=s2na8CumNR0&list=PLACN6YPGs9C-GSTus9XgvzNSQBeVPuXjk&index=2",
+            "NPN-Inductive-proximity-sensor.video": "https://www.youtube.com/watch?v=7CUj3ZE88FQ&list=PLACN6YPGs9C-GSTus9XgvzNSQBeVPuXjk&index=3",
+            "Magnetic-flow-meter.video": "https://www.youtube.com/watch?v=m5urJRUvmOw&list=RDCMUCCfcObpcllzM8b9oc0PD5JA&index=2",
         }
     }
 
