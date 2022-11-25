@@ -69,6 +69,13 @@ $(function ($) {
             lang_val = getURLVarArr().lang
             link_back.attr("href", "index.html?lang=" + lang_val)
             title_manual_instrument.html() ? link_back.attr("href", "manuals.html?lang=" + lang_val) : link_back
+            $.each(arr_manuals, function(i, e) {
+                const href = $("#link-" + i)
+                const query = String(href.attr("href")).split('?')
+                if (query[1]) {
+                    href.attr("href", e + ".html?lang=" + lang_val)
+                }
+            })
         }
         translate()
     })
@@ -187,7 +194,6 @@ $(function ($) {
 
     for (const [title, value] of Object.entries(obj_links)) {
         for (const [key, link] of Object.entries(value)) {
-            console.log(title_manual_instrument.html(), title)
             if (title_manual_instrument.html() === title) {
                 const div_main = $('<div class="link-manual">')
                 const tag_a = $('<a class="card text-white bg-info m-2 pt-2" href="' + link + '">')
