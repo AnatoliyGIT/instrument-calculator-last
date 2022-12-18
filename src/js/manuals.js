@@ -167,6 +167,8 @@ $(function ($) {
             "28000.pdf": "https://dam.bakerhughes.com/m/4a9c46a2d75b2679/original/mn-28000-series-varipak-iom-gea30857b-english-pdf.pdf",
             "41005.pdf": "https://www.serkon.com.tr/wp-content/uploads/2016/02/41005-Instruction-manual.pdf",
             "21000.pdf": "https://dam.bakerhughes.com/m/3817a5822d17af37/original/BHMN-21000-IOM-19821E-0620-English-pdf.pdf",
+            "SVI-2(en).pdf": "https://valves.bakerhughes.com/sites/g/files/cozyhq631/files/2018-12/mn-svi-ii-ap-qsg-gea19679-revw-english.pdf",
+            "SVI-2(ru).pdf": "https://dam.bakerhughes.com/m/765a3c443a62ec7f/original/BHMN-SVI2AP-QSG-19679AC-1221-RU-Russian.pdf",
         },
         "ABB": {
             "ABB.site": "https://global.abb/group/en",
