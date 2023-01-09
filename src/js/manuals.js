@@ -87,7 +87,7 @@ $(function ($) {
     // Создаем кнопочки на страницы разных производителей
     const id_cards_manuals = $("#card-manuals")
 
-    const arr_manuals = ["yokogawa", "rosemount", "pepperl-fuchs", "emerson-fisher", "masoneilan", "ABB", "siemens", "others"]
+    const arr_manuals = ["yokogawa", "rosemount", "pepperl-fuchs", "emerson-fisher", "masoneilan", "ABB", "siemens", "samson", "others"]
 
     $.each(arr_manuals, function(i, elem) {
         const manufacture = elem.charAt(0).toUpperCase() + elem.slice(1)
@@ -107,6 +107,7 @@ $(function ($) {
     const obj_links = {
         "Yokogawa": {
             "YOKOGAWA.site": "https://www.yokogawa.com/",
+            "Documentation": "https://www.yokogawa.com/library/search/#/p=33189",
             "EJX-SERIES_EN.pdf": "https://web-material3.yokogawa.com/IM01C25A01-01EN.pdf",
             "EJX110A_EN.pdf": "https://web-material3.yokogawa.com/GS01C25B01-01EN.pdf",
             "EJX210A_EN.pdf": "https://web-material3.yokogawa.com/GS01C25C01-01EN.pdf",
@@ -167,8 +168,6 @@ $(function ($) {
             "28000.pdf": "https://dam.bakerhughes.com/m/4a9c46a2d75b2679/original/mn-28000-series-varipak-iom-gea30857b-english-pdf.pdf",
             "41005.pdf": "https://www.serkon.com.tr/wp-content/uploads/2016/02/41005-Instruction-manual.pdf",
             "21000.pdf": "https://dam.bakerhughes.com/m/3817a5822d17af37/original/BHMN-21000-IOM-19821E-0620-English-pdf.pdf",
-            "SVI-2(en).pdf": "https://valves.bakerhughes.com/sites/g/files/cozyhq631/files/2018-12/mn-svi-ii-ap-qsg-gea19679-revw-english.pdf",
-            "SVI-2(ru).pdf": "https://dam.bakerhughes.com/m/765a3c443a62ec7f/original/BHMN-SVI2AP-QSG-19679AC-1221-RU-Russian.pdf",
         },
         "ABB": {
             "ABB.site": "https://global.abb/group/en",
@@ -185,6 +184,13 @@ $(function ($) {
             "PS2_en.pdf": "https://cache.industry.siemens.com/dl/files/419/109782419/att_1034214/v1/A5E00074631-AFen_PS2HART_OI_en-US.pdf",
             "PS2_ru.pdf": "https://www.siemens-pro.ru/docs/kip/Positioners_Recorders_Regulators/Positioners/Pozitioner_Sipart_PS2/Instruction_RUS/Rukovodstvo_SipartPS2_FF_RUS.pdf",
             "PS2.video": "https://www.youtube.com/watch?v=nXSO6290P6w",
+        },
+        "Samson": {
+            "Samson.global": "https://www.samsongroup.com/en/",
+            "Documentation": "https://www.samsongroup.com/en/service-support/downloads/documentation/",
+            "Trovis 3730-3": "https://www.samsongroup.com/en/products-applications/product-selector/valve-accessories/trovis3730-3/",
+            "Trovis_pdf_en": "https://www.samsongroup.com/document/e84843en.pdf",
+            "Trovis_pdf_ru": "https://www.samsongroup.com/document/e84843ru.pdf",
         },
         "Others": {
             "Orifice-Flow-Meter.video": "https://www.youtube.com/watch?v=94113fz1j84&list=RDCMUCCfcObpcllzM8b9oc0PD5JA&index=11",
