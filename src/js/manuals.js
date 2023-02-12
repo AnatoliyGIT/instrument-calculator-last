@@ -87,7 +87,7 @@ $(function ($) {
     // Создаем кнопочки на страницы разных производителей
     const id_cards_manuals = $("#card-manuals")
 
-    const arr_manuals = ["yokogawa", "rosemount", "pepperl-fuchs", "emerson-fisher", "masoneilan", "ABB", "siemens", "samson", "others"]
+    const arr_manuals = ["yokogawa", "rosemount", "pepperl-fuchs", "emerson-fisher", "masoneilan", "endress+hauser", "ABB", "siemens", "samson", "others"]
 
     $.each(arr_manuals, function(i, elem) {
         const manufacture = elem.charAt(0).toUpperCase() + elem.slice(1)
@@ -163,6 +163,11 @@ $(function ($) {
             "POS-3582_en.video(1)": "https://www.youtube.com/watch?v=BAcQ93eUtHY",
             "POS-3582_en.video(2)": "https://www.youtube.com/watch?v=daKehqhrgPw",
         },
+        "Endress+Hauser": {
+            "Endress+Hauser.site.ru": "https://www.easc.endress.com/ru?store_locale=ru&ii-country=il",
+            "Endress+Hauser.site.en": "https://www.easc.endress.com/en?store_locale=en&ii-country=il",
+            "FMP40.pdf": "https://portal.endress.com/wa001/dla/5000373/9318/000/06/BA00244FEN_1310.pdf",
+        },
         "Masoneilan": {
             "MASONELIAN.site": "https://valves.bakerhughes.com/masoneilan",
             "28000.pdf": "https://dam.bakerhughes.com/m/4a9c46a2d75b2679/original/mn-28000-series-varipak-iom-gea30857b-english-pdf.pdf",
@@ -211,7 +216,7 @@ $(function ($) {
         for (const [key, link] of Object.entries(value)) {
             if (title_manual_instrument.html() === title) {
                 const div_main = $('<div class="link-manual">')
-                const tag_a = $('<a class="card text-white bg-info m-2 pt-2" href="' + link + '">')
+                const tag_a = $('<a class="card text-white bg-info m-2 pt-2" target="_blank" href="' + link + '">')
                 const class_link_manuals = $('<div class="link-manuals">')
                 const class_link_body = $('<div class="link-body">')
                 const class_link_title = $('<h5 class="link-title_manuals text-white">' + key + '</h5>')
