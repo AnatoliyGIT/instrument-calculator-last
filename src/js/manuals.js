@@ -166,7 +166,8 @@ $(function ($) {
         "Endress+Hauser": {
             "Endress+Hauser.site.ru": "https://www.easc.endress.com/ru?store_locale=ru&ii-country=il",
             "Endress+Hauser.site.en": "https://www.easc.endress.com/en?store_locale=en&ii-country=il",
-            "FMP40.pdf": "https://portal.endress.com/wa001/dla/5000373/9318/000/06/BA00244FEN_1310.pdf",
+            "FMP40.pdf.en": "https://portal.endress.com/wa001/dla/5000373/9318/000/06/BA00244FEN_1310.pdf",
+            "FMP40.pdf.ru": "https://portal.endress.com/wa001/dla/5000300/7743/000/00/BA242F27ru.pdf",
         },
         "Masoneilan": {
             "MASONELIAN.site": "https://valves.bakerhughes.com/masoneilan",
