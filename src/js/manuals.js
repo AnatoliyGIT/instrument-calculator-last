@@ -197,6 +197,9 @@ $(function ($) {
             "Trovis 3730-3": "https://www.samsongroup.com/en/products-applications/product-selector/valve-accessories/trovis3730-3/",
             "Trovis_pdf_en": "https://www.samsongroup.com/document/e84843en.pdf",
             "Trovis_pdf_ru": "https://www.samsongroup.com/document/e84843ru.pdf",
+            "Pfieffer": "https://www.pfeiffer-armaturen.com/en-products-ha.htm#tb",
+            "TB26_pdf_ru": "https://www.pfeiffer-armaturen.com/download/TB26s_RU.pdf",
+            "TB26_pdf_en": "https://www.pfeiffer-armaturen.com/download/TB26s_EN.pdf",
         },
         "Others": {
             "Orifice-Flow-Meter.video": "https://www.youtube.com/watch?v=94113fz1j84&list=RDCMUCCfcObpcllzM8b9oc0PD5JA&index=11",
